@@ -35,6 +35,7 @@ import {
   updateOmicronBoostsConquest,
   applyTemplateTargets,
   setOptimizeIndex,
+  generateMetaSpeedCharacterList,
 } from "../../state/actions/characterEdit";
 import {
   changeOptimizerView,
@@ -692,6 +693,9 @@ class CharacterEditView extends PureComponent {
         <form ref={(element) => (form = element)}>
           <label htmlFor={"use-case"}>Select your use case:</label>
           <Dropdown id={"use-case"} name={"use-case"}>
+            <option value={"meta-speed"}>
+              Kyber Mod Investment — Avg Speed Secondary
+            </option>
             <option value={""}>GAC / TW / ROTE (default)</option>
             <option value={1}>Light-side Territory Battle</option>
             <option value={2}>Dark-side Territory Battle</option>
@@ -1460,7 +1464,24 @@ const mapDispatchToProps = (dispatch) => ({
   updateOmicronBoostsConquest: (enabled) =>
     dispatch(updateOmicronBoostsConquest(enabled)),
   generateCharacterList: (mode, behavior, allyCode, parameters) => {
-    dispatch(fetchCharacterList(mode, behavior, allyCode, parameters));
+    if (mode === "meta-speed") {
+      dispatch(
+        generateMetaSpeedCharacterList(
+          behavior,
+          parameters
+        )
+      );
+    } else {
+      dispatch(
+        fetchCharacterList(
+          mode,
+          behavior,
+          allyCode,
+          parameters
+        )
+      );
+    }
+
     dispatch(hideModal());
   },
   saveTemplate: (name) => dispatch(saveTemplate(name)),

@@ -4,6 +4,7 @@ import { mapObject } from "../../utils/mapObject";
 import groupByKey from "../../utils/groupByKey";
 import collectByKey from "../../utils/collectByKey";
 import OptimizationPlan from "../../domain/OptimizationPlan";
+import generatedMetaSpeedRanking from "../../constants/generatedMetaSpeedRanking.json";
 import getDatabase from "../storage/Database";
 import { loadCharacterTemplates } from "./storage";
 
@@ -107,6 +108,300 @@ export function unselectAllCharacters() {
  * Action to lock all characters from the "selected characters" pool
  * @returns {Function}
  */
+
+// BEGIN KYBER META SPEED LIST
+
+/**
+ * Auto-generate the selected character list using average Speed-secondary
+ * investment from the Kyber Comlink dataset.
+ *
+ * This intentionally ranks ONLY characters already present in the player's
+ * loaded roster.
+ *
+ * @param overwrite {boolean|string}
+ * @param parameters {Object}
+ */
+export function generateMetaSpeedCharacterList(
+  overwrite,
+  parameters = {}
+) {
+  return updateProfile(
+    profile => {
+      const shouldOverwrite =
+        overwrite === true ||
+        overwrite === "true";
+
+
+      const minimumGearLevel =
+        Math.max(
+          1,
+
+          Number(
+            parameters.minimumGearLevel ||
+            1
+          )
+        );
+
+
+      const requestedMaximum =
+        Math.max(
+          0,
+
+          Number(
+            parameters.top ||
+            0
+          )
+        );
+
+
+      const startingList =
+        shouldOverwrite
+          ? []
+          : profile.selectedCharacters.slice();
+
+
+      const alreadySelected =
+        new Set(
+          startingList.map(
+            ({ id }) =>
+              id
+          )
+        );
+
+
+      const rankedCharacters =
+        Object.values(
+          profile.characters
+        )
+          .map(
+            character => {
+              const ranking =
+                generatedMetaSpeedRanking
+                  .characters
+                  ?.[
+                    character.baseID
+                  ];
+
+
+              if (
+                !ranking
+              ) {
+                return null;
+              }
+
+
+              return {
+                character,
+
+                averageSecondarySpeed:
+                  Number(
+                    ranking.averageSecondarySpeed
+                  ),
+
+                speedSecondaryFrequency:
+                  Number(
+                    ranking.speedSecondaryFrequency ||
+                    0
+                  ),
+
+                sampleSize:
+                  Number(
+                    ranking.sampleSize ||
+                    0
+                  ),
+
+                globalRank:
+                  Number(
+                    ranking.rank ||
+                    999999
+                  )
+              };
+            }
+          )
+          .filter(
+            Boolean
+          )
+          .filter(
+            ({
+              character
+            }) =>
+              Number(
+                character
+                  .playerValues
+                  .level ||
+                0
+              ) >=
+              50
+          )
+          .filter(
+            ({
+              character
+            }) =>
+              Number(
+                character
+                  .playerValues
+                  .gearLevel ||
+                0
+              ) >=
+              minimumGearLevel
+          )
+          .filter(
+            ({
+              averageSecondarySpeed
+            }) =>
+              Number.isFinite(
+                averageSecondarySpeed
+              ) &&
+              averageSecondarySpeed >
+                0
+          )
+          .filter(
+            ({
+              character
+            }) =>
+              !alreadySelected.has(
+                character.baseID
+              )
+          )
+          .sort(
+            (
+              left,
+              right
+            ) => {
+              /**
+               * PRIMARY:
+               *
+               * Average Speed secondary.
+               */
+              if (
+                right.averageSecondarySpeed !==
+                left.averageSecondarySpeed
+              ) {
+                return (
+                  right.averageSecondarySpeed -
+                  left.averageSecondarySpeed
+                );
+              }
+
+
+              /**
+               * First tie breaker:
+               *
+               * Speed-secondary frequency.
+               */
+              if (
+                right.speedSecondaryFrequency !==
+                left.speedSecondaryFrequency
+              ) {
+                return (
+                  right.speedSecondaryFrequency -
+                  left.speedSecondaryFrequency
+                );
+              }
+
+
+              /**
+               * Second tie breaker:
+               *
+               * Meta sample size.
+               */
+              if (
+                right.sampleSize !==
+                left.sampleSize
+              ) {
+                return (
+                  right.sampleSize -
+                  left.sampleSize
+                );
+              }
+
+
+              /**
+               * Final tie breaker:
+               *
+               * Strength of this character on the player's own roster.
+               */
+              const leftGp =
+                Number(
+                  left
+                    .character
+                    .playerValues
+                    .galacticPower ||
+                  0
+                );
+
+
+              const rightGp =
+                Number(
+                  right
+                    .character
+                    .playerValues
+                    .galacticPower ||
+                  0
+                );
+
+
+              return (
+                rightGp -
+                leftGp
+              );
+            }
+          );
+
+
+      const limitedCharacters =
+        requestedMaximum >
+        0
+          ? rankedCharacters.slice(
+              0,
+              requestedMaximum
+            )
+          : rankedCharacters;
+
+
+      const generatedList =
+        limitedCharacters.map(
+          ({
+            character
+          }) => {
+            /**
+             * Prefer our generated empirical target.
+             *
+             * Fall back to whatever Grand Ivory considers the default target.
+             */
+            const kyberMetaTarget =
+              character
+                .targets()
+                .find(
+                  target =>
+                    target.name ===
+                    "Kyber Meta"
+                );
+
+
+            return {
+              id:
+                character.baseID,
+
+              target:
+                kyberMetaTarget ||
+                character.defaultTarget()
+            };
+          }
+        );
+
+
+      return profile.withSelectedCharacters(
+        startingList.concat(
+          generatedList
+        )
+      );
+    }
+  );
+}
+
+// END KYBER META SPEED LIST
+
 export function lockSelectedCharacters() {
   return updateProfile(profile => {
     const selectedCharacterIDs = Object.keys(groupByKey(profile.selectedCharacters, ({ id }) => id));

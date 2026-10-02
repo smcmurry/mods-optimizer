@@ -178,16 +178,106 @@ export default class Character {
    */
   targets() {
     const defaultTargets = groupByKey(
-      characterSettings[this.baseID] ? characterSettings[this.baseID].targets : [],
+      characterSettings[this.baseID]
+        ? characterSettings[this.baseID].targets
+        : [],
       target => target.name
     );
-    const playerTargets = groupByKey(this.optimizerSettings.targets, target => target.name);
 
-    return Object.values(Object.assign({}, defaultTargets, playerTargets));
+
+    const playerTargets = groupByKey(
+      this.optimizerSettings
+        ? this.optimizerSettings.targets
+        : [],
+      target => target.name
+    );
+
+
+    /**
+     * Preserve normal Grand Ivory behavior for user-modified targets.
+     *
+     * Player targets normally override defaults with the same name.
+     */
+    const mergedTargets =
+      Object.assign(
+        {},
+        defaultTargets,
+        playerTargets
+      );
+
+
+    /**
+     * Kyber Meta is generated data.
+     *
+     * Always use the current generated version rather than a stale copy that
+     * may have been saved in the player's IndexedDB profile.
+     */
+    if (
+      defaultTargets["Kyber Meta"]
+    ) {
+      mergedTargets["Kyber Meta"] =
+        defaultTargets["Kyber Meta"];
+    }
+
+
+    const targets =
+      Object.values(
+        mergedTargets
+      );
+
+
+    /**
+     * Force Kyber Meta to the first position in the target dropdown.
+     */
+    const kyberIndex =
+      targets.findIndex(
+        target =>
+          target.name ===
+          "Kyber Meta"
+      );
+
+
+    if (
+      kyberIndex >
+      0
+    ) {
+      const [
+        kyberTarget
+      ] =
+        targets.splice(
+          kyberIndex,
+          1
+        );
+
+
+      targets.unshift(
+        kyberTarget
+      );
+    }
+
+
+    return targets;
   }
 
   defaultTarget() {
-    return this.targets()[0] || new OptimizationPlan('unnamed');
+    const targets =
+      this.targets();
+
+
+    /**
+     * Kyber Meta is the default everywhere it exists.
+     */
+    return (
+      targets.find(
+        target =>
+          target.name ===
+          "Kyber Meta"
+      ) ||
+      targets[0] ||
+      new OptimizationPlan(
+        "unnamed"
+      )
+    );
   }
 
   /**

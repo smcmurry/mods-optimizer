@@ -1,0 +1,1854 @@
+{
+  "schemaVersion": 4,
+  "source": {
+    "provider": "swgoh-comlink",
+    "gameDataVersion": "0.40.6:Oq-TxiewST69Ow5E1gLW3g",
+    "localizationVersion": "LNJFBfJYSzucFO8xXYixIg",
+    "generatedAt": "2026-10-01T22:03:38.501Z"
+  },
+  "cohort": {
+    "source": "guild-search",
+    "guildSearch": {
+      "minGuildGalacticPower": 670000000,
+      "maxGuildGalacticPower": 1500000000,
+      "minMemberCount": 45,
+      "maxMemberCount": 50,
+      "requestedGuilds": 20
+    },
+    "ratingFilter": {
+      "enabled": true,
+      "requiredLeague": "KYBER",
+      "includedPlayers": 41,
+      "kyberPlayers": 41,
+      "nonKyberPlayers": 2,
+      "unknownRatingPlayers": 0,
+      "leagueCounts": {
+        "KYBER": 41,
+        "AURODIUM": 2
+      },
+      "divisionCounts": {
+        "1": 6,
+        "2": 28,
+        "3": 7,
+        "4": 2,
+        "5": 0,
+        "unknown": 0
+      }
+    },
+    "discoveredGuilds": 20,
+    "players": [
+      {
+        "key": "player:wAPKtvHRQ-iYmFPXc1-ayg",
+        "playerId": "wAPKtvHRQ-iYmFPXc1-ayg",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:-PKvHKseQuea5yw-ZYoTEg",
+        "playerId": "-PKvHKseQuea5yw-ZYoTEg",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:4vAx86RjR6WMcHD3kEfPdg",
+        "playerId": "4vAx86RjR6WMcHD3kEfPdg",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:95HObNKDRHOJ5fCC878ChA",
+        "playerId": "95HObNKDRHOJ5fCC878ChA",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:KPcjsMdjTBWgvJ2Je9dfyA",
+        "playerId": "KPcjsMdjTBWgvJ2Je9dfyA",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:C5OPk533SHyn8-emIN5XNg",
+        "playerId": "C5OPk533SHyn8-emIN5XNg",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:x9367KQ7RAykMBPBirXLKw",
+        "playerId": "x9367KQ7RAykMBPBirXLKw",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:1M52ZF7YTaCnTKGjOoy6pw",
+        "playerId": "1M52ZF7YTaCnTKGjOoy6pw",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:EB2BX6EfQFeQPfl4UgRnMw",
+        "playerId": "EB2BX6EfQFeQPfl4UgRnMw",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:gU7b2f4fTReQYtup_nELwQ",
+        "playerId": "gU7b2f4fTReQYtup_nELwQ",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:voa5xE8rTzmK6DHfjov75Q",
+        "playerId": "voa5xE8rTzmK6DHfjov75Q",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:5dcKYoH2QjaHcG9KbXU1HA",
+        "playerId": "5dcKYoH2QjaHcG9KbXU1HA",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:7FYNAvZQS1avQXvleR3_oQ",
+        "playerId": "7FYNAvZQS1avQXvleR3_oQ",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:igorpOfBQC-y9zkxcGAN6Q",
+        "playerId": "igorpOfBQC-y9zkxcGAN6Q",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:7u7dYB7zRZuyqeOAONQ3EA",
+        "playerId": "7u7dYB7zRZuyqeOAONQ3EA",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:YrlYj-oISxyL2dAMa6BP4Q",
+        "playerId": "YrlYj-oISxyL2dAMa6BP4Q",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:ravbuboSQ-28XuFh0sNZzA",
+        "playerId": "ravbuboSQ-28XuFh0sNZzA",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:VO0I1c9CS2yLRpfnBIkxAA",
+        "playerId": "VO0I1c9CS2yLRpfnBIkxAA",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:8DnTsYGxQrCqVgveQ0lF8g",
+        "playerId": "8DnTsYGxQrCqVgveQ0lF8g",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:PlnYGzmVTiCfSVwu8pE5fw",
+        "playerId": "PlnYGzmVTiCfSVwu8pE5fw",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:GfKfD4NWQayZlfGm0Up-ug",
+        "playerId": "GfKfD4NWQayZlfGm0Up-ug",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:UCHyCpv1Q12NyTSQ0dW6oA",
+        "playerId": "UCHyCpv1Q12NyTSQ0dW6oA",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:WyVIwM2jS3qtj8enU_S2iQ",
+        "playerId": "WyVIwM2jS3qtj8enU_S2iQ",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:1pbM6mZ6QyGa6Rm-ZXq1iQ",
+        "playerId": "1pbM6mZ6QyGa6Rm-ZXq1iQ",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:XZz8ZAuLQYuYDkJtnh7Srw",
+        "playerId": "XZz8ZAuLQYuYDkJtnh7Srw",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:mrlwxnYaRXaDGg51ejvWMw",
+        "playerId": "mrlwxnYaRXaDGg51ejvWMw",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:3TEEZZlYTG-MfzJggjoUMQ",
+        "playerId": "3TEEZZlYTG-MfzJggjoUMQ",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:INZlAksPS0e1zxpsYsC4JQ",
+        "playerId": "INZlAksPS0e1zxpsYsC4JQ",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:4R8mBxEvRD6ydLdqALUB9Q",
+        "playerId": "4R8mBxEvRD6ydLdqALUB9Q",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:voV3vJj2RWezt3QghIZfVQ",
+        "playerId": "voV3vJj2RWezt3QghIZfVQ",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:lSRbyCweTiC1YCXh3Lwr8w",
+        "playerId": "lSRbyCweTiC1YCXh3Lwr8w",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:PaaIGzG3QkqMIoNRMmZkzg",
+        "playerId": "PaaIGzG3QkqMIoNRMmZkzg",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:mcFSBwcfTOCL8f-pyg5ytg",
+        "playerId": "mcFSBwcfTOCL8f-pyg5ytg",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:o-GqGp5HQwCdv32pRX6OIQ",
+        "playerId": "o-GqGp5HQwCdv32pRX6OIQ",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:5KK2CGhYSvyLwD4kFkQO1w",
+        "playerId": "5KK2CGhYSvyLwD4kFkQO1w",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:vtOGwQgARVmrpn-k707jLg",
+        "playerId": "vtOGwQgARVmrpn-k707jLg",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:dPGCOpqOTiKYT6R2pzdoUQ",
+        "playerId": "dPGCOpqOTiKYT6R2pzdoUQ",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:5ci08oD5S1qcwku03CG25g",
+        "playerId": "5ci08oD5S1qcwku03CG25g",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:KGTmeKfATwmmEVmUe_O_eA",
+        "playerId": "KGTmeKfATwmmEVmUe_O_eA",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:NpyrglNRTTqEvZbgRNSWxg",
+        "playerId": "NpyrglNRTTqEvZbgRNSWxg",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:lDU4SpwGTbG9iYmRtnideQ",
+        "playerId": "lDU4SpwGTbG9iYmRtnideQ",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:mbKCs09qQ2KBenSVU_XF3A",
+        "playerId": "mbKCs09qQ2KBenSVU_XF3A",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:WzYgu8VQSPy7l8I8fdgvNw",
+        "playerId": "WzYgu8VQSPy7l8I8fdgvNw",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:HSvRAXVnSI-snxDdvY4jmg",
+        "playerId": "HSvRAXVnSI-snxDdvY4jmg",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:by-sLqOVT7WN2_8Rw_VovA",
+        "playerId": "by-sLqOVT7WN2_8Rw_VovA",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:jTAN7PnPQ5aEwomvqi39xQ",
+        "playerId": "jTAN7PnPQ5aEwomvqi39xQ",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:TdzTKbA9Tf2U0g8qzCFvww",
+        "playerId": "TdzTKbA9Tf2U0g8qzCFvww",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:ObmELaFsQp-fL_x2nezTpA",
+        "playerId": "ObmELaFsQp-fL_x2nezTpA",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:zmnodGKtT9GGcrEqomLYqg",
+        "playerId": "zmnodGKtT9GGcrEqomLYqg",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:SFQS2jRbQSmA_ihMthQmHQ",
+        "playerId": "SFQS2jRbQSmA_ihMthQmHQ",
+        "allyCode": null,
+        "name": "",
+        "guildId": "STHZs8xlT3uTzy-5MnlH_w",
+        "guildName": "Cantina Lords"
+      },
+      {
+        "key": "player:R-WZ1XIKR96a9jYwj51FDQ",
+        "playerId": "R-WZ1XIKR96a9jYwj51FDQ",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:jIk8anFQTHWlRzvXirnGPQ",
+        "playerId": "jIk8anFQTHWlRzvXirnGPQ",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:JIwNCMaeTaGWmTvscOGwMw",
+        "playerId": "JIwNCMaeTaGWmTvscOGwMw",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:DgqH_du_ToeRm4-MyvJ7Zw",
+        "playerId": "DgqH_du_ToeRm4-MyvJ7Zw",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:WvZmvAh9QOWKyeN7IJL0Ig",
+        "playerId": "WvZmvAh9QOWKyeN7IJL0Ig",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:acmyEAtzRj-TJAQZl1vb1A",
+        "playerId": "acmyEAtzRj-TJAQZl1vb1A",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:tnP6w6aeSB6Du2k860Snvw",
+        "playerId": "tnP6w6aeSB6Du2k860Snvw",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:5TDUusjETtmLaUCa8NKVqg",
+        "playerId": "5TDUusjETtmLaUCa8NKVqg",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:deQZQF_TRe-JQw8FDYdJuQ",
+        "playerId": "deQZQF_TRe-JQw8FDYdJuQ",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:WM8mZz4iTfahR6dC92uE0Q",
+        "playerId": "WM8mZz4iTfahR6dC92uE0Q",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:VsJKb9tqRgyS2EK0jBf4Xg",
+        "playerId": "VsJKb9tqRgyS2EK0jBf4Xg",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:nrPNJ0IYS6uPPF4IGrHL4g",
+        "playerId": "nrPNJ0IYS6uPPF4IGrHL4g",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:FgNA2SKrTZOoFlbtMRAUbg",
+        "playerId": "FgNA2SKrTZOoFlbtMRAUbg",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:WkyaLOaER1WTG3EmUNn1cw",
+        "playerId": "WkyaLOaER1WTG3EmUNn1cw",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:QLaP5e1WQMuvcBgflYR2Ag",
+        "playerId": "QLaP5e1WQMuvcBgflYR2Ag",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:558Wp0FKTGCSpprbGgD8nA",
+        "playerId": "558Wp0FKTGCSpprbGgD8nA",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:uytnadC8R0GsPZ6qbEtm0g",
+        "playerId": "uytnadC8R0GsPZ6qbEtm0g",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:2kZSth01RaS0iSxpZxHtog",
+        "playerId": "2kZSth01RaS0iSxpZxHtog",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:Yd_f8naxRcK2jvlaU2sDwA",
+        "playerId": "Yd_f8naxRcK2jvlaU2sDwA",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:A2Otp_WDRjOS1ox-knQMxQ",
+        "playerId": "A2Otp_WDRjOS1ox-knQMxQ",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:e8gop0mrQcWXeMmSXD08FQ",
+        "playerId": "e8gop0mrQcWXeMmSXD08FQ",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:NE-csvjdR76GjqRKFRQhVQ",
+        "playerId": "NE-csvjdR76GjqRKFRQhVQ",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:1wQ3K9nYS2qkR7lItP0Vmg",
+        "playerId": "1wQ3K9nYS2qkR7lItP0Vmg",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:hAh2FPltSPyaLyZrIlYXHw",
+        "playerId": "hAh2FPltSPyaLyZrIlYXHw",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:UJlu6SqNSYem_Vx7EN1O8g",
+        "playerId": "UJlu6SqNSYem_Vx7EN1O8g",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:ULG9APe4TsyhomnHb6WPlw",
+        "playerId": "ULG9APe4TsyhomnHb6WPlw",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:AKTBk2NsSVSyQDiLsqogMA",
+        "playerId": "AKTBk2NsSVSyQDiLsqogMA",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:hZdofyQbRQWb2K16RrtCcg",
+        "playerId": "hZdofyQbRQWb2K16RrtCcg",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:xHBHfLuyQ068OwjKL6wiBQ",
+        "playerId": "xHBHfLuyQ068OwjKL6wiBQ",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:2Cz7Me_pQFG4QFJvU9l63Q",
+        "playerId": "2Cz7Me_pQFG4QFJvU9l63Q",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:3Ve-3-e_TEaYl1fppaByTg",
+        "playerId": "3Ve-3-e_TEaYl1fppaByTg",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:ASxeYLgSTW-uPuz7Cn4HUA",
+        "playerId": "ASxeYLgSTW-uPuz7Cn4HUA",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:3NjSNrCyTvKkQ9ijP5u9OQ",
+        "playerId": "3NjSNrCyTvKkQ9ijP5u9OQ",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:Rt7An9ThS16_pYjqVe0asA",
+        "playerId": "Rt7An9ThS16_pYjqVe0asA",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:iFw8EqbtRG-BzntjaMJu8g",
+        "playerId": "iFw8EqbtRG-BzntjaMJu8g",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:rKtkfey0Q8KE00wxVNgfuw",
+        "playerId": "rKtkfey0Q8KE00wxVNgfuw",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:FpIdKWI9TL64-ysNYdFPCQ",
+        "playerId": "FpIdKWI9TL64-ysNYdFPCQ",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:20dojpyIT0KersIaIkGm2g",
+        "playerId": "20dojpyIT0KersIaIkGm2g",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:ypSoyfYVRvOW6iiaZhi3Sg",
+        "playerId": "ypSoyfYVRvOW6iiaZhi3Sg",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:Z9pBQQPFSTmpEQfz3prA6A",
+        "playerId": "Z9pBQQPFSTmpEQfz3prA6A",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:BIHSWfGNRcqyxvHh0i73OQ",
+        "playerId": "BIHSWfGNRcqyxvHh0i73OQ",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:CA37AYE0RvW0qK2mjd3dnA",
+        "playerId": "CA37AYE0RvW0qK2mjd3dnA",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:bX061APLRLOVn29n_8qnRg",
+        "playerId": "bX061APLRLOVn29n_8qnRg",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:VZ0LgStySTShe7v_nlyLMQ",
+        "playerId": "VZ0LgStySTShe7v_nlyLMQ",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:5MRMd6iNTNaqzYPIXVPkeA",
+        "playerId": "5MRMd6iNTNaqzYPIXVPkeA",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:xDIF2IcyRMKcz0MR8hmVvg",
+        "playerId": "xDIF2IcyRMKcz0MR8hmVvg",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:PkGbRYNaSCirMKeN-3GbzQ",
+        "playerId": "PkGbRYNaSCirMKeN-3GbzQ",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:jqU44N7ZTf2WdHBnbvUu9Q",
+        "playerId": "jqU44N7ZTf2WdHBnbvUu9Q",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:pI35AehORQOJed4b2nTlWw",
+        "playerId": "pI35AehORQOJed4b2nTlWw",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      },
+      {
+        "key": "player:0E0aYodqSsqthUkZpBAatQ",
+        "playerId": "0E0aYodqSsqthUkZpBAatQ",
+        "allyCode": null,
+        "name": "",
+        "guildId": "svFpyNc-To6EcKr2sQMbmw",
+        "guildName": "Rebel Force Dantoo?ne"
+      }
+    ]
+  },
+  "processedPlayerKeys": [
+    "player:wAPKtvHRQ-iYmFPXc1-ayg",
+    "player:-PKvHKseQuea5yw-ZYoTEg",
+    "player:4vAx86RjR6WMcHD3kEfPdg",
+    "player:95HObNKDRHOJ5fCC878ChA",
+    "player:KPcjsMdjTBWgvJ2Je9dfyA",
+    "player:C5OPk533SHyn8-emIN5XNg",
+    "player:x9367KQ7RAykMBPBirXLKw",
+    "player:1M52ZF7YTaCnTKGjOoy6pw",
+    "player:EB2BX6EfQFeQPfl4UgRnMw",
+    "player:gU7b2f4fTReQYtup_nELwQ",
+    "player:voa5xE8rTzmK6DHfjov75Q",
+    "player:5dcKYoH2QjaHcG9KbXU1HA",
+    "player:7FYNAvZQS1avQXvleR3_oQ",
+    "player:igorpOfBQC-y9zkxcGAN6Q",
+    "player:7u7dYB7zRZuyqeOAONQ3EA",
+    "player:YrlYj-oISxyL2dAMa6BP4Q",
+    "player:ravbuboSQ-28XuFh0sNZzA",
+    "player:VO0I1c9CS2yLRpfnBIkxAA",
+    "player:8DnTsYGxQrCqVgveQ0lF8g",
+    "player:PlnYGzmVTiCfSVwu8pE5fw",
+    "player:GfKfD4NWQayZlfGm0Up-ug",
+    "player:UCHyCpv1Q12NyTSQ0dW6oA",
+    "player:WyVIwM2jS3qtj8enU_S2iQ",
+    "player:1pbM6mZ6QyGa6Rm-ZXq1iQ",
+    "player:XZz8ZAuLQYuYDkJtnh7Srw",
+    "player:mrlwxnYaRXaDGg51ejvWMw",
+    "player:3TEEZZlYTG-MfzJggjoUMQ",
+    "player:INZlAksPS0e1zxpsYsC4JQ",
+    "player:4R8mBxEvRD6ydLdqALUB9Q",
+    "player:voV3vJj2RWezt3QghIZfVQ",
+    "player:lSRbyCweTiC1YCXh3Lwr8w",
+    "player:PaaIGzG3QkqMIoNRMmZkzg",
+    "player:mcFSBwcfTOCL8f-pyg5ytg",
+    "player:o-GqGp5HQwCdv32pRX6OIQ",
+    "player:5KK2CGhYSvyLwD4kFkQO1w",
+    "player:vtOGwQgARVmrpn-k707jLg",
+    "player:dPGCOpqOTiKYT6R2pzdoUQ",
+    "player:5ci08oD5S1qcwku03CG25g",
+    "player:KGTmeKfATwmmEVmUe_O_eA",
+    "player:NpyrglNRTTqEvZbgRNSWxg",
+    "player:lDU4SpwGTbG9iYmRtnideQ",
+    "player:mbKCs09qQ2KBenSVU_XF3A",
+    "player:WzYgu8VQSPy7l8I8fdgvNw"
+  ],
+  "failedPlayers": {},
+  "accumulators": {
+    "BADBATCHHUNTER": {
+      "unitsSeen": 41,
+      "unitsWithSixMods": 41,
+      "unitsWithResolvedMods": 41,
+      "sampleSize": 37,
+      "excluded": {
+        "notSixMods": 0,
+        "unresolvedMods": 0,
+        "invalidSlots": 0,
+        "incompleteSets": 4
+      },
+      "loadouts": {
+        "1-4": {
+          "count": 6,
+          "relicSum": 31,
+          "relicCount": 6,
+          "primaries": {
+            "arrow": {
+              "5": {
+                "count": 6
+              }
+            },
+            "triangle": {
+              "16": {
+                "count": 2
+              },
+              "48": {
+                "count": 4
+              }
+            },
+            "circle": {
+              "55": {
+                "count": 3
+              },
+              "56": {
+                "count": 3
+              }
+            },
+            "cross": {
+              "48": {
+                "count": 4
+              },
+              "55": {
+                "count": 2
+              }
+            }
+          },
+          "secondaries": {
+            "observedCount": 144,
+            "stats": {
+              "1": {
+                "count": 9,
+                "valueCount": 9,
+                "valueSum": 8739
+              },
+              "5": {
+                "count": 30,
+                "valueCount": 30,
+                "valueSum": 374
+              },
+              "17": {
+                "count": 10,
+                "valueCount": 10,
+                "valueSum": 0.54306
+              },
+              "18": {
+                "count": 7,
+                "valueCount": 7,
+                "valueSum": 0.24892999999999998
+              },
+              "28": {
+                "count": 11,
+                "valueCount": 11,
+                "valueSum": 13946
+              },
+              "41": {
+                "count": 18,
+                "valueCount": 18,
+                "valueSum": 1286
+              },
+              "42": {
+                "count": 7,
+                "valueCount": 7,
+                "valueSum": 104
+              },
+              "48": {
+                "count": 8,
+                "valueCount": 8,
+                "valueSum": 0.19568
+              },
+              "49": {
+                "count": 11,
+                "valueCount": 11,
+                "valueSum": 0.5698099999999999
+              },
+              "53": {
+                "count": 18,
+                "valueCount": 18,
+                "valueSum": 0.5742499999999999
+              },
+              "55": {
+                "count": 9,
+                "valueCount": 9,
+                "valueSum": 0.26909
+              },
+              "56": {
+                "count": 6,
+                "valueCount": 6,
+                "valueSum": 0.21725999999999998
+              }
+            }
+          }
+        },
+        "2-5": {
+          "count": 3,
+          "relicSum": 15,
+          "relicCount": 3,
+          "primaries": {
+            "arrow": {
+              "5": {
+                "count": 3
+              }
+            },
+            "triangle": {
+              "16": {
+                "count": 1
+              },
+              "48": {
+                "count": 2
+              }
+            },
+            "circle": {
+              "55": {
+                "count": 1
+              },
+              "56": {
+                "count": 2
+              }
+            },
+            "cross": {
+              "17": {
+                "count": 1
+              },
+              "48": {
+                "count": 2
+              }
+            }
+          },
+          "secondaries": {
+            "observedCount": 72,
+            "stats": {
+              "1": {
+                "count": 3,
+                "valueCount": 3,
+                "valueSum": 3329
+              },
+              "5": {
+                "count": 15,
+                "valueCount": 15,
+                "valueSum": 214
+              },
+              "17": {
+                "count": 3,
+                "valueCount": 3,
+                "valueSum": 0.12398999999999999
+              },
+              "18": {
+                "count": 3,
+                "valueCount": 3,
+                "valueSum": 0.19906000000000001
+              },
+              "28": {
+                "count": 1,
+                "valueCount": 1,
+                "valueSum": 1766
+              },
+              "41": {
+                "count": 10,
+                "valueCount": 10,
+                "valueSum": 998
+              },
+              "42": {
+                "count": 9,
+                "valueCount": 9,
+                "valueSum": 179
+              },
+              "48": {
+                "count": 5,
+                "valueCount": 5,
+                "valueSum": 0.10545
+              },
+              "49": {
+                "count": 2,
+                "valueCount": 2,
+                "valueSum": 0.10286999999999999
+              },
+              "53": {
+                "count": 7,
+                "valueCount": 7,
+                "valueSum": 0.2325
+              },
+              "55": {
+                "count": 7,
+                "valueCount": 7,
+                "valueSum": 0.17447000000000001
+              },
+              "56": {
+                "count": 7,
+                "valueCount": 7,
+                "valueSum": 0.23060000000000003
+              }
+            }
+          }
+        },
+        "1-6": {
+          "count": 4,
+          "relicSum": 20,
+          "relicCount": 4,
+          "primaries": {
+            "arrow": {
+              "5": {
+                "count": 4
+              }
+            },
+            "triangle": {
+              "16": {
+                "count": 3
+              },
+              "48": {
+                "count": 1
+              }
+            },
+            "circle": {
+              "55": {
+                "count": 3
+              },
+              "56": {
+                "count": 1
+              }
+            },
+            "cross": {
+              "17": {
+                "count": 1
+              },
+              "48": {
+                "count": 3
+              }
+            }
+          },
+          "secondaries": {
+            "observedCount": 96,
+            "stats": {
+              "1": {
+                "count": 5,
+                "valueCount": 5,
+                "valueSum": 2917
+              },
+              "5": {
+                "count": 19,
+                "valueCount": 19,
+                "valueSum": 255
+              },
+              "17": {
+                "count": 10,
+                "valueCount": 10,
+                "valueSum": 0.39496
+              },
+              "18": {
+                "count": 4,
+                "valueCount": 4,
+                "valueSum": 0.14226
+              },
+              "28": {
+                "count": 8,
+                "valueCount": 8,
+                "valueSum": 6873
+              },
+              "41": {
+                "count": 10,
+                "valueCount": 10,
+                "valueSum": 690
+              },
+              "42": {
+                "count": 5,
+                "valueCount": 5,
+                "valueSum": 55
+              },
+              "48": {
+                "count": 7,
+                "valueCount": 7,
+                "valueSum": 0.14722
+              },
+              "49": {
+                "count": 4,
+                "valueCount": 4,
+                "valueSum": 0.17587999999999998
+              },
+              "53": {
+                "count": 7,
+                "valueCount": 7,
+                "valueSum": 0.26213000000000003
+              },
+              "55": {
+                "count": 12,
+                "valueCount": 12,
+                "valueSum": 0.28812
+              },
+              "56": {
+                "count": 5,
+                "valueCount": 5,
+                "valueSum": 0.23836000000000002
+              }
+            }
+          }
+        },
+        "5-6": {
+          "count": 12,
+          "relicSum": 74,
+          "relicCount": 12,
+          "primaries": {
+            "arrow": {
+              "5": {
+                "count": 12
+              }
+            },
+            "triangle": {
+              "16": {
+                "count": 7
+              },
+              "48": {
+                "count": 2
+              },
+              "53": {
+                "count": 3
+              }
+            },
+            "circle": {
+              "55": {
+                "count": 7
+              },
+              "56": {
+                "count": 5
+              }
+            },
+            "cross": {
+              "17": {
+                "count": 2
+              },
+              "18": {
+                "count": 1
+              },
+              "48": {
+                "count": 6
+              },
+              "55": {
+                "count": 1
+              },
+              "56": {
+                "count": 2
+              }
+            }
+          },
+          "secondaries": {
+            "observedCount": 288,
+            "stats": {
+              "1": {
+                "count": 21,
+                "valueCount": 21,
+                "valueSum": 15129
+              },
+              "5": {
+                "count": 59,
+                "valueCount": 59,
+                "valueSum": 916
+              },
+              "17": {
+                "count": 20,
+                "valueCount": 20,
+                "valueSum": 0.82255
+              },
+              "18": {
+                "count": 20,
+                "valueCount": 20,
+                "valueSum": 0.87745
+              },
+              "28": {
+                "count": 20,
+                "valueCount": 20,
+                "valueSum": 24576
+              },
+              "41": {
+                "count": 27,
+                "valueCount": 27,
+                "valueSum": 1919
+              },
+              "42": {
+                "count": 20,
+                "valueCount": 20,
+                "valueSum": 357
+              },
+              "48": {
+                "count": 19,
+                "valueCount": 19,
+                "valueSum": 0.33630999999999994
+              },
+              "49": {
+                "count": 18,
+                "valueCount": 18,
+                "valueSum": 1.03733
+              },
+              "53": {
+                "count": 23,
+                "valueCount": 23,
+                "valueSum": 0.679
+              },
+              "55": {
+                "count": 15,
+                "valueCount": 15,
+                "valueSum": 0.40429
+              },
+              "56": {
+                "count": 26,
+                "valueCount": 26,
+                "valueSum": 0.9939800000000001
+              }
+            }
+          }
+        },
+        "6-7": {
+          "count": 1,
+          "relicSum": 5,
+          "relicCount": 1,
+          "primaries": {
+            "arrow": {
+              "5": {
+                "count": 1
+              }
+            },
+            "triangle": {
+              "16": {
+                "count": 1
+              }
+            },
+            "circle": {
+              "55": {
+                "count": 1
+              }
+            },
+            "cross": {
+              "48": {
+                "count": 1
+              }
+            }
+          },
+          "secondaries": {
+            "observedCount": 24,
+            "stats": {
+              "1": {
+                "count": 2,
+                "valueCount": 2,
+                "valueSum": 1439
+              },
+              "5": {
+                "count": 5,
+                "valueCount": 5,
+                "valueSum": 94
+              },
+              "17": {
+                "count": 2,
+                "valueCount": 2,
+                "valueSum": 0.0596
+              },
+              "18": {
+                "count": 1,
+                "valueCount": 1,
+                "valueSum": 0.01142
+              },
+              "28": {
+                "count": 2,
+                "valueCount": 2,
+                "valueSum": 2209
+              },
+              "41": {
+                "count": 4,
+                "valueCount": 4,
+                "valueSum": 326
+              },
+              "42": {
+                "count": 2,
+                "valueCount": 2,
+                "valueSum": 31
+              },
+              "48": {
+                "count": 1,
+                "valueCount": 1,
+                "valueSum": 0.02319
+              },
+              "53": {
+                "count": 5,
+                "valueCount": 5,
+                "valueSum": 0.18232
+              }
+            }
+          }
+        },
+        "2-7": {
+          "count": 2,
+          "relicSum": 10,
+          "relicCount": 2,
+          "primaries": {
+            "arrow": {
+              "5": {
+                "count": 1
+              },
+              "48": {
+                "count": 1
+              }
+            },
+            "triangle": {
+              "16": {
+                "count": 1
+              },
+              "48": {
+                "count": 1
+              }
+            },
+            "circle": {
+              "56": {
+                "count": 2
+              }
+            },
+            "cross": {
+              "17": {
+                "count": 1
+              },
+              "48": {
+                "count": 1
+              }
+            }
+          },
+          "secondaries": {
+            "observedCount": 48,
+            "stats": {
+              "1": {
+                "count": 2,
+                "valueCount": 2,
+                "valueSum": 891
+              },
+              "5": {
+                "count": 11,
+                "valueCount": 11,
+                "valueSum": 122
+              },
+              "17": {
+                "count": 3,
+                "valueCount": 3,
+                "valueSum": 0.10048
+              },
+              "18": {
+                "count": 3,
+                "valueCount": 3,
+                "valueSum": 0.09763
+              },
+              "28": {
+                "count": 5,
+                "valueCount": 5,
+                "valueSum": 4813
+              },
+              "41": {
+                "count": 2,
+                "valueCount": 2,
+                "valueSum": 124
+              },
+              "42": {
+                "count": 6,
+                "valueCount": 6,
+                "valueSum": 128
+              },
+              "48": {
+                "count": 3,
+                "valueCount": 3,
+                "valueSum": 0.04164
+              },
+              "49": {
+                "count": 2,
+                "valueCount": 2,
+                "valueSum": 0.10632
+              },
+              "53": {
+                "count": 3,
+                "valueCount": 3,
+                "valueSum": 0.05652
+              },
+              "55": {
+                "count": 4,
+                "valueCount": 4,
+                "valueSum": 0.07491
+              },
+              "56": {
+                "count": 4,
+                "valueCount": 4,
+                "valueSum": 0.13568
+              }
+            }
+          }
+        },
+        "1-2": {
+          "count": 6,
+          "relicSum": 32,
+          "relicCount": 6,
+          "primaries": {
+            "arrow": {
+              "5": {
+                "count": 5
+              },
+              "48": {
+                "count": 1
+              }
+            },
+            "triangle": {
+              "16": {
+                "count": 4
+              },
+              "48": {
+                "count": 2
+              }
+            },
+            "circle": {
+              "55": {
+                "count": 1
+              },
+              "56": {
+                "count": 5
+              }
+            },
+            "cross": {
+              "17": {
+                "count": 1
+              },
+              "18": {
+                "count": 1
+              },
+              "48": {
+                "count": 3
+              },
+              "49": {
+                "count": 1
+              }
+            }
+          },
+          "secondaries": {
+            "observedCount": 144,
+            "stats": {
+              "1": {
+                "count": 11,
+                "valueCount": 11,
+                "valueSum": 7160
+              },
+              "5": {
+                "count": 31,
+                "valueCount": 31,
+                "valueSum": 424
+              },
+              "17": {
+                "count": 15,
+                "valueCount": 15,
+                "valueSum": 0.59926
+              },
+              "18": {
+                "count": 9,
+                "valueCount": 9,
+                "valueSum": 0.40380999999999995
+              },
+              "28": {
+                "count": 13,
+                "valueCount": 13,
+                "valueSum": 20258
+              },
+              "41": {
+                "count": 16,
+                "valueCount": 16,
+                "valueSum": 1208
+              },
+              "42": {
+                "count": 12,
+                "valueCount": 12,
+                "valueSum": 253
+              },
+              "48": {
+                "count": 6,
+                "valueCount": 6,
+                "valueSum": 0.09436
+              },
+              "49": {
+                "count": 5,
+                "valueCount": 5,
+                "valueSum": 0.20827
+              },
+              "53": {
+                "count": 10,
+                "valueCount": 10,
+                "valueSum": 0.35415
+              },
+              "55": {
+                "count": 10,
+                "valueCount": 10,
+                "valueSum": 0.22443999999999997
+              },
+              "56": {
+                "count": 6,
+                "valueCount": 6,
+                "valueSum": 0.2924
+              }
+            }
+          }
+        },
+        "3-6": {
+          "count": 1,
+          "relicSum": 5,
+          "relicCount": 1,
+          "primaries": {
+            "arrow": {
+              "5": {
+                "count": 1
+              }
+            },
+            "triangle": {
+              "16": {
+                "count": 1
+              }
+            },
+            "circle": {
+              "56": {
+                "count": 1
+              }
+            },
+            "cross": {
+              "48": {
+                "count": 1
+              }
+            }
+          },
+          "secondaries": {
+            "observedCount": 24,
+            "stats": {
+              "1": {
+                "count": 2,
+                "valueCount": 2,
+                "valueSum": 941
+              },
+              "5": {
+                "count": 5,
+                "valueCount": 5,
+                "valueSum": 51
+              },
+              "17": {
+                "count": 1,
+                "valueCount": 1,
+                "valueSum": 0.02796
+              },
+              "18": {
+                "count": 1,
+                "valueCount": 1,
+                "valueSum": 0.04053
+              },
+              "41": {
+                "count": 4,
+                "valueCount": 4,
+                "valueSum": 208
+              },
+              "42": {
+                "count": 4,
+                "valueCount": 4,
+                "valueSum": 50
+              },
+              "48": {
+                "count": 2,
+                "valueCount": 2,
+                "valueSum": 0.02001
+              },
+              "49": {
+                "count": 1,
+                "valueCount": 1,
+                "valueSum": 0.01151
+              },
+              "53": {
+                "count": 3,
+                "valueCount": 3,
+                "valueSum": 0.07572999999999999
+              },
+              "55": {
+                "count": 1,
+                "valueCount": 1,
+                "valueSum": 0.0176
+              }
+            }
+          }
+        },
+        "1-1-5": {
+          "count": 1,
+          "relicSum": 6,
+          "relicCount": 1,
+          "primaries": {
+            "arrow": {
+              "5": {
+                "count": 1
+              }
+            },
+            "triangle": {
+              "16": {
+                "count": 1
+              }
+            },
+            "circle": {
+              "56": {
+                "count": 1
+              }
+            },
+            "cross": {
+              "56": {
+                "count": 1
+              }
+            }
+          },
+          "secondaries": {
+            "observedCount": 24,
+            "stats": {
+              "1": {
+                "count": 1,
+                "valueCount": 1,
+                "valueSum": 299
+              },
+              "5": {
+                "count": 5,
+                "valueCount": 5,
+                "valueSum": 57
+              },
+              "17": {
+                "count": 2,
+                "valueCount": 2,
+                "valueSum": 0.12944
+              },
+              "28": {
+                "count": 2,
+                "valueCount": 2,
+                "valueSum": 4786
+              },
+              "41": {
+                "count": 4,
+                "valueCount": 4,
+                "valueSum": 237
+              },
+              "48": {
+                "count": 4,
+                "valueCount": 4,
+                "valueSum": 0.022739999999999996
+              },
+              "49": {
+                "count": 2,
+                "valueCount": 2,
+                "valueSum": 0.061549999999999994
+              },
+              "53": {
+                "count": 1,
+                "valueCount": 1,
+                "valueSum": 0.01557
+              },
+              "55": {
+                "count": 1,
+                "valueCount": 1,
+                "valueSum": 0.01982
+              },
+              "56": {
+                "count": 2,
+                "valueCount": 2,
+                "valueSum": 0.10203000000000001
+              }
+            }
+          }
+        },
+        "1-1-1": {
+          "count": 1,
+          "relicSum": 5,
+          "relicCount": 1,
+          "primaries": {
+            "arrow": {
+              "5": {
+                "count": 1
+              }
+            },
+            "triangle": {
+              "55": {
+                "count": 1
+              }
+            },
+            "circle": {
+              "55": {
+                "count": 1
+              }
+            },
+            "cross": {
+              "48": {
+                "count": 1
+              }
+            }
+          },
+          "secondaries": {
+            "observedCount": 24,
+            "stats": {
+              "1": {
+                "count": 2,
+                "valueCount": 2,
+                "valueSum": 1056
+              },
+              "5": {
+                "count": 5,
+                "valueCount": 5,
+                "valueSum": 49
+              },
+              "17": {
+                "count": 1,
+                "valueCount": 1,
+                "valueSum": 0.01299
+              },
+              "18": {
+                "count": 5,
+                "valueCount": 5,
+                "valueSum": 0.12382
+              },
+              "28": {
+                "count": 1,
+                "valueCount": 1,
+                "valueSum": 1889
+              },
+              "41": {
+                "count": 1,
+                "valueCount": 1,
+                "valueSum": 124
+              },
+              "42": {
+                "count": 1,
+                "valueCount": 1,
+                "valueSum": 18
+              },
+              "48": {
+                "count": 2,
+                "valueCount": 2,
+                "valueSum": 0.026389999999999997
+              },
+              "49": {
+                "count": 3,
+                "valueCount": 3,
+                "valueSum": 0.044039999999999996
+              },
+              "53": {
+                "count": 3,
+                "valueCount": 3,
+                "valueSum": 0.07848
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
