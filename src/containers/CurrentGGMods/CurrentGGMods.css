@@ -1,0 +1,19 @@
+.current-gg-averages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.current-gg-average {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  border: 1px solid #52657c;
+  border-radius: 4px;
+  background: #202c3b;
+}
+
+.current-gg-average span { font-size: 0.9em; }
+.current-gg-average strong { font-size: 1.1em; }

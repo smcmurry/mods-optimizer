@@ -357,6 +357,8 @@ const characterSettings = {
   ),
   'CAPTAINREX': new CharacterSettings(
     [
+      // Keep turns and survival ahead of extra crit chance and potency from mods.
+      new OptimizationPlan('Speed and survival', 40, 10, 100, 0, 20, 10, 0, 0, 15, 0, 0, 0, 0, true),
       new OptimizationPlan('PvP', 20, 0, 100, 0, 60, 10, 0, 0, 100, 0, 0, 0, 0, true),
       new OptimizationPlan('PvP w/ Primaries', 20, 0, 100, 0, 60, 10, 0, 0, 100, 0, 0, 0, 0, true, {
         "arrow": "Speed",
@@ -664,6 +666,8 @@ const characterSettings = {
   ),
   'DEATHTROOPERPERIDEA': new CharacterSettings(
     [
+      // Critical damage must not make the underlying Physical Offense worthless.
+      new OptimizationPlan('Physical damage', 10, 0, 24, 100, 10, 0, 50, 0, 10, 0, 0, 0, 0, true),
       new OptimizationPlan('PvP', 0, 0, 24, 100, 10, 0, 0, 0, 0, 0, 0, 0, 0, true),
       new OptimizationPlan('PvP w/ Primaries & Sets', 0, 0, 24, 100, 10, 0, 0, 0, 0, 0, 0, 0, 0, true, {
           "arrow": "Speed",
@@ -1345,7 +1349,11 @@ const characterSettings = {
     [new OptimizationPlan('PvP', 30, 30, 100, 0, 10, 10, 0, 0, 0, 25, 0, 0, 0, true)]
   ),
   'KUIIL': new CharacterSettings(
-    [new OptimizationPlan('PvP', 10, 10, 100, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, true)],
+    [
+      // Shared stats and healing matter alongside opening turn speed.
+      new OptimizationPlan('Shared stats', 40, 40, 150, 0, 20, 0, 25, 25, 0, 0, 0, 0, 0, true),
+      new OptimizationPlan('PvP', 10, 10, 100, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, true)
+    ],
     [],
     DamageType.special
   ),
@@ -1411,6 +1419,8 @@ const characterSettings = {
   ),
   'MACEWINDU': new CharacterSettings(
     [
+      // Health supports tanking and the basic's bonus damage; keep potency for Ability Block.
+      new OptimizationPlan('Durable control', 60, 25, 100, 0, 20, 0, 0, 15, 0, 10, 10, 0, 0, true),
       new OptimizationPlan('PvP', 15, 0, 100, 0, 50, 0, 0, 50, 0, 0, 0, 0, 0, true),
       new OptimizationPlan('Slow/Tanky', 100, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, true)
     ],
@@ -1732,6 +1742,8 @@ const characterSettings = {
   ),
   'R2D2_LEGENDARY': new CharacterSettings(
     [
+      // Number Crunch shares Health, Protection and both forms of Offense with allies.
+      new OptimizationPlan('Number Crunch', 100, 25, 150, 0, 20, 5, 100, 100, 0, 0, 0, 0, 0, true),
       new OptimizationPlan('PvP', 5, 5, 100, 0, 25, 10, 0, 0, 25, 0, 0, 0, 0, true),
       new OptimizationPlan('hSTR Phase 1', 10, -5, 100, 25, 25, 0, 25, 0, 50, 0, 0, 0, 0, true)
     ],
@@ -2203,503 +2215,36 @@ const characterSettings = {
   )
 };
 
-// BEGIN GENERATED KYBER META INTEGRATION
-
-/**
- * Turn the legacy generated-meta schema:
- *
- * {
- *   weights: {...},
- *   metaPreferences: {...}
- * }
- *
- * into a normal Grand Ivory optimization target.
- *
- * This allows the integration to work with both generations of
- * generatedMetaTargets.json.
- */
-function legacyMetaPrimaryRestrictions(
-  metaCharacter
-) {
-  const restrictions =
-    {};
-
-
-  const primaries =
-    metaCharacter
-      .metaPreferences
-      ?.aggregatePrimaries ??
-    {};
-
-
-  for (
-    const [
-      slot,
-      slotData
-    ]
-    of Object.entries(
-      primaries
-    )
-  ) {
-    const probabilities =
-      Object.entries(
-        slotData.probabilities ||
-        {}
-      )
-        .map(
-          (
-            [
-              primary,
-              probability
-            ]
-          ) => ({
-            primary,
-
-            probability:
-              Number(
-                probability ||
-                0
-              )
-          })
-        )
-        .sort(
-          (
-            left,
-            right
-          ) =>
-            right.probability -
-            left.probability
-        );
-
-
-    const best =
-      probabilities[
-        0
-      ];
-
-
-    const second =
-      probabilities[
-        1
-      ];
-
-
-    if (
-      !best
-    ) {
-      continue;
-    }
-
-
-    const margin =
-      best.probability -
-      (
-        second
-          ?.probability ??
-        0
-      );
-
-
-    /**
-     * Same conservative restriction rule as the compiler:
-     *
-     * - winner >= 80%
-     * - lead over second place >= 40 percentage points
-     */
-    if (
-      best.probability >=
-        0.80 &&
-      margin >=
-        0.40
-    ) {
-      restrictions[
-        slot
-      ] =
-        best.primary;
-    }
-  }
-
-
-  return restrictions;
-}
-
-
-/**
- * Normalize either version of generatedMetaTargets.json into the target-array
- * format expected by this integration.
- */
-function getGeneratedMetaTargets(
-  metaCharacter
-) {
-  if (
-    Array.isArray(
-      metaCharacter
-        ?.targets
-    )
-  ) {
-    return metaCharacter.targets;
-  }
-
-
-  /**
-   * Backward compatibility with:
-   *
-   * {
-   *   weights: {...},
-   *   metaPreferences: {...}
-   * }
-   */
-  if (
-    metaCharacter
-      ?.weights
-  ) {
-    const weights =
-      metaCharacter.weights;
-
-
-    return [
-      {
-        name:
-          "Kyber Meta",
-
-        health:
-          Number(
-            weights.health ||
-            0
-          ),
-
-        protection:
-          Number(
-            weights.protection ||
-            0
-          ),
-
-        speed:
-          Number(
-            weights.speed ||
-            0
-          ),
-
-        critDmg:
-          Number(
-            weights.critDmg ||
-            0
-          ),
-
-        potency:
-          Number(
-            weights.potency ||
-            0
-          ),
-
-        tenacity:
-          Number(
-            weights.tenacity ||
-            0
-          ),
-
-        offense:
-          Number(
-            weights.offense ||
-            0
-          ),
-
-        critChance:
-          Number(
-            weights.critChance ||
-            0
-          ),
-
-        defense:
-          Number(
-            weights.defense ||
-            0
-          ),
-
-        accuracy:
-          Number(
-            weights.accuracy ||
-            0
-          ),
-
-        critAvoid:
-          Number(
-            weights.critAvoid ||
-            0
-          ),
-
-        primaryStatRestrictions:
-          legacyMetaPrimaryRestrictions(
-            metaCharacter
-          ),
-
-        setRestrictions:
-          {},
-
-        useOnlyFullSets:
-          true
-      }
-    ];
-  }
-
-
-  return [];
-}
-
-
-/**
- * Convert generated plan data into Grand Ivory's OptimizationPlan.
- */
-function generatedMetaTargetToOptimizationPlan(
-  metaTarget,
-  damageType
-) {
-  const offense =
-    Number(
-      metaTarget.offense ||
-      0
-    );
-
-
-  const defense =
-    Number(
-      metaTarget.defense ||
-      0
-    );
-
-
-  /**
-   * Grand Ivory separates Physical and Special Damage.
-   *
-   * DamageType:
-   *
-   * physical = 1
-   * special  = 0
-   * mixed    = 0.5
-   */
-  const physicalOffense =
-    offense *
-    damageType;
-
-
-  const specialOffense =
-    offense *
-    (
-      1 -
-      damageType
-    );
-
-
-  /**
-   * Likewise, our generic Defense signal is split across Armor and Resistance.
-   *
-   * Splitting rather than duplicating preserves the intended total weight.
-   */
-  const armor =
-    defense /
-    2;
-
-
-  const resistance =
-    defense /
-    2;
-
-
-  return new OptimizationPlan(
-    metaTarget.name ||
-      "Kyber Meta",
-
-    Number(
-      metaTarget.health ||
-      0
-    ),
-
-    Number(
-      metaTarget.protection ||
-      0
-    ),
-
-    Number(
-      metaTarget.speed ||
-      0
-    ),
-
-    Number(
-      metaTarget.critDmg ||
-      0
-    ),
-
-    Number(
-      metaTarget.potency ||
-      0
-    ),
-
-    Number(
-      metaTarget.tenacity ||
-      0
-    ),
-
-    physicalOffense,
-
-    specialOffense,
-
-    Number(
-      metaTarget.critChance ||
-      0
-    ),
-
-    armor,
-
-    resistance,
-
-    Number(
-      metaTarget.accuracy ||
-      0
-    ),
-
-    Number(
-      metaTarget.critAvoid ||
-      0
-    ),
-
-    true,
-
-    metaTarget.primaryStatRestrictions ||
-      {},
-
-    metaTarget.setRestrictions ||
-      {},
-
-    [],
-
-    typeof metaTarget.useOnlyFullSets !==
-      "undefined"
-      ? metaTarget.useOnlyFullSets
-      : true
+// Reviewed legacy presets that better match the character's top meta build.
+export const metaDefaultPresetNames = Object.freeze({
+  DEATHTROOPERPERIDEA: 'Physical damage',
+  BOBAFETT: 'PvP',
+  MACEWINDU: 'Durable control',
+  KUIIL: 'Shared stats',
+  R2D2_LEGENDARY: 'Number Crunch',
+  CAPTAINREX: 'Speed and survival',
+  CHEWBACCALEGENDARY: 'Tenacity',
+  WAMPA: 'Omicron/Tenacity'
+});
+
+// Use hand-written preset weights. Meta data supplies only the
+// allowed set combinations and primary choices, never scoring weights.
+for (const [baseID, metaCharacter] of Object.entries(generatedMetaTargets.characters || {})) {
+  const existing = characterSettings[baseID] || new CharacterSettings(
+    [optimizationStrategy['Speed with survivability']], [], DamageType.mixed
+  );
+  const original = existing.targets.find(plan => plan.name === metaDefaultPresetNames[baseID]) ||
+    existing.targets[0] || optimizationStrategy['Speed with survivability'];
+  const target = original.rename('Original weights (' + original.name + ')');
+  target.primaryStatRestrictions = {};
+  target.setRestrictions = {};
+  target.useOnlyFullSets = true;
+  target.metaRestrictions = metaCharacter.targets[0].metaRestrictions;
+  characterSettings[baseID] = new CharacterSettings(
+    [target, ...existing.targets], existing.extraTags, existing.damageType
   );
 }
 
-
-/**
- * Inject generated Kyber targets into characterSettings.
- *
- * Important:
- *
- * Generated targets are placed FIRST.
- *
- * Therefore:
- *
- * characterSettings[id].targets[0]
- *
- * will be Kyber Meta whenever that character has meta data.
- */
-for (
-  const [
-    baseID,
-    metaCharacter
-  ]
-  of Object.entries(
-    generatedMetaTargets.characters ||
-    {}
-  )
-) {
-  const existingSettings =
-    characterSettings[
-      baseID
-    ] ||
-    new CharacterSettings(
-      [],
-      [],
-      DamageType.mixed
-    );
-
-
-  let generatedTargets =
-    getGeneratedMetaTargets(
-      metaCharacter
-    )
-      .map(
-        metaTarget =>
-          generatedMetaTargetToOptimizationPlan(
-            metaTarget,
-            existingSettings.damageType
-          )
-      );
-
-
-  if (
-    !generatedTargets.length
-  ) {
-    continue;
-  }
-
-
-  /**
-   * Exact "Kyber Meta" target always comes first.
-   *
-   * Archetype variants follow:
-   *
-   * Kyber Meta
-   * Kyber Meta: Crit Damage + Crit Chance (...)
-   * ...
-   */
-  generatedTargets =
-    generatedTargets.sort(
-      (
-        left,
-        right
-      ) => {
-        if (
-          left.name ===
-          "Kyber Meta"
-        ) {
-          return -1;
-        }
-
-
-        if (
-          right.name ===
-          "Kyber Meta"
-        ) {
-          return 1;
-        }
-
-
-        return 0;
-      }
-    );
-
-
-  /**
-   * Never retain old/stale generated Kyber targets from the hand-written
-   * settings array.
-   */
-  const existingTargets =
-    existingSettings.targets
-      .filter(
-        target =>
-          !target.name.startsWith(
-            "Kyber Meta"
-          )
-      );
-
-
-  characterSettings[
-    baseID
-  ] =
-    new CharacterSettings(
-      [
-        ...generatedTargets,
-        ...existingTargets
-      ],
-
-      existingSettings.extraTags,
-
-      existingSettings.damageType
-    );
-}
-
-// END GENERATED KYBER META INTEGRATION
 
 for (let charID in characterSettings) {
   Object.freeze(characterSettings[charID]);

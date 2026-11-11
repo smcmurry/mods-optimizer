@@ -1,0 +1,2340 @@
+{
+  "generatedAt": "2026-10-02T06:04:18.759Z",
+  "charactersChecked": 333,
+  "targetsChecked": 1057,
+  "failureCount": 0,
+  "results": [
+    {
+      "id": "TRIPLEZERO",
+      "name": "0-0-0",
+      "sampleSize": 1790,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "4LOM",
+      "name": "4-LOM",
+      "sampleSize": 1671,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "50RT",
+      "name": "50R-T",
+      "sampleSize": 1768,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "AAYLASECURA",
+      "name": "Aayla Secura",
+      "sampleSize": 1829,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "ADMIRALACKBAR",
+      "name": "Admiral Ackbar",
+      "sampleSize": 1534,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "ADMIRALPIETT",
+      "name": "Admiral Piett",
+      "sampleSize": 1764,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "ADMIRALRADDUS",
+      "name": "Admiral Raddus",
+      "sampleSize": 1851,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "TRENCH",
+      "name": "Admiral Trench",
+      "sampleSize": 1579,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "GLAHSOKATANO",
+      "name": "Ahsoka Tano",
+      "sampleSize": 1876,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "FULCRUMAHSOKA",
+      "name": "Ahsoka Tano (Fulcrum)",
+      "sampleSize": 1854,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "AHSOKATANO",
+      "name": "Ahsoka Tano (Snips)",
+      "sampleSize": 1859,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "AMILYNHOLDO",
+      "name": "Amilyn Holdo",
+      "sampleSize": 1755,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "ARCTROOPER501ST",
+      "name": "ARC Trooper",
+      "sampleSize": 1799,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "ASAJVENTRESS",
+      "name": "Asajj Ventress",
+      "sampleSize": 1773,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "ASAJJDARKDISCIPLE",
+      "name": "Asajj Ventress (Dark Disciple)",
+      "sampleSize": 1739,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "AURRA_SING",
+      "name": "Aurra Sing",
+      "sampleSize": 1634,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "B1BATTLEDROIDV2",
+      "name": "B1 Battle Droid",
+      "sampleSize": 1679,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "B2SUPERBATTLEDROID",
+      "name": "B2 Super Battle Droid",
+      "sampleSize": 1807,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "BARRISSOFFEE",
+      "name": "Barriss Offee",
+      "sampleSize": 1907,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "BASTILASHAN",
+      "name": "Bastila Shan",
+      "sampleSize": 1849,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "BASTILASHANDARK",
+      "name": "Bastila Shan (Fallen)",
+      "sampleSize": 1799,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "BATCHERS3",
+      "name": "Batcher",
+      "sampleSize": 1655,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "BAYLANSKOLL",
+      "name": "Baylan Skoll",
+      "sampleSize": 1871,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "BAZEMALBUS",
+      "name": "Baze Malbus",
+      "sampleSize": 1745,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "BB8",
+      "name": "BB-8",
+      "sampleSize": 1713,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "BENSOLO",
+      "name": "Ben Solo",
+      "sampleSize": 1874,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "BIGGSDARKLIGHTER",
+      "name": "Biggs Darklighter",
+      "sampleSize": 1562,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "BISTAN",
+      "name": "Bistan",
+      "sampleSize": 1650,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "MANDALORBOKATAN",
+      "name": "Bo-Katan (Mand'alor)",
+      "sampleSize": 1873,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "BOKATAN",
+      "name": "Bo-Katan Kryze",
+      "sampleSize": 1850,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "BOBAFETT",
+      "name": "Boba Fett",
+      "sampleSize": 1811,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "BOBAFETTSCION",
+      "name": "Boba Fett, Scion of Jango",
+      "sampleSize": 1649,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "BODHIROOK",
+      "name": "Bodhi Rook",
+      "sampleSize": 1486,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "BOSSNASS",
+      "name": "Boss Nass",
+      "sampleSize": 1843,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "BOSSK",
+      "name": "Bossk",
+      "sampleSize": 1811,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "BOUSHH",
+      "name": "Boushh (Leia Organa)",
+      "sampleSize": 1904,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "BRUTUS",
+      "name": "Brutus",
+      "sampleSize": 1809,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "BT1",
+      "name": "BT-1",
+      "sampleSize": 1737,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "C3POLEGENDARY",
+      "name": "C-3PO",
+      "sampleSize": 1857,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "CADBANE",
+      "name": "Cad Bane",
+      "sampleSize": 1670,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "CALKESTIS",
+      "name": "Cal Kestis",
+      "sampleSize": 1888,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "CANDEROUSORDO",
+      "name": "Canderous Ordo",
+      "sampleSize": 1664,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "CARSONTEVA",
+      "name": "Captain Carson Teva",
+      "sampleSize": 1499,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "CAPTAINDROGAN",
+      "name": "Captain Drogan",
+      "sampleSize": 1878,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "CAPTAINENOCH",
+      "name": "Captain Enoch",
+      "sampleSize": 1841,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "HOTHHAN",
+      "name": "Captain Han Solo",
+      "sampleSize": 1607,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "ITHANO",
+      "name": "Captain Ithano",
+      "sampleSize": 1753,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "PHASMA",
+      "name": "Captain Phasma",
+      "sampleSize": 1666,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "CAPTAINREX",
+      "name": "Captain Rex",
+      "sampleSize": 1888,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "CAPTAINSILVO",
+      "name": "Captain Silvo",
+      "sampleSize": 1837,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "CAPTAINTARPALS",
+      "name": "Captain Tarpals",
+      "sampleSize": 1818,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "CARADUNE",
+      "name": "Cara Dune",
+      "sampleSize": 1782,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "CARTHONASI",
+      "name": "Carth Onasi",
+      "sampleSize": 1622,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "CASSIANANDOR",
+      "name": "Cassian Andor",
+      "sampleSize": 1821,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "CASSIANUNDERCOVER",
+      "name": "Cassian Andor (Undercover)",
+      "sampleSize": 1694,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "APPO",
+      "name": "CC-1119 \"Appo\"",
+      "sampleSize": 1893,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "CC2224",
+      "name": "CC-2224 \"Cody\"",
+      "sampleSize": 1546,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "CEREJUNDA",
+      "name": "Cere Junda",
+      "sampleSize": 1888,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "CHEWBACCALEGENDARY",
+      "name": "Chewbacca",
+      "sampleSize": 1861,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "CHIEFCHIRPA",
+      "name": "Chief Chirpa",
+      "sampleSize": 1597,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "CHIEFNEBIT",
+      "name": "Chief Nebit",
+      "sampleSize": 1666,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "CHIRRUTIMWE",
+      "name": "Chirrut Îmwe",
+      "sampleSize": 1670,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "CHOPPERS3",
+      "name": "Chopper",
+      "sampleSize": 1777,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "CINTA",
+      "name": "Cinta Kaz",
+      "sampleSize": 1699,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "CLONESERGEANTPHASEI",
+      "name": "Clone Sergeant - Phase I",
+      "sampleSize": 1489,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "CLONEWARSCHEWBACCA",
+      "name": "Clone Wars Chewbacca",
+      "sampleSize": 1564,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "COBBVANTH",
+      "name": "Cobb Vanth",
+      "sampleSize": 1591,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "COLONELSTARCK",
+      "name": "Colonel Starck",
+      "sampleSize": 1676,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "BISHOP",
+      "name": "Colonel Ward",
+      "sampleSize": 1671,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "COMMANDERAHSOKA",
+      "name": "Commander Ahsoka Tano",
+      "sampleSize": 1833,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "COMMANDERLUKESKYWALKER",
+      "name": "Commander Luke Skywalker",
+      "sampleSize": 1867,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "CORUSCANTUNDERWORLDPOLICE",
+      "name": "Coruscant Underworld Police",
+      "sampleSize": 1643,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "COUNTDOOKU",
+      "name": "Count Dooku",
+      "sampleSize": 1826,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "CROSSHAIRS3",
+      "name": "Crosshair (Scarred)",
+      "sampleSize": 1619,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "CT210408",
+      "name": "CT-21-0408 \"Echo\"",
+      "sampleSize": 1847,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "CT5555",
+      "name": "CT-5555 \"Fives\"",
+      "sampleSize": 1854,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "CT7567",
+      "name": "CT-7567 \"Rex\"",
+      "sampleSize": 1779,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "OPERATIVE",
+      "name": "CX-2",
+      "sampleSize": 1903,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "DARKTROOPER",
+      "name": "Dark Trooper",
+      "sampleSize": 1682,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "MOFFGIDEONS3",
+      "name": "Dark Trooper Moff Gideon",
+      "sampleSize": 1787,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "DARTHBANE",
+      "name": "Darth Bane",
+      "sampleSize": 1924,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "DARTHMALAK",
+      "name": "Darth Malak",
+      "sampleSize": 1889,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "DARTHMALGUS",
+      "name": "Darth Malgus",
+      "sampleSize": 1910,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "MAUL",
+      "name": "Darth Maul",
+      "sampleSize": 1687,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "DARTHNIHILUS",
+      "name": "Darth Nihilus",
+      "sampleSize": 1832,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "DARTHREVAN",
+      "name": "Darth Revan",
+      "sampleSize": 1791,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "DARTHSIDIOUS",
+      "name": "Darth Sidious",
+      "sampleSize": 1732,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "DARTHSION",
+      "name": "Darth Sion",
+      "sampleSize": 1818,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "DARTHTALON",
+      "name": "Darth Talon",
+      "sampleSize": 1824,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "DARTHTRAYA",
+      "name": "Darth Traya",
+      "sampleSize": 1835,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "VADER",
+      "name": "Darth Vader",
+      "sampleSize": 1853,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "VADERDUELSEND",
+      "name": "Darth Vader (Duel's End)",
+      "sampleSize": 1839,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "DASHRENDAR",
+      "name": "Dash Rendar",
+      "sampleSize": 1804,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "DATHCHA",
+      "name": "Dathcha",
+      "sampleSize": 1473,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "DEATHTROOPER",
+      "name": "Death Trooper",
+      "sampleSize": 1733,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "DEATHTROOPERPERIDEA",
+      "name": "Death Trooper (Peridea)",
+      "sampleSize": 1876,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "DEDRAMEERO",
+      "name": "Dedra Meero",
+      "sampleSize": 1741,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "DENGAR",
+      "name": "Dengar",
+      "sampleSize": 1707,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "DEPABILLABA",
+      "name": "Depa Billaba",
+      "sampleSize": 1827,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "DIRECTORKRENNIC",
+      "name": "Director Krennic",
+      "sampleSize": 1621,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "DISGUISEDCLONETROOPER",
+      "name": "Disguised Clone Trooper",
+      "sampleSize": 1871,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "DOCTORAPHRA",
+      "name": "Doctor Aphra",
+      "sampleSize": 1765,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "DROIDEKA",
+      "name": "Droideka",
+      "sampleSize": 1667,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "BADBATCHECHO",
+      "name": "Echo",
+      "sampleSize": 1761,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "EETHKOTH",
+      "name": "Eeth Koth",
+      "sampleSize": 1425,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "EIGHTHBROTHER",
+      "name": "Eighth Brother",
+      "sampleSize": 1791,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "EMBO",
+      "name": "Embo",
+      "sampleSize": 1786,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "EMPERORPALPATINE",
+      "name": "Emperor Palpatine",
+      "sampleSize": 1839,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "ENFYSNEST",
+      "name": "Enfys Nest",
+      "sampleSize": 1750,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "EWOKELDER",
+      "name": "Ewok Elder",
+      "sampleSize": 1526,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "EWOKSCOUT",
+      "name": "Ewok Scout",
+      "sampleSize": 1215,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "EZRABRIDGERS3",
+      "name": "Ezra Bridger",
+      "sampleSize": 1725,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "EZRAEXILE",
+      "name": "Ezra Bridger (Exile)",
+      "sampleSize": 1905,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "FENNECSHAND",
+      "name": "Fennec Shand",
+      "sampleSize": 1753,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "FIFTHBROTHER",
+      "name": "Fifth Brother",
+      "sampleSize": 1799,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "FINN",
+      "name": "Finn",
+      "sampleSize": 1811,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "FIRSTORDEREXECUTIONER",
+      "name": "First Order Executioner",
+      "sampleSize": 1668,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "FIRSTORDEROFFICERMALE",
+      "name": "First Order Officer",
+      "sampleSize": 1717,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "FIRSTORDERSPECIALFORCESPILOT",
+      "name": "First Order SF TIE Pilot",
+      "sampleSize": 1650,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "FIRSTORDERTROOPER",
+      "name": "First Order Stormtrooper",
+      "sampleSize": 1751,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "FIRSTORDERTIEPILOT",
+      "name": "First Order TIE Pilot",
+      "sampleSize": 1652,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "GAMORREANGUARD",
+      "name": "Gamorrean Guard",
+      "sampleSize": 1694,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "GARSAXON",
+      "name": "Gar Saxon",
+      "sampleSize": 1663,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "ZEBS3",
+      "name": "Garazeb \"Zeb\" Orrelios",
+      "sampleSize": 1646,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "GRIEVOUS",
+      "name": "General Grievous",
+      "sampleSize": 1869,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "GENERALHUX",
+      "name": "General Hux",
+      "sampleSize": 1856,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "GENERALKENOBI",
+      "name": "General Kenobi",
+      "sampleSize": 1891,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "GENERALSKYWALKER",
+      "name": "General Skywalker",
+      "sampleSize": 1843,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "GENERALSYNDULLA",
+      "name": "General Syndulla",
+      "sampleSize": 1846,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "VEERS",
+      "name": "General Veers",
+      "sampleSize": 1722,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "GEONOSIANBROODALPHA",
+      "name": "Geonosian Brood Alpha",
+      "sampleSize": 1809,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "GEONOSIANSOLDIER",
+      "name": "Geonosian Soldier",
+      "sampleSize": 1733,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "GEONOSIANSPY",
+      "name": "Geonosian Spy",
+      "sampleSize": 1730,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "GRANDADMIRALTHRAWN",
+      "name": "Grand Admiral Thrawn",
+      "sampleSize": 1746,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "GRANDINQUISITOR",
+      "name": "Grand Inquisitor",
+      "sampleSize": 1823,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "GRANDMASTERYODA",
+      "name": "Grand Master Yoda",
+      "sampleSize": 1854,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "GRANDMOFFTARKIN",
+      "name": "Grand Moff Tarkin",
+      "sampleSize": 1850,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "GREATMOTHERS",
+      "name": "Great Mothers",
+      "sampleSize": 1873,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "GREEDO",
+      "name": "Greedo",
+      "sampleSize": 1699,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "GREEFKARGA",
+      "name": "Greef Karga",
+      "sampleSize": 1778,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "GOPHERANTS",
+      "name": "Grogu & Anzellans",
+      "sampleSize": 1717,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "BOOMADIER",
+      "name": "Gungan Boomadier",
+      "sampleSize": 1794,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "GUNGANPHALANX",
+      "name": "Gungan Phalanx",
+      "sampleSize": 1813,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "HANSOLO",
+      "name": "Han Solo",
+      "sampleSize": 1827,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "HERASYNDULLAS3",
+      "name": "Hera Syndulla",
+      "sampleSize": 1814,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "HERMITYODA",
+      "name": "Hermit Yoda",
+      "sampleSize": 1819,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "HK47",
+      "name": "HK-47",
+      "sampleSize": 1634,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "HONDO",
+      "name": "Hondo Ohnaka",
+      "sampleSize": 1854,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "HOTHREBELSCOUT",
+      "name": "Hoth Rebel Scout",
+      "sampleSize": 1412,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "HOTHREBELSOLDIER",
+      "name": "Hoth Rebel Soldier",
+      "sampleSize": 1263,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "BADBATCHHUNTER",
+      "name": "Hunter",
+      "sampleSize": 1686,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "HUNTERS3",
+      "name": "Hunter (Mercenary)",
+      "sampleSize": 1729,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "HUYANG",
+      "name": "Huyang",
+      "sampleSize": 1860,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "IDENVERSIOEMPIRE",
+      "name": "Iden Versio",
+      "sampleSize": 1767,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "MAGNAGUARD",
+      "name": "IG-100 MagnaGuard",
+      "sampleSize": 1739,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "IG11",
+      "name": "IG-11",
+      "sampleSize": 1712,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "IG12",
+      "name": "IG-12 & Grogu",
+      "sampleSize": 1879,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "IG86SENTINELDROID",
+      "name": "IG-86 Sentinel Droid",
+      "sampleSize": 1146,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "IG88",
+      "name": "IG-88",
+      "sampleSize": 1657,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "IG90",
+      "name": "IG-90",
+      "sampleSize": 1783,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "IMAGUNDI",
+      "name": "Ima-Gun Di",
+      "sampleSize": 1297,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "IMPERIALPROBEDROID",
+      "name": "Imperial Probe Droid",
+      "sampleSize": 1567,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "IMPERIALSUPERCOMMANDO",
+      "name": "Imperial Super Commando",
+      "sampleSize": 1628,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "INQUISITORBARRISS",
+      "name": "Inquisitor Barriss",
+      "sampleSize": 1789,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "JABBATHEHUTT",
+      "name": "Jabba the Hutt",
+      "sampleSize": 1928,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "JANGOFETT",
+      "name": "Jango Fett",
+      "sampleSize": 1830,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "JARJARBINKS",
+      "name": "Jar Jar Binks",
+      "sampleSize": 1794,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "JAWA",
+      "name": "Jawa",
+      "sampleSize": 1479,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "JAWAENGINEER",
+      "name": "Jawa Engineer",
+      "sampleSize": 1515,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "JAWASCAVENGER",
+      "name": "Jawa Scavenger",
+      "sampleSize": 1626,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "JEDIKNIGHTCONSULAR",
+      "name": "Jedi Consular",
+      "sampleSize": 1442,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "ANAKINKNIGHT",
+      "name": "Jedi Knight Anakin",
+      "sampleSize": 1851,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "JEDIKNIGHTCAL",
+      "name": "Jedi Knight Cal Kestis",
+      "sampleSize": 1900,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "JEDIKNIGHTGUARDIAN",
+      "name": "Jedi Knight Guardian",
+      "sampleSize": 1313,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "JEDIKNIGHTLUKE",
+      "name": "Jedi Knight Luke Skywalker",
+      "sampleSize": 1824,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "JEDIKNIGHTREVAN",
+      "name": "Jedi Knight Revan",
+      "sampleSize": 1827,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "JEDIMASTERKENOBI",
+      "name": "Jedi Master Kenobi",
+      "sampleSize": 1869,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "GRANDMASTERLUKE",
+      "name": "Jedi Master Luke Skywalker",
+      "sampleSize": 1869,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "JEDIMASTERMACEWINDU",
+      "name": "Jedi Master Mace Windu",
+      "sampleSize": 1815,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "JOCASTANU",
+      "name": "Jocasta Nu",
+      "sampleSize": 1804,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "JOLEEBINDO",
+      "name": "Jolee Bindo",
+      "sampleSize": 1888,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "JUHANI",
+      "name": "Juhani",
+      "sampleSize": 1830,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "JYNERSO",
+      "name": "Jyn Erso",
+      "sampleSize": 1841,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "K2SO",
+      "name": "K-2SO",
+      "sampleSize": 1761,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "KANANJARRUSS3",
+      "name": "Kanan Jarrus",
+      "sampleSize": 1772,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "KELLERANBEQ",
+      "name": "Kelleran Beq",
+      "sampleSize": 1869,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "KIADIMUNDI",
+      "name": "Ki-Adi-Mundi",
+      "sampleSize": 1764,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "KITFISTO",
+      "name": "Kit Fisto",
+      "sampleSize": 1613,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "KIX",
+      "name": "Kix",
+      "sampleSize": 1792,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "KLEYA",
+      "name": "Kleya Marki",
+      "sampleSize": 1763,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "KRRSANTAN",
+      "name": "Krrsantan",
+      "sampleSize": 1916,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "KUIIL",
+      "name": "Kuiil",
+      "sampleSize": 1558,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "KXSECURITYDROID",
+      "name": "KX Security Droid",
+      "sampleSize": 1748,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "KYLEKATARN",
+      "name": "Kyle Katarn",
+      "sampleSize": 1786,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "KYLOREN",
+      "name": "Kylo Ren",
+      "sampleSize": 1729,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "KYLORENUNMASKED",
+      "name": "Kylo Ren (Unmasked)",
+      "sampleSize": 1888,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "L3_37",
+      "name": "L3-37",
+      "sampleSize": 1762,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "ADMINISTRATORLANDO",
+      "name": "Lando Calrissian",
+      "sampleSize": 1515,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "LEIAJEDITRAINING",
+      "name": "Leia (Jedi Training)",
+      "sampleSize": 1591,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "GLLEIA",
+      "name": "Leia Organa",
+      "sampleSize": 1922,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "LOBOT",
+      "name": "Lobot",
+      "sampleSize": 1601,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "LOGRAY",
+      "name": "Logray",
+      "sampleSize": 1484,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "LORDVADER",
+      "name": "Lord Vader",
+      "sampleSize": 1882,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "LUKESKYWALKER",
+      "name": "Luke Skywalker (Farmboy)",
+      "sampleSize": 1363,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "LUMINARAUNDULI",
+      "name": "Luminara Unduli",
+      "sampleSize": 1692,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "LUTHENRAEL",
+      "name": "Luthen Rael",
+      "sampleSize": 1806,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "MACEWINDU",
+      "name": "Mace Windu",
+      "sampleSize": 1898,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "MAGMATROOPER",
+      "name": "Magmatrooper",
+      "sampleSize": 1490,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "MAJORPARTAGAZ",
+      "name": "Major Partagaz",
+      "sampleSize": 1750,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "MARAJADE",
+      "name": "Mara Jade, The Emperor's Hand",
+      "sampleSize": 1868,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "MARROK",
+      "name": "Marrok",
+      "sampleSize": 1865,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "MASTERQUIGON",
+      "name": "Master Qui-Gon",
+      "sampleSize": 1906,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "MAULS7",
+      "name": "Maul",
+      "sampleSize": 1867,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "MAULHATEFUELED",
+      "name": "Maul (Hate-Fueled)",
+      "sampleSize": 1801,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "MAZKANATA",
+      "name": "Maz Kanata",
+      "sampleSize": 1687,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "MERRIN",
+      "name": "Merrin",
+      "sampleSize": 1870,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "MISSIONVAO",
+      "name": "Mission Vao",
+      "sampleSize": 1686,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "HUMANTHUG",
+      "name": "Mob Enforcer",
+      "sampleSize": 1628,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "MOFFGIDEONS1",
+      "name": "Moff Gideon",
+      "sampleSize": 1740,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "MONMOTHMA",
+      "name": "Mon Mothma",
+      "sampleSize": 1790,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "MORGANELSBETH",
+      "name": "Morgan Elsbeth",
+      "sampleSize": 1889,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "MOTHERTALZIN",
+      "name": "Mother Talzin",
+      "sampleSize": 1768,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "NIGHTTROOPER",
+      "name": "Night Trooper",
+      "sampleSize": 1857,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "NIGHTSISTERACOLYTE",
+      "name": "Nightsister Acolyte",
+      "sampleSize": 1386,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "NIGHTSISTERINITIATE",
+      "name": "Nightsister Initiate",
+      "sampleSize": 1253,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "NIGHTSISTERSPIRIT",
+      "name": "Nightsister Spirit",
+      "sampleSize": 1798,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "NIGHTSISTERZOMBIE",
+      "name": "Nightsister Zombie",
+      "sampleSize": 1734,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "NINTHSISTER",
+      "name": "Ninth Sister",
+      "sampleSize": 1823,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "NUTEGUNRAY",
+      "name": "Nute Gunray",
+      "sampleSize": 1752,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "OLDBENKENOBI",
+      "name": "Obi-Wan Kenobi (Old Ben)",
+      "sampleSize": 1819,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "DAKA",
+      "name": "Old Daka",
+      "sampleSize": 1784,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "BADBATCHOMEGA",
+      "name": "Omega",
+      "sampleSize": 1572,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "OMEGAS3",
+      "name": "Omega (Fugitive)",
+      "sampleSize": 1738,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "PADAWANOBIWAN",
+      "name": "Padawan Obi-Wan",
+      "sampleSize": 1872,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "PADAWANSABINE",
+      "name": "Padawan Sabine Wren",
+      "sampleSize": 1845,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "PADMEAMIDALA",
+      "name": "Padmé Amidala",
+      "sampleSize": 1894,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "PAO",
+      "name": "Pao",
+      "sampleSize": 1685,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "PAPLOO",
+      "name": "Paploo",
+      "sampleSize": 1524,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "PAZVIZSLA",
+      "name": "Paz Vizsla",
+      "sampleSize": 1918,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "GLHONDO",
+      "name": "Pirate King Hondo Ohnaka",
+      "sampleSize": 1792,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "PLOKOON",
+      "name": "Plo Koon",
+      "sampleSize": 1727,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "POE",
+      "name": "Poe Dameron",
+      "sampleSize": 1696,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "POGGLETHELESSER",
+      "name": "Poggle the Lesser",
+      "sampleSize": 1753,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "PRINCESSKNEESAA",
+      "name": "Princess Kneesaa",
+      "sampleSize": 1640,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "PRINCESSLEIA",
+      "name": "Princess Leia",
+      "sampleSize": 1650,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "QIRA",
+      "name": "Qi'ra",
+      "sampleSize": 1625,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "QUEENAMIDALA",
+      "name": "Queen Amidala",
+      "sampleSize": 1921,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "QUIGONJINN",
+      "name": "Qui-Gon Jinn",
+      "sampleSize": 1797,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "QUIGGOLD",
+      "name": "Quiggold",
+      "sampleSize": 1810,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "R2D2_LEGENDARY",
+      "name": "R2-D2",
+      "sampleSize": 1900,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "R5D4",
+      "name": "R5-D4",
+      "sampleSize": 1688,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "RANGETROOPER",
+      "name": "Range Trooper",
+      "sampleSize": 1693,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "SCORCH",
+      "name": "RC-1262 \"Scorch\"",
+      "sampleSize": 1892,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "HOTHLEIA",
+      "name": "Rebel Officer Leia Organa",
+      "sampleSize": 1596,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "EPIXFINN",
+      "name": "Resistance Hero Finn",
+      "sampleSize": 1764,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "EPIXPOE",
+      "name": "Resistance Hero Poe",
+      "sampleSize": 1768,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "RESISTANCEPILOT",
+      "name": "Resistance Pilot",
+      "sampleSize": 1400,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "RESISTANCETROOPER",
+      "name": "Resistance Trooper",
+      "sampleSize": 1485,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "GLREY",
+      "name": "Rey",
+      "sampleSize": 1896,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "DARKREY",
+      "name": "Rey (Dark Side Vision)",
+      "sampleSize": 1904,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "REYJEDITRAINING",
+      "name": "Rey (Jedi Training)",
+      "sampleSize": 1829,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "REY",
+      "name": "Rey (Scavenger)",
+      "sampleSize": 1734,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "ROSETICO",
+      "name": "Rose Tico",
+      "sampleSize": 1660,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "RACCOON",
+      "name": "Rotta the Hutt",
+      "sampleSize": 1709,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "ROYALGUARD",
+      "name": "Royal Guard",
+      "sampleSize": 1834,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "SABINEWRENS3",
+      "name": "Sabine Wren",
+      "sampleSize": 1768,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "SANASTARROS",
+      "name": "Sana Starros",
+      "sampleSize": 1578,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "SATELESHAN",
+      "name": "Satele Shan",
+      "sampleSize": 1775,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "SAVAGEOPRESS",
+      "name": "Savage Opress",
+      "sampleSize": 1851,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "SAWGERRERA",
+      "name": "Saw Gerrera",
+      "sampleSize": 1771,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "SCARIFREBEL",
+      "name": "Scarif Rebel Pathfinder",
+      "sampleSize": 1595,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "SCOUTTROOPER_V3",
+      "name": "Scout Trooper",
+      "sampleSize": 1831,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "SECONDSISTER",
+      "name": "Second Sister",
+      "sampleSize": 1705,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "SEVENTHSISTER",
+      "name": "Seventh Sister",
+      "sampleSize": 1815,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "SHAAKTI",
+      "name": "Shaak Ti",
+      "sampleSize": 1849,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "SHINHATI",
+      "name": "Shin Hati",
+      "sampleSize": 1838,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "SHORETROOPER",
+      "name": "Shoretrooper",
+      "sampleSize": 1759,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "SITHASSASSIN",
+      "name": "Sith Assassin",
+      "sampleSize": 1611,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "SITHTROOPER",
+      "name": "Sith Empire Trooper",
+      "sampleSize": 1799,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "SITHPALPATINE",
+      "name": "Sith Eternal Emperor",
+      "sampleSize": 1929,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "SITHMARAUDER",
+      "name": "Sith Marauder",
+      "sampleSize": 1755,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "FOSITHTROOPER",
+      "name": "Sith Trooper",
+      "sampleSize": 1799,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "UNDERCOVERLANDO",
+      "name": "Skiff Guard (Lando Calrissian)",
+      "sampleSize": 1833,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "SM33",
+      "name": "SM-33",
+      "sampleSize": 1751,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "SNOWTROOPER",
+      "name": "Snowtrooper",
+      "sampleSize": 1494,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "REMNANTSNOWCOMMANDER",
+      "name": "Snowtrooper Commander",
+      "sampleSize": 1585,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "STAP",
+      "name": "STAP",
+      "sampleSize": 1629,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "STARKILLER",
+      "name": "Starkiller",
+      "sampleSize": 1902,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "STORMTROOPER",
+      "name": "Stormtrooper",
+      "sampleSize": 1653,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "STORMTROOPERHAN",
+      "name": "Stormtrooper Han",
+      "sampleSize": 1655,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "STORMTROOPERLUKE",
+      "name": "Stormtrooper Luke",
+      "sampleSize": 1774,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "SUNFAC",
+      "name": "Sun Fac",
+      "sampleSize": 1754,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "SUPREMELEADERKYLOREN",
+      "name": "Supreme Leader Kylo Ren",
+      "sampleSize": 1902,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "T3_M4",
+      "name": "T3-M4",
+      "sampleSize": 1580,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "TALIA",
+      "name": "Talia",
+      "sampleSize": 1454,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "TARFFUL",
+      "name": "Tarfful",
+      "sampleSize": 1670,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "TARONMALICOS",
+      "name": "Taron Malicos",
+      "sampleSize": 1851,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "BADBATCHTECH",
+      "name": "Tech",
+      "sampleSize": 1760,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "TEEBO",
+      "name": "Teebo",
+      "sampleSize": 1367,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "VANGUARDTEMPLEGUARD",
+      "name": "Temple Guard",
+      "sampleSize": 1863,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "ARMORER",
+      "name": "The Armorer",
+      "sampleSize": 1666,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "THEMANDALORIAN",
+      "name": "The Mandalorian",
+      "sampleSize": 1800,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "THEMANDALORIANBESKARARMOR",
+      "name": "The Mandalorian (Beskar Armor)",
+      "sampleSize": 1844,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "STRANGER",
+      "name": "The Stranger",
+      "sampleSize": 1842,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "THIRDSISTER",
+      "name": "Third Sister",
+      "sampleSize": 1904,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "C3POCHEWBACCA",
+      "name": "Threepio & Chewie",
+      "sampleSize": 1842,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "TIEFIGHTERPILOT",
+      "name": "TIE Fighter Pilot",
+      "sampleSize": 1610,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "TUSKENCHIEFTAIN",
+      "name": "Tusken Chieftain",
+      "sampleSize": 1710,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "TUSKENRAIDER",
+      "name": "Tusken Raider",
+      "sampleSize": 1663,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "TUSKENSHAMAN",
+      "name": "Tusken Shaman",
+      "sampleSize": 1606,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "TUSKENHUNTRESS",
+      "name": "Tusken Warrior",
+      "sampleSize": 1637,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "UGNAUGHT",
+      "name": "Ugnaught",
+      "sampleSize": 1413,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "URORRURRR",
+      "name": "URoRRuR'R'R",
+      "sampleSize": 1652,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "YOUNGCHEWBACCA",
+      "name": "Vandor Chewbacca",
+      "sampleSize": 1624,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "VANE",
+      "name": "Vane",
+      "sampleSize": 1871,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "VEL",
+      "name": "Vel Sartha",
+      "sampleSize": 1769,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "SMUGGLERCHEWBACCA",
+      "name": "Veteran Smuggler Chewbacca",
+      "sampleSize": 1621,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "SMUGGLERHAN",
+      "name": "Veteran Smuggler Han Solo",
+      "sampleSize": 1525,
+      "targets": 2,
+      "passed": true
+    },
+    {
+      "id": "VISASMARR",
+      "name": "Visas Marr",
+      "sampleSize": 1823,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "WAMPA",
+      "name": "Wampa",
+      "sampleSize": 1870,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "WATTAMBOR",
+      "name": "Wat Tambor",
+      "sampleSize": 1813,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "WEDGEANTILLES",
+      "name": "Wedge Antilles",
+      "sampleSize": 1577,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "WICKET",
+      "name": "Wicket",
+      "sampleSize": 1560,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "BADBATCHWRECKER",
+      "name": "Wrecker",
+      "sampleSize": 1765,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "WRECKERS3",
+      "name": "Wrecker (Mercenary)",
+      "sampleSize": 1753,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "YODACHEWBACCA",
+      "name": "Yoda & Chewie",
+      "sampleSize": 1752,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "YOUNGHAN",
+      "name": "Young Han Solo",
+      "sampleSize": 1422,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "YOUNGLANDO",
+      "name": "Young Lando Calrissian",
+      "sampleSize": 1430,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "ZAALBAR",
+      "name": "Zaalbar",
+      "sampleSize": 1779,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "ZAMWESELL",
+      "name": "Zam Wesell",
+      "sampleSize": 1760,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "RANGERZEB",
+      "name": "Zeb Orrelios (New Republic Pilot)",
+      "sampleSize": 1667,
+      "targets": 4,
+      "passed": true
+    },
+    {
+      "id": "ZORIIBLISS_V2",
+      "name": "Zorii Bliss",
+      "sampleSize": 1794,
+      "targets": 3,
+      "passed": true
+    },
+    {
+      "id": "ZUCKUSS",
+      "name": "Zuckuss",
+      "sampleSize": 1637,
+      "targets": 4,
+      "passed": true
+    }
+  ],
+  "failures": []
+}

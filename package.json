@@ -17,18 +17,25 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
+    "gac:teams": "node scripts/findGacTeams.mjs",
+    "gac:import": "node scripts/importSwgohTierList.mjs",
+    "gac:test": "node scripts/testGacTeams.mjs && node scripts/testGacVariants.mjs && node scripts/testGacDeployment.mjs && node scripts/testSwgohTierList.mjs",
     "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider HTTPS=true react-scripts start",
     "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
     "test": "cross-env CI=true react-scripts test --env=jsdom --coverage",
     "eject": "cross-env react-scripts eject",
     "lint": "node node_modules/eslint/bin/eslint.js --config node_modules/eslint-config-react-app/index.js",
     "flow": "flow",
-    "meta:compile": "npm run meta:compile-targets && npm run meta:compile-ranking",
+    "meta:compile": "npm run meta:compile-targets && npm run meta:compile-ranking && npm run meta:compile-secondaries",
+    "meta:compile-secondaries": "node scripts/compileCharacterSecondaryPreferences.mjs",
     "meta:integrate": "node scripts/applyMetaIntegration.mjs",
     "meta:update": "npm run meta:compile && npm run meta:integrate",
     "meta:compile-targets": "node scripts/compileMetaProfiles.mjs",
     "meta:compile-ranking": "node scripts/compileMetaSpeedRanking.mjs",
-    "meta:speed-integrate": "node scripts/applyMetaSpeedOrdering.mjs"
+    "meta:speed-integrate": "node scripts/applyMetaSpeedOrdering.mjs",
+    "meta:test-top-two": "node scripts/testTopTwoMeta.mjs",
+    "optimizer:ship-test": "node scripts/testShipPreference.mjs",
+    "optimizer:shopping-test": "node scripts/testModShoppingList.mjs"
   },
   "browserslist": {
     "production": [

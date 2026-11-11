@@ -14,6 +14,12 @@ import { changeOptimizerView, updateModListFilter } from "./review";
 import Character from "../../domain/Character";
 import nothing from "../../utils/nothing";
 
+import refreshLegacyMetaTargets from '../../utils/refreshLegacyMetaTargets';
+import { ggScore } from '../../utils/ggScore';
+import secondaryPreferences from '../../constants/generatedCharacterSecondaryPreferences.json';
+import characterSecondaryRolls from '../../utils/characterSecondaryRolls';
+import generatedMetaTargets from '../../constants/generatedMetaTargets.json';
+
 export const OPTIMIZE_MODS = "OPTIMIZE_MODS";
 export const UPDATE_PROGRESS = "UPDATE_PROGRESS";
 export const CANCEL_OPTIMIZE_MODS = "CANCEL_OPTIMIZE_MODS";
@@ -156,9 +162,9 @@ let optimizationWorker = null;
  * Run the optimization algorithm and update the player's profile with the results
  * @param allyCode {string} The player to optimize mods for
  */
-export function optimizeMods() {
+export function optimizeMods(ggMode = false) {
   return function (dispatch, getState) {
-    const profile = getState().profile;
+    const profile = refreshLegacyMetaTargets(getState().profile);
     // If any of the characters being optimized don't have stats, then show an error message
     if (
       Object.values(profile.characters).filter(
@@ -220,7 +226,17 @@ export function optimizeMods() {
       dispatch(showError(error.message));
     };
 
-    optimizationWorker.postMessage(profile.allyCode);
+    optimizationWorker.postMessage({ allyCode: profile.allyCode,
+      currentGGScores: Object.fromEntries(profile.mods.map(mod => [mod.id, ggScore(mod).score])),
+      ggOptimization: ggMode ? {
+        characterWeighted: ggMode === 'character',
+        preferences: ggMode === 'character' ? secondaryPreferences.characters : {},
+        rolls: ggMode === 'character' ? Object.fromEntries(profile.mods.map(mod => [mod.id, characterSecondaryRolls(mod)])) : {},
+        scores: Object.fromEntries(profile.mods.map(mod => [mod.id, ggScore(mod).score])),
+        restrictions: Object.fromEntries(profile.selectedCharacters.map(({ id }) => [id,
+          generatedMetaTargets.characters[id] && generatedMetaTargets.characters[id].targets[0].metaRestrictions]))
+      } : null,
+      selectedCharacters: profile.selectedCharacters.map(({ id, target }) => ({ id, target: target.serialize() })) });
   };
 }
 

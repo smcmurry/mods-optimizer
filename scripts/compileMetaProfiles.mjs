@@ -81,79 +81,6 @@ const MIN_SAMPLE_SIZE =
 
 
 /**
- * Don't create a hard primary restriction without at least this many
- * observations for the slot.
- */
-const MIN_PRIMARY_SAMPLE_SIZE =
-  Number(
-    process.env.META_MIN_PRIMARY_SAMPLE_SIZE ??
-    50
-  );
-
-
-/**
- * Primary restriction requirements.
- *
- * Example:
- *
- * Speed arrow:
- *
- *   Speed       90%
- *   Offense      5%
- *
- * 90% >= 80%
- * margin = 85 percentage points >= 40
- *
- * => lock Speed.
- *
- *
- * Triangle:
- *
- *   Crit Damage 44%
- *   Offense     29%
- *
- * => leave unrestricted.
- */
-const PRIMARY_LOCK_THRESHOLD =
-  Number(
-    process.env.META_PRIMARY_LOCK_THRESHOLD ??
-    0.80
-  );
-
-
-const PRIMARY_LOCK_MARGIN =
-  Number(
-    process.env.META_PRIMARY_LOCK_MARGIN ??
-    0.40
-  );
-
-
-/**
- * Besides the aggregate "Kyber Meta" target, generate a few common explicit
- * set archetypes.
- */
-const ARCHETYPE_MIN_SHARE =
-  Number(
-    process.env.META_ARCHETYPE_MIN_SHARE ??
-    0.10
-  );
-
-
-const ARCHETYPE_MIN_COUNT =
-  Number(
-    process.env.META_ARCHETYPE_MIN_COUNT ??
-    50
-  );
-
-
-const MAX_ARCHETYPES =
-  Number(
-    process.env.META_MAX_ARCHETYPES ??
-    3
-  );
-
-
-/**
  * Exponent used when mapping observed meta signals onto Grand Ivory's
  * 0-100 basic weight range.
  *
@@ -1218,130 +1145,6 @@ function normalizeWeights(
 // PRIMARY RESTRICTIONS
 // ============================================================================
 
-function compilePrimaryRestrictions(
-  primaries
-) {
-  const restrictions =
-    {};
-
-
-  for (
-    const [
-      slot,
-      slotData
-    ]
-    of Object.entries(
-      primaries ??
-      {}
-    )
-  ) {
-    const total =
-      Number(
-        slotData.total ??
-        0
-      );
-
-
-    if (
-      total <
-      MIN_PRIMARY_SAMPLE_SIZE
-    ) {
-      continue;
-    }
-
-
-    const candidates =
-      Object.values(
-        slotData.stats ??
-        {}
-      )
-        .map(
-          stat => {
-            const definition =
-              PRIMARY_STAT_TO_TARGET[
-                Number(
-                  stat.statId
-                )
-              ];
-
-
-            if (
-              !definition
-            ) {
-              return null;
-            }
-
-
-            return {
-              optimizerType:
-                definition.optimizerType,
-
-              frequency:
-                Number(
-                  stat.frequency ??
-                  0
-                )
-            };
-          }
-        )
-        .filter(
-          Boolean
-        )
-        .sort(
-          (
-            left,
-            right
-          ) =>
-            right.frequency -
-            left.frequency
-        );
-
-
-    const best =
-      candidates[
-        0
-      ];
-
-
-    const second =
-      candidates[
-        1
-      ];
-
-
-    if (
-      !best
-    ) {
-      continue;
-    }
-
-
-    const margin =
-      best.frequency -
-      (
-        second?.frequency ??
-        0
-      );
-
-
-    if (
-      best.frequency >=
-        PRIMARY_LOCK_THRESHOLD &&
-      margin >=
-        PRIMARY_LOCK_MARGIN
-    ) {
-      restrictions[
-        slot
-      ] =
-        best.optimizerType;
-    }
-  }
-
-
-  return restrictions;
-}
-
-
 // ============================================================================
 // SET RESTRICTIONS
 // ============================================================================
@@ -1502,10 +1305,7 @@ function buildPlan({
     critAvoid:
       weights.critAvoid,
 
-    primaryStatRestrictions:
-      compilePrimaryRestrictions(
-        primaries
-      ),
+    primaryStatRestrictions: {},
 
     setRestrictions:
       setRestrictions ??
@@ -1579,7 +1379,7 @@ function compileCharacter(
         ),
 
       /**
-       * Aggregate target doesn't hard-lock a particular set combination.
+       * The aggregate target searches either of the top two complete set combinations.
        *
        * The set frequencies already influence the weights.
        */
@@ -1600,42 +1400,23 @@ function compileCharacter(
   // COMMON SET ARCHETYPES
   // ==========================================================================
 
-  const archetypes =
-    Object.values(
-      character.loadouts ??
-      {}
-    )
-      .filter(
-        loadout =>
-          Number(
-            loadout.count ??
-            0
-          ) >=
-            ARCHETYPE_MIN_COUNT &&
-          Number(
-            loadout.share ??
-            0
-          ) >=
-            ARCHETYPE_MIN_SHARE
-      )
-      .sort(
-        (
-          left,
-          right
-        ) =>
-          Number(
-            right.share ??
-            0
-          ) -
-          Number(
-            left.share ??
-            0
-          )
-      )
-      .slice(
-        0,
-        MAX_ARCHETYPES
-      );
+  const archetypes = Object.values(character.loadouts ?? {})
+    .filter(loadout => Number(loadout.count) > 0 &&
+      (loadout.setIds || []).reduce((total, id) => total + (MOD_SET_DEFINITIONS[Number(id)]?.requiredMods || 0), 0) === 6)
+    .sort((a, b) => Number(b.count) - Number(a.count) || String(a.id).localeCompare(String(b.id)))
+    .slice(0, 2);
+
+  const primaries = {};
+  for (const [slot, data] of Object.entries(character.aggregate?.primaries || {})) {
+    const choices = Object.values(data.stats || {})
+      .filter(stat => PRIMARY_STAT_TO_TARGET[Number(stat.statId)] && Number(stat.frequency) > 0)
+      .sort((a, b) => Number(b.frequency) - Number(a.frequency) || Number(a.statId) - Number(b.statId))
+      .map(stat => PRIMARY_STAT_TO_TARGET[Number(stat.statId)].optimizerType);
+    if (choices.length) primaries[slot] = [...new Set(choices)].slice(0, 2);
+  }
+  const metaRestrictions = { primaries, setCombinations: archetypes.map(loadoutToSetRestrictions) };
+  targets[0].primaryStatRestrictions = {};
+  targets[0].metaRestrictions = metaRestrictions;
 
 
   for (
@@ -1717,6 +1498,11 @@ function compileCharacter(
     );
   }
 
+
+  for (const target of targets) {
+    target.primaryStatRestrictions = {};
+    target.metaRestrictions = metaRestrictions;
+  }
 
   return {
     baseId:
@@ -1901,23 +1687,8 @@ async function main() {
       minimumCharacterSampleSize:
         MIN_SAMPLE_SIZE,
 
-      minimumPrimarySampleSize:
-        MIN_PRIMARY_SAMPLE_SIZE,
-
-      primaryLockThreshold:
-        PRIMARY_LOCK_THRESHOLD,
-
-      primaryLockMargin:
-        PRIMARY_LOCK_MARGIN,
-
-      archetypeMinimumShare:
-        ARCHETYPE_MIN_SHARE,
-
-      archetypeMinimumCount:
-        ARCHETYPE_MIN_COUNT,
-
-      maximumArchetypesPerCharacter:
-        MAX_ARCHETYPES,
+      maximumPrimaryChoicesPerSlot: 2,
+      maximumSetCombinationsPerCharacter: 2,
 
       weightGamma:
         WEIGHT_GAMMA,

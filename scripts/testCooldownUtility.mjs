@@ -1,0 +1,66 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import { createRequire } from 'node:module';
+import vm from 'node:vm';
+const require = createRequire(import.meta.url);
+const utility = require('../src/domain/cooldownUtility.js');
+const effects = new Map(JSON.parse(fs.readFileSync('data/gameData-cache/effect.json')).data.map(e => [e.id, e]));
+const abilities = new Map(JSON.parse(fs.readFileSync('data/gameData-cache/ability.json')).data.map(a => [a.id, a]));
+const near = (x, y) => assert.ok(Math.abs(x - y) < 1e-12, `${x} != ${y}`);
+const shien = utility.decode(effects.get('specialability_commanderahsoka01_shien_cooldown_reduction'));
+assert.equal(shien.supported, true);
+assert.equal(shien.delta, -1);
+const leapSource = abilities.get('specialability_commanderahsoka02');
+assert.equal(leapSource.cooldown, 8);
+assert.equal(leapSource.tier.at(-1).cooldownMaxOverride, 8);
+const leap = { id: leapSource.id, kind: 'special', cooldown: leapSource.cooldown, tags: leapSource.descriptiveTag.filter(t => !t.exclude).map(t => t.tag) };
+assert.ok(utility.matches(leap, shien));
+assert.equal(utility.matches({ ...leap, tags: [] }, shien), false);
+assert.equal(utility.matches({ ...leap, tags: [...leap.tags, 'excluded'] }, { ...shien, abilityTags: [...shien.abilityTags, { id: 'excluded', exclude: true }] }), false);
+const postUse = utility.decode(effects.get('specialability_commanderahsoka02_cooldown_reduction'));
+assert.equal(postUse.delta, -4);
+const basics = [{ id: 'basic', kind: 'basic', tags: ['character_basic'] }, leap];
+near(utility.expectedRotation(basics).frequencies[leap.id], 1 / 9);
+near(utility.expectedRotation(basics, [{ ...postUse, mode: 'perUse', sourceAbilityId: leap.id }]).frequencies[leap.id], 1 / 5);
+// Two one-turn reductions per recipient turn make countdown twice as fast
+// after four-turn post-use cooldown: 1 activation + 4 / 3 waiting turns.
+near(utility.expectedRotation(basics, [{ ...postUse, mode: 'perUse', sourceAbilityId: leap.id }, { ...shien, mode: 'perTurn', rate: 2 }]).frequencies[leap.id], 3 / 7);
+const delay = utility.decode(effects.get('specialability_hondo02_delay_cooldown_enemies_all_1turn_CE'));
+assert.equal(delay.delta, 1);
+assert.equal(delay.requiresContext, true);
+assert.equal(delay.unresistable, true);
+near(utility.expectedRotation(basics, [{ ...delay, mode: 'perTurn', rate: 0.5 }]).frequencies[leap.id], 1 / 17);
+near(utility.expectedRotation(basics, [{ ...delay, mode: 'perTurn', rate: 1 }]).frequencies[leap.id], 0);
+const reset = utility.decode(effects.get('specialability_jedimasterkenobi02_recover_cooldown_full'));
+assert.equal(reset.delta, -99);
+// Exact arithmetic is ordered: reset then increase != increase then reset.
+assert.equal(utility.applyRemaining(utility.applyRemaining(5, reset.delta), 2), 2);
+assert.equal(utility.applyRemaining(utility.applyRemaining(5, 2), reset.delta), 0);
+const resetApprox = utility.expectedRotation(basics, [{ ...reset, mode: 'perTurn', rate: 0.2 }]);
+assert.ok(resetApprox.issues.some(x => /Reset requires/.test(x.reason)));
+near(resetApprox.frequencies[leap.id], 1 / 9);
+assert.ok(utility.expectedRotation([...basics, { id: 'ultimate', kind: 'special', requiresUnlock: true }]).issues.some(x => /horizon/.test(x.reason)));
+const multiplicative = effects.get('grantedability_glahsokatano_cooldown_reset_after_use_team');
+assert.equal(utility.decode(multiplicative).supported, false);
+assert.equal(utility.decode({ ...effects.get('specialability_commanderahsoka01_shien_cooldown_reduction'), param: ['ABILITY_COOLDOWN', 'CONDITIONAL_FILTER'] }).supported, false);
+assert.throws(() => utility.applyRemaining(-1, 2));
+assert.throws(() => utility.expectedRotation(basics, [{ ...shien, mode: 'perTurn', rate: -1 }]));
+const context = { self: {} };
+vm.runInNewContext(fs.readFileSync('src/domain/cooldownUtility.js', 'utf8'), context);
+assert.equal(context.self.CooldownUtility.applyRemaining(2, -4), 0);
+// Production integration retains source cooldown and prepares a four-turn
+// waiting interval, independently checked from CAT's eight-minus-four kit.
+const prepared = require('../src/constants/generatedCombatPrograms.json');
+const production = require('../src/domain/characterMechanics.js');
+const reference = require('./fixtures/characterMechanicsReference.cjs');
+const cat = prepared.characters.COMMANDERAHSOKA;
+const compiledLeap = cat.abilities.find(a => a.id === leapSource.id);
+assert.equal(compiledLeap.cooldown, 8);
+assert.equal(compiledLeap.effectiveCooldown, 4);
+assert.deepEqual(compiledLeap.operations.filter(op => op.kind === 'cooldown').map(op => op.delta), [-4]);
+near(cat.defaultRotation[leapSource.id], 1 / 5);
+near(production.rotation(cat, { ultimateUses: 0 })[leapSource.id], 1 / 5);
+near(reference.rotation(reference.get('COMMANDERAHSOKA'), { ultimateUses: 0 })[leapSource.id], 1 / 5);
+assert.equal(prepared.characters.L3_37.abilities.flatMap(a => a.operations).filter(op => op.kind === 'cooldown').length, 0);
+assert.equal(prepared.characters.KIADIMUNDI.abilities.flatMap(a => a.operations).filter(op => op.kind === 'cooldown').length, 0);
+console.log('Cooldown source arithmetic, exact ability tags, rotation bounds and reset-order guards passed.');

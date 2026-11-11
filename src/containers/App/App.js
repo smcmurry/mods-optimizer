@@ -5,6 +5,11 @@ import "./boilerplate.css";
 import "./App.css";
 import OptimizerView from "../OptimizerView/OptimizerView";
 import ExploreView from "../ExploreView/ExploreView";
+import RecommendedSlices from '../RecommendedSlices/RecommendedSlices';
+import RecommendedCalibrations from '../RecommendedCalibrations/RecommendedCalibrations';
+import LowAverageMods from '../LowAverageMods/LowAverageMods';
+import CurrentGGMods from '../CurrentGGMods/CurrentGGMods';
+import InventoryPlanning from '../InventoryPlanning/InventoryPlanning';
 import FileInput from "../../components/FileInput/FileInput";
 import Modal from "../../components/Modal/Modal";
 import Spinner from "../../components/Spinner/Spinner";
@@ -125,6 +130,11 @@ class App extends PureComponent {
           {!instructionsScreen && "explore" === this.props.section && (
             <ExploreView />
           )}
+          {!instructionsScreen && "slices" === this.props.section && <RecommendedSlices />}
+          {!instructionsScreen && "calibrations" === this.props.section && <RecommendedCalibrations />}
+          {!instructionsScreen && "low-average" === this.props.section && <LowAverageMods />}
+          {!instructionsScreen && "current-gg" === this.props.section && <CurrentGGMods />}
+          {!instructionsScreen && "inventory-planning" === this.props.section && <InventoryPlanning />}
           {!instructionsScreen && "optimize" === this.props.section && (
             <OptimizerView />
           )}
@@ -164,6 +174,36 @@ class App extends PureComponent {
               onClick={() => this.props.changeSection("explore")}
             >
               Explore my mods
+            </button>
+            <button
+              className={"slices" === this.props.section ? "active" : ""}
+              onClick={() => this.props.changeSection("slices")}
+            >
+              Recommended slices
+            </button>
+            <button
+              className={"calibrations" === this.props.section ? "active" : ""}
+              onClick={() => this.props.changeSection("calibrations")}
+            >
+              Recommended calibrations
+            </button>
+            <button
+              className={"low-average" === this.props.section ? "active" : ""}
+              onClick={() => this.props.changeSection("low-average")}
+            >
+              Average at 6A cutoff
+            </button>
+            <button
+              className={"current-gg" === this.props.section ? "active" : ""}
+              onClick={() => this.props.changeSection("current-gg")}
+            >
+              Current GG Score
+            </button>
+            <button
+              className={"inventory-planning" === this.props.section ? "active" : ""}
+              onClick={() => this.props.changeSection("inventory-planning")}
+            >
+              Inventory planning
             </button>
             <button
               className={"optimize" === this.props.section ? "active" : ""}

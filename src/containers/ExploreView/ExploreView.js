@@ -4,6 +4,7 @@ import React from "react";
 import { hideModal, showModal } from "../../state/actions/app";
 import { deleteMods } from "../../state/actions/storage";
 import memoize from "memoize-one";
+import { ggScore } from '../../utils/ggScore';
 import ModDetail from '../../components/ModDetail/ModDetail';
 import ModFilter from '../../components/ModFilter/ModFilter';
 
@@ -180,6 +181,13 @@ const getFilteredMods = memoize(
     }
 
     switch (filter.sort) {
+      case 'ggScore': {
+        const scores = new Map(filteredMods.map(mod => [mod, ggScore(mod).score]));
+        filteredMods.sort((left, right) =>
+          (scores.get(right) === null ? -1 : scores.get(right)) -
+          (scores.get(left) === null ? -1 : scores.get(left)));
+        break;
+      }
       case 'rolls':
         filteredMods = filteredMods.sort((left, right) => {
           const leftValue = left.secondaryStats.reduce((acc, stat) => acc + stat.rolls, 0);

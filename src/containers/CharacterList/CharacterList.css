@@ -19,7 +19,7 @@
 
 .character-block {
   display: grid;
-  grid-template-rows: auto auto auto;
+  grid-template-rows: auto auto auto auto;
   grid-template-columns: fit-content(1em) auto;
   grid-column-gap: .5em;
   width: 19.5em;
@@ -142,7 +142,7 @@
 }
 
 .character-block .avatar {
-  grid-row: 1 / span 3;
+  grid-row: 1 / span 4;
   grid-column: 1;
   font-size: .8em;
 }
@@ -164,6 +164,9 @@
   font-weight: 300;
   font-size: 90%;
   vertical-align: middle;
+}
+
+.character-block label:not(.ship-mod-preference) {
   pointer-events: none;
 }
 
@@ -178,3 +181,15 @@
 .character-block button {
   font-size: 1em;
 }
+
+.ship-mod-preference {
+  grid-row: 4;
+  grid-column: 2;
+  display: block;
+  font-size: .85em;
+  margin: .4em 0;
+  cursor: pointer;
+}
+.ship-mod-preference input { margin-right: .4em; }
+.highest-gg-preference { grid-row: 5; }
+.full-loadout-preference { grid-row: 6; }

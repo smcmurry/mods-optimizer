@@ -1,0 +1,24 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import { proveConsularRecovery } from './lib/consularRecoverySource.mjs';
+const read = name => JSON.parse(fs.readFileSync(`data/gameData-cache/${name}.json`, 'utf8')).data;
+const ability = read('ability').find(row => row.id === 'specialability_jediknightconsular02');
+const effects = Object.fromEntries(read('effect').map(row => [row.id, row]));
+const localization = read('Loc_ENG_US.txt');
+const proof = proveConsularRecovery(ability, effects, localization);
+assert.ok(!proof.reason, JSON.stringify(proof));
+assert.equal(proof.fraction, 0.3);
+assert.deepEqual(proof.context, [{ kind: 'damageResult', abilityId: ability.id,
+  effectId: 'specialability_jediknightconsular02_damage_u03', sourceReferenceIndex: 1, targets: [] }]);
+assert.equal(proof.proof.explicitContextIndices, false, 'Source graph has no explicit result indices; localized evidence is required');
+const changedText = { ...localization, [ability.tier.at(-1).descKey]: 'Recover 30% Max Health.' };
+assert.ok(proveConsularRecovery(ability, effects, changedText).reason, 'Own Health percentage cannot substitute for damage-dealt wording');
+const inserted = structuredClone(ability);
+inserted.tier.at(-1).effectReference.splice(2, 0, inserted.tier.at(-1).effectReference[1]);
+assert.ok(proveConsularRecovery(inserted, effects, localization).reason, 'Multiple possible preceding packets must be rejected');
+const reordered = structuredClone(ability);
+reordered.tier.at(-1).effectReference.reverse();
+assert.ok(proveConsularRecovery(reordered, effects, localization).reason, 'Local ordered damage identity is required');
+const branched = { ...effects, [proof.context[0].effectId]: { ...effects[proof.context[0].effectId], triggerCondition: [{ conditionType: 8 }] } };
+assert.ok(proveConsularRecovery(ability, branched, localization).reason, 'Conditional damage cannot use this direct source proof');
+console.log('Consular named ordered Special-damage → 30% self recovery source/localization proof passed; generic implicit context remains unsupported.');

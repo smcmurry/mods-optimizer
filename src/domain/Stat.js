@@ -1,6 +1,7 @@
 // @flow
 
 import statTypeMap, { statIds } from "../constants/statTypeMap";
+import statRoll from "../constants/statRoll";
 import { modStats } from "../constants/enums";
 
 const hotUtilsTypeMap = {
@@ -185,10 +186,11 @@ class Stat {
     if (Stat.secondaryUpgradeFactors.hasOwnProperty(this.type)) {
       return new Stat(
         this.type,
-        `${Stat.secondaryUpgradeFactors[this.type] * this.value}`
+        `${Stat.secondaryUpgradeFactors[this.type] * this.value}`,
+        this.rolls
       );
     } else if ("Speed" === this.type) {
-      return new Stat(this.type, `${this.value + 1}`);
+      return new Stat(this.type, `${this.value + 1}`, this.rolls);
     } else {
       return this;
     }
@@ -412,18 +414,12 @@ Stat.maxPrimaries = {
   },
 };
 
-Stat.secondaryUpgradeFactors = {
-  "Offense %": 3.02,
-  "Defense %": 2.34,
-  "Health %": 1.86,
-  Defense: 1.63,
-  "Tenacity %": 1.33,
-  "Potency %": 1.33,
-  "Protection %": 1.33,
-  Health: 1.26,
-  Protection: 1.11,
-  Offense: 1.1,
-  "Critical Chance %": 1.04,
-};
+// Preserve the fraction of the maximum; speed gets one flat +1 instead.
+Stat.secondaryUpgradeFactors = Object.freeze(Object.keys(statRoll)
+  .filter(type => type !== 'Speed' && statRoll[type][5])
+  .reduce((factors, type) => {
+    factors[type] = statRoll[type][6].max / statRoll[type][5].max;
+    return factors;
+  }, {}));
 
 export default Stat;

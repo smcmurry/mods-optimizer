@@ -130,7 +130,7 @@ class Mod {
 
   shouldSlice(character, target) {
     return (
-      character.optimizerSettings.sliceMods &&
+      (character.optimizerSettings.sliceMods && !character.optimizerSettings.preferSixDotMods) &&
       this.pips === 5 &&
       (this.level === 15 || this.shouldLevel(target))
     );
@@ -171,7 +171,7 @@ class Mod {
       if (
         15 === workingMod.level &&
         5 === workingMod.pips &&
-        character.optimizerSettings.sliceMods
+        (character.optimizerSettings.sliceMods && !character.optimizerSettings.preferSixDotMods)
       ) {
         workingMod = workingMod.slice();
       }

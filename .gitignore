@@ -8,6 +8,9 @@
 
 # production
 /build
+/data/gameData-cache/
+/data/optimizer-fixtures/
+/reports/local-optimizer/
 
 # misc
 .DS_Store
@@ -77,7 +80,11 @@ fabric.properties
 *.code-workspace
 
 # User-added files
+/reports/gac-roster/
 /.idea/sbt.xml
 /.idea/codeStyles/*.xml
 .webhook
 deploy.sh
+/.jest-cache/
+/dev-server.stdout.log
+/dev-server.stderr.log

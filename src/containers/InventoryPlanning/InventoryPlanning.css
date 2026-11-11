@@ -1,0 +1,20 @@
+.inventory-summary { border: 1px solid #6986a9; padding: 1em; margin: 1em 0; }
+.inventory-summary span { display: block; margin-top: .5em; }
+.inventory-charts { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,480px),1fr)); gap: 1em; margin: 1em 0; }
+.inventory-card { background: #10243c; border: 1px solid #426085; border-radius: 6px; padding: 1em; min-width: 0; }
+.inventory-card h3 { margin: 0 0 .6em; font-size: 1.1em; }
+.inventory-card h3 span { display: block; font-weight: normal; color: #b8c8df; margin-top: .25em; }
+.inventory-chart-body { display: flex; align-items: center; gap: 1em; }
+.inventory-chart-body svg { width: 70%; min-width: 0; }
+.inventory-chart-body svg text { fill: #d3e1f3; font-size: 10px; }
+.inventory-gridline { stroke: #38526c; stroke-width: 1; }
+.inventory-bar { fill: #537595; }
+.inventory-curve { fill: none; stroke: #72c8ff; stroke-width: 2; }
+.inventory-target { stroke: #f0bd71; stroke-width: 1.5; stroke-dasharray: 4 3; }
+.inventory-chart-body dl { margin: 0; flex: 1; font-size: .85em; }
+.inventory-chart-body dt { color: #b8c8df; }
+.inventory-chart-body dd { margin: 0 0 .45em; font-weight: bold; }
+.inventory-chart-body .inventory-required { color: #8ed5ff; font-size: 1.7em; }
+.inventory-card details, .inventory-card > p { font-size: .85em; line-height: 1.5; }
+.inventory-card summary { cursor: pointer; }
+@media (max-width: 480px) { .inventory-chart-body { gap: .4em; } .inventory-chart-body svg { width: 65%; } }

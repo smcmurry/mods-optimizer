@@ -6,91 +6,12 @@ import nothing from "../../utils/nothing";
 import { showError, showFlash, updateProfile } from "./app";
 import groupByKey from "../../utils/groupByKey";
 import Mod from '../../domain/Mod';
+import refreshLegacyMetaTargets from '../../utils/refreshLegacyMetaTargets';
 import { fetchHotUtilsStatus } from './data';
 
 
 
-// BEGIN KYBER META PROFILE MIGRATION
 
-/**
- * Existing Grand Ivory profiles store the selected OptimizationPlan directly
- * in profile.selectedCharacters.
- *
- * Merely changing Character.defaultTarget() therefore does NOT update
- * characters that were already selected before Kyber Meta existed.
- *
- * This migrates selected characters to Kyber Meta whenever one is available.
- */
-function applyKyberMetaDefaults(
-  profile
-) {
-  if (
-    !profile
-  ) {
-    return profile;
-  }
-
-
-  const selectedCharacters =
-    profile.selectedCharacters
-      .filter(
-        ({
-          id
-        }) =>
-          Object.keys(
-            profile.characters
-          ).includes(
-            id
-          )
-      )
-      .map(
-        ({
-          id,
-          target
-        }) => {
-          const character =
-            profile.characters[
-              id
-            ];
-
-
-          if (
-            !character
-          ) {
-            return {
-              id,
-              target
-            };
-          }
-
-
-          const kyberTarget =
-            character
-              .targets()
-              .find(
-                candidate =>
-                  candidate.name ===
-                  "Kyber Meta"
-              );
-
-
-          return {
-            id,
-
-            target:
-              kyberTarget ||
-              target
-          };
-        }
-      );
-
-
-  return profile.withSelectedCharacters(
-    selectedCharacters
-  );
-}
-
-// END KYBER META PROFILE MIGRATION
 
 export const CLEAN_STATE = 'CLEAN_STATE';
 export const SET_GAME_SETTINGS = 'SET_GAME_SETTINGS';
@@ -610,7 +531,7 @@ export function setGameSettings(gameSettings) {
 export function setProfile(profile) {
   return {
     type: SET_PROFILE,
-    profile: profile
+    profile: refreshLegacyMetaTargets(profile)
   };
 }
 

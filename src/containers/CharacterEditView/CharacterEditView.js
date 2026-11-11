@@ -1,6 +1,7 @@
 // @flow
 
 import React, { PureComponent } from "react";
+import GenerateCharacterPicker from '../../components/GenerateCharacterPicker/GenerateCharacterPicker';
 
 import "./CharacterEditView.css";
 import CharacterList from "../CharacterList/CharacterList";
@@ -44,6 +45,7 @@ import {
 import { optimizeMods } from "../../state/actions/optimize";
 import characterSettings from "../../constants/characterSettings";
 import CharacterAvatar from "../../components/CharacterAvatar/CharacterAvatar";
+import { CharacterGGScore } from '../../components/GGScore';
 import { GameSettings } from "../../domain/CharacterDataClasses";
 import { connect } from "react-redux";
 import {
@@ -65,6 +67,7 @@ import OptimizerProgress from "../../components/OptimizerProgress/OptimizerProgr
 const defaultTemplates = require("../../constants/characterTemplates.json");
 
 class CharacterEditView extends PureComponent {
+  state = { ggMode: false };
   dragStart(character) {
     return function (event) {
       event.dataTransfer.dropEffect = "copy";
@@ -424,6 +427,20 @@ class CharacterEditView extends PureComponent {
     return (
       <div className={"sidebar-actions"} key={"sidebar-actions"}>
         <h3>Actions</h3>
+        <label>
+          Optimize for
+          <select value={this.state.ggMode || ''}
+            onChange={event => this.setState({ ggMode: event.target.value || false })}>
+            <option value="">Character stat weights</option>
+            <option value="gg">Highest GG — top primaries and sets</option>
+            <option value="character">Character-weighted GG — top primaries and sets</option>
+          </select>
+        </label>
+        {this.state.ggMode && <p>Compares the top two sets and primaries, preferring first choices when within 3%.
+          {this.state.ggMode === 'character' ? 'Favors high-GG mods with more rolls in the character’s preferred secondaries. Flat and percentage rolls count together; GG is adjusted by ×0.8–×1.2 for ranking only. Missing preference data uses plain GG.' : 'Maximizes current average GG score.'}
+          {' '}Works in character priority order. Locks and minimum dots apply;
+          required stat minimums and maximums are enforced. Stat weights, change threshold, and ship preference are bypassed.
+          Unavailable popular builds use clearly flagged alternatives. Equipped builds are kept when more than 5% stronger.</p>}
         <button
           type={"button"}
           onClick={() => {
@@ -492,7 +509,7 @@ class CharacterEditView extends PureComponent {
                 <OptimizerProgress />,
                 false
               );
-              this.props.optimizeMods();
+              this.props.optimizeMods(this.state.ggMode);
             }
           }}
           disabled={!this.props.selectedCharacters.length}
@@ -564,6 +581,7 @@ class CharacterEditView extends PureComponent {
           {this.props.gameSettings[character.baseID]
             ? this.props.gameSettings[character.baseID].name
             : character.baseID}
+          <CharacterGGScore characterId={character.baseID} />
         </div>
       </div>
     );
@@ -662,6 +680,7 @@ class CharacterEditView extends PureComponent {
 
   generateCharacterListModal() {
     let form;
+    let includedCharacterIDs = null;
 
     return (
       <div>
@@ -694,13 +713,16 @@ class CharacterEditView extends PureComponent {
           <label htmlFor={"use-case"}>Select your use case:</label>
           <Dropdown id={"use-case"} name={"use-case"}>
             <option value={"meta-speed"}>
-              Kyber Mod Investment — Avg Speed Secondary
+              Kyber Mod Investment — Speed + Relic Investment
             </option>
             <option value={""}>GAC / TW / ROTE (default)</option>
             <option value={1}>Light-side Territory Battle</option>
             <option value={2}>Dark-side Territory Battle</option>
             <option value={3}>Arena only</option>
           </Dropdown>
+          <p>Kyber Mod Investment uses average Speed-secondary investment with a modest roster relic boost:
+            2% per relic level, capped at 20%. Nearby relic levels have a small effect; larger gaps matter more.
+            This applies when generating the list, not to character stat weights.</p>
           <div className={`character-list-omicronboosts`}>
             <Spoiler title={"Omicron Boosts"}>
               <div className={"form-row"}>
@@ -775,6 +797,9 @@ class CharacterEditView extends PureComponent {
             rightValue={true}
             rightLabel={"Overwrite"}
           />
+          <GenerateCharacterPicker characters={this.props.generationCharacters} gameSettings={this.props.gameSettings}
+            selectedIDs={this.props.selectedCharacters.map(character => character.id)}
+            onChange={ids => { includedCharacterIDs = ids; }} />
           <Spoiler title={"Advanced Settings"}>
             <div className={"form-row"}>
               <label htmlFor={"alignment-filter"}>Alignment:</label>
@@ -840,6 +865,7 @@ class CharacterEditView extends PureComponent {
             type={"button"}
             onClick={() => {
               const parameters = {
+                includedCharacterIDs,
                 alignmentFilter: form["alignment-filter"].value,
                 minimumGearLevel: form["minimum-gear-level"].value,
                 ignoreArena: form["ignore-arena"].checked,
@@ -851,9 +877,13 @@ class CharacterEditView extends PureComponent {
                 omicronConquest: form["omicron-conquest"].checked,
               };
 
+              if (includedCharacterIDs && !includedCharacterIDs.length) {
+                this.props.showError('Select at least one character to generate a list.');
+                return;
+              }
               this.props.generateCharacterList(
                 form["use-case"].value,
-                form.overwrite.value,
+                form.overwrite.checked,
                 this.props.allyCode,
                 parameters
               );
@@ -1254,7 +1284,7 @@ class CharacterEditView extends PureComponent {
                 <OptimizerProgress />,
                 false
               );
-              this.props.optimizeMods();
+              this.props.optimizeMods(this.state.ggMode);
             }}
           >
             Optimize!
@@ -1409,6 +1439,7 @@ const mapStateToProps = (state) => {
     hideSelectedCharacters: state.hideSelectedCharacters,
     sortView: state.characterEditSortView,
     gameSettings: state.gameSettings,
+    generationCharacters: Object.values(profile.characters).filter(character => Number(character.playerValues.level) >= 50),
     highlightedCharacters: availableCharacters.filter(characterFilter),
     availableCharacters: availableCharacters.filter((c) => !characterFilter(c)),
     selectedCharacters: profile.selectedCharacters,
@@ -1449,7 +1480,7 @@ const mapDispatchToProps = (dispatch) => ({
   updateLockUnselectedCharacters: (lock) =>
     dispatch(updateLockUnselectedCharacters(lock)),
   resetAllCharacterTargets: () => dispatch(resetAllCharacterTargets()),
-  optimizeMods: () => dispatch(optimizeMods()),
+  optimizeMods: (ggMode) => dispatch(optimizeMods(ggMode)),
   resetIncrementalIndex: () => dispatch(setOptimizeIndex(null)),
   updateModChangeThreshold: (threshold) =>
     dispatch(updateModChangeThreshold(threshold)),

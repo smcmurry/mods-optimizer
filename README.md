@@ -101,5 +101,34 @@ both given a value of 100, then the tool will never select speed, because it can
 much more protection. I suggest sticking to basic mode until you have a strong sense for how the tool works.
 
 ## Other resources
+For a fresh public roster snapshot and relic-qualified 5v5/3v3 offense and defense team lists,
+run `npm run gac:teams`. See [GAC roster script](docs/gac-roster.md) for thresholds, sources, and replay options.
+
 Check out my [discord server](https://discord.gg/WFKycSm) to talk to other users of the tool, give feedback,
 or ask questions!
+
+### Top two meta restrictions
+
+Scoring uses each character's original hand-written default stat weights and the base search.
+Characters without an original preset use the original Speed with survivability strategy. Each generated
+target allows only the character's two most-used complete set combinations
+and two most-used primaries per slot from the local meta dataset. The optimizer
+compares both combinations using the same stat weights. If no complete eligible
+build is available, the top-two restrictions are dropped for that character
+and a warning appears above their optimized mods. Characters with only one observed choice use that choice.
+
+Saved Combat Utility and Kyber Meta selections refresh to the original-weight
+targets while retaining the exact character order. Custom targets remain available.
+The target editor displays the allowed combinations and primaries. Regenerate
+with `npm run meta:compile-targets` and verify with `npm run meta:test-top-two`.
+
+### Priority mod shopping list
+
+The bottom of the optimization results lists purchases in optimization order,
+independent of the results filters. It checks the top-two primary choices, complete
+set combinations (including set counts), missing slots, and at least 17 current Speed
+per mod. Speed-primary arrows count their primary Speed. For incompatible sets,
+it chooses a compatible combination requiring the fewest replacement mods, preferring
+mods that already fail the primary or Speed checks. Characters without meta data
+are checked for missing slots and Speed only. Run `npm run optimizer:shopping-test`
+to verify the checklist.

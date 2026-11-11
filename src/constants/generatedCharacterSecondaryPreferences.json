@@ -1,0 +1,4766 @@
+{
+  "schemaVersion": 2,
+  "method": "grouped-population-relative-eligible-frequency-and-value",
+  "characters": {
+    "TRIPLEZERO": {
+      "sampleSize": 1282,
+      "loadoutId": "4-7",
+      "weights": {
+        "health": 0.446185,
+        "protection": 0.48562,
+        "offense": 0.488764,
+        "defense": 0.512135,
+        "speed": 0.518099,
+        "potency": 0.758878,
+        "tenacity": 0.474821,
+        "critChance": 0.464866
+      }
+    },
+    "4LOM": {
+      "sampleSize": 863,
+      "loadoutId": "4-8",
+      "weights": {
+        "health": 0.40622,
+        "protection": 0.442038,
+        "offense": 0.479304,
+        "defense": 0.446782,
+        "speed": 0.495077,
+        "potency": 0.465504,
+        "tenacity": 0.760264,
+        "critChance": 0.47954
+      }
+    },
+    "50RT": {
+      "sampleSize": 589,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.528595,
+        "protection": 0.435667,
+        "offense": 0.453415,
+        "defense": 0.48536,
+        "speed": 0.469787,
+        "potency": 0.504328,
+        "tenacity": 0.464043,
+        "critChance": 0.434776
+      }
+    },
+    "AAYLASECURA": {
+      "sampleSize": 504,
+      "loadoutId": "5-5-7",
+      "weights": {
+        "health": 0.427914,
+        "protection": 0.448758,
+        "offense": 0.466375,
+        "defense": 0.468467,
+        "speed": 0.483381,
+        "potency": 0.716365,
+        "tenacity": 0.478525,
+        "critChance": 0.665535
+      }
+    },
+    "ADMIRALACKBAR": {
+      "sampleSize": 695,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.454819,
+        "protection": 0.487351,
+        "offense": 0.369836,
+        "defense": 0.516138,
+        "speed": 0.343105,
+        "potency": 0.355499,
+        "tenacity": 0.549878,
+        "critChance": 0.474638
+      }
+    },
+    "ADMIRALPIETT": {
+      "sampleSize": 1111,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.516622,
+        "protection": 0.564067,
+        "offense": 0.552236,
+        "defense": 0.608936,
+        "speed": 0.606475,
+        "potency": 0.656172,
+        "tenacity": 0.561688,
+        "critChance": 0.563924
+      }
+    },
+    "ADMIRALRADDUS": {
+      "sampleSize": 1193,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.572182,
+        "protection": 0.606073,
+        "offense": 0.537828,
+        "defense": 0.597055,
+        "speed": 0.558156,
+        "potency": 0.533654,
+        "tenacity": 0.560284,
+        "critChance": 0.501908
+      }
+    },
+    "TRENCH": {
+      "sampleSize": 856,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.558523,
+        "protection": 0.470017,
+        "offense": 0.411902,
+        "defense": 0.478368,
+        "speed": 0.467535,
+        "potency": 0.520714,
+        "tenacity": 0.556387,
+        "critChance": 0.444591
+      }
+    },
+    "GLAHSOKATANO": {
+      "sampleSize": 879,
+      "loadoutId": "3-4",
+      "weights": {
+        "health": 0.821495,
+        "protection": 0.544262,
+        "offense": 0.443241,
+        "defense": 0.837554,
+        "speed": 0.676782,
+        "potency": 0.359999,
+        "tenacity": 0.459819,
+        "critChance": 0.36964
+      }
+    },
+    "FULCRUMAHSOKA": {
+      "sampleSize": 983,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.551428,
+        "protection": 0.421665,
+        "offense": 0.794204,
+        "defense": 0.507542,
+        "speed": 0.520497,
+        "potency": 0.370742,
+        "tenacity": 0.45906,
+        "critChance": 0.493133
+      }
+    },
+    "AHSOKATANO": {
+      "sampleSize": 718,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.609678,
+        "protection": 0.4324,
+        "offense": 0.76912,
+        "defense": 0.47959,
+        "speed": 0.521601,
+        "potency": 0.402529,
+        "tenacity": 0.452774,
+        "critChance": 0.556438
+      }
+    },
+    "AMILYNHOLDO": {
+      "sampleSize": 1085,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.488365,
+        "protection": 0.603202,
+        "offense": 0.237696,
+        "defense": 0.428268,
+        "speed": 0.334132,
+        "potency": 0.424805,
+        "tenacity": 0.484317,
+        "critChance": 0.363576
+      }
+    },
+    "ARCTROOPER501ST": {
+      "sampleSize": 798,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.442633,
+        "protection": 0.438225,
+        "offense": 0.718154,
+        "defense": 0.507248,
+        "speed": 0.50802,
+        "potency": 0.38079,
+        "tenacity": 0.456317,
+        "critChance": 0.530501
+      }
+    },
+    "ASAJVENTRESS": {
+      "sampleSize": 447,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.422698,
+        "protection": 0.40119,
+        "offense": 0.509468,
+        "defense": 0.405723,
+        "speed": 0.464816,
+        "potency": 0.527271,
+        "tenacity": 0.47052,
+        "critChance": 0.55362
+      }
+    },
+    "ASAJJDARKDISCIPLE": {
+      "sampleSize": 420,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.459787,
+        "protection": 0.40839,
+        "offense": 0.73157,
+        "defense": 0.431246,
+        "speed": 0.568774,
+        "potency": 0.473929,
+        "tenacity": 0.414443,
+        "critChance": 0.612272
+      }
+    },
+    "AURRA_SING": {
+      "sampleSize": 787,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.384247,
+        "protection": 0.427123,
+        "offense": 0.390333,
+        "defense": 0.374869,
+        "speed": 0.356508,
+        "potency": 0.404924,
+        "tenacity": 0.439663,
+        "critChance": 0.477917
+      }
+    },
+    "B1BATTLEDROIDV2": {
+      "sampleSize": 877,
+      "loadoutId": "2-7",
+      "weights": {
+        "health": 0.359775,
+        "protection": 0.396781,
+        "offense": 0.555622,
+        "defense": 0.437583,
+        "speed": 0.416704,
+        "potency": 0.639931,
+        "tenacity": 0.486085,
+        "critChance": 0.392283
+      }
+    },
+    "B2SUPERBATTLEDROID": {
+      "sampleSize": 441,
+      "loadoutId": "7-7-7",
+      "weights": {
+        "health": 0.401058,
+        "protection": 0.494032,
+        "offense": 0.341857,
+        "defense": 0.44837,
+        "speed": 0.330011,
+        "potency": 0.902556,
+        "tenacity": 0.454914,
+        "critChance": 0.455728
+      }
+    },
+    "BARRISSOFFEE": {
+      "sampleSize": 1672,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.856899,
+        "protection": 0.471954,
+        "offense": 0.333541,
+        "defense": 0.565793,
+        "speed": 0.479634,
+        "potency": 0.383118,
+        "tenacity": 0.508134,
+        "critChance": 0.387184
+      }
+    },
+    "BASTILASHAN": {
+      "sampleSize": 1098,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.508237,
+        "protection": 0.606995,
+        "offense": 0.449982,
+        "defense": 0.495649,
+        "speed": 0.546248,
+        "potency": 0.676275,
+        "tenacity": 0.502156,
+        "critChance": 0.469954
+      }
+    },
+    "BASTILASHANDARK": {
+      "sampleSize": 1149,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.593771,
+        "protection": 0.443208,
+        "offense": 0.476452,
+        "defense": 0.517527,
+        "speed": 0.547543,
+        "potency": 0.605686,
+        "tenacity": 0.481247,
+        "critChance": 0.486675
+      }
+    },
+    "BATCHERS3": {
+      "sampleSize": 744,
+      "loadoutId": "4-5",
+      "weights": {
+        "health": 0.407218,
+        "protection": 0.445931,
+        "offense": 0.545284,
+        "defense": 0.465743,
+        "speed": 0.479996,
+        "potency": 0.493524,
+        "tenacity": 0.458038,
+        "critChance": 0.630855
+      }
+    },
+    "BAYLANSKOLL": {
+      "sampleSize": 999,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.541204,
+        "protection": 0.824591,
+        "offense": 0.504333,
+        "defense": 0.643672,
+        "speed": 0.646634,
+        "potency": 0.468003,
+        "tenacity": 0.502224,
+        "critChance": 0.428992
+      }
+    },
+    "BAZEMALBUS": {
+      "sampleSize": 1152,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.522778,
+        "protection": 0.617826,
+        "offense": 0.254915,
+        "defense": 0.511375,
+        "speed": 0.370548,
+        "potency": 0.329037,
+        "tenacity": 0.428707,
+        "critChance": 0.292016
+      }
+    },
+    "BB8": {
+      "sampleSize": 711,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.396769,
+        "protection": 0.485811,
+        "offense": 0.334586,
+        "defense": 0.46065,
+        "speed": 0.458654,
+        "potency": 0.370012,
+        "tenacity": 0.492111,
+        "critChance": 0.599182
+      }
+    },
+    "BENSOLO": {
+      "sampleSize": 1146,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.581816,
+        "protection": 0.416031,
+        "offense": 0.881262,
+        "defense": 0.488251,
+        "speed": 0.618094,
+        "potency": 0.491143,
+        "tenacity": 0.46239,
+        "critChance": 0.570714
+      }
+    },
+    "BIGGSDARKLIGHTER": {
+      "sampleSize": 666,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.43673,
+        "protection": 0.463482,
+        "offense": 0.418046,
+        "defense": 0.424626,
+        "speed": 0.313416,
+        "potency": 0.36282,
+        "tenacity": 0.487444,
+        "critChance": 0.539322
+      }
+    },
+    "BISTAN": {
+      "sampleSize": 557,
+      "loadoutId": "7-7-7",
+      "weights": {
+        "health": 0.37173,
+        "protection": 0.424791,
+        "offense": 0.340777,
+        "defense": 0.381353,
+        "speed": 0.346666,
+        "potency": 0.60437,
+        "tenacity": 0.440216,
+        "critChance": 0.479274
+      }
+    },
+    "MANDALORBOKATAN": {
+      "sampleSize": 1291,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.562376,
+        "protection": 0.46718,
+        "offense": 0.871207,
+        "defense": 0.572519,
+        "speed": 0.651058,
+        "potency": 0.472076,
+        "tenacity": 0.51282,
+        "critChance": 0.472004
+      }
+    },
+    "BOKATAN": {
+      "sampleSize": 758,
+      "loadoutId": "1-6",
+      "weights": {
+        "health": 0.416946,
+        "protection": 0.487944,
+        "offense": 0.485873,
+        "defense": 0.448672,
+        "speed": 0.467284,
+        "potency": 0.517006,
+        "tenacity": 0.481155,
+        "critChance": 0.477999
+      }
+    },
+    "BOBAFETT": {
+      "sampleSize": 894,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.478913,
+        "protection": 0.471437,
+        "offense": 0.642986,
+        "defense": 0.503005,
+        "speed": 0.520372,
+        "potency": 0.589842,
+        "tenacity": 0.487411,
+        "critChance": 0.632032
+      }
+    },
+    "BOBAFETTSCION": {
+      "sampleSize": 634,
+      "loadoutId": "2-5",
+      "weights": {
+        "health": 0.418807,
+        "protection": 0.483312,
+        "offense": 0.640146,
+        "defense": 0.452885,
+        "speed": 0.527553,
+        "potency": 0.46266,
+        "tenacity": 0.492995,
+        "critChance": 0.634143
+      }
+    },
+    "BODHIROOK": {
+      "sampleSize": 577,
+      "loadoutId": "4-7",
+      "weights": {
+        "health": 0.392767,
+        "protection": 0.430562,
+        "offense": 0.367093,
+        "defense": 0.450595,
+        "speed": 0.334579,
+        "potency": 0.64501,
+        "tenacity": 0.45028,
+        "critChance": 0.472948
+      }
+    },
+    "BOSSNASS": {
+      "sampleSize": 901,
+      "loadoutId": "4-7",
+      "weights": {
+        "health": 0.440026,
+        "protection": 0.631166,
+        "offense": 0.391444,
+        "defense": 0.533197,
+        "speed": 0.60397,
+        "potency": 0.826936,
+        "tenacity": 0.505096,
+        "critChance": 0.402134
+      }
+    },
+    "BOSSK": {
+      "sampleSize": 608,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.506427,
+        "protection": 0.718187,
+        "offense": 0.393232,
+        "defense": 0.635902,
+        "speed": 0.542973,
+        "potency": 0.432433,
+        "tenacity": 0.596382,
+        "critChance": 0.438289
+      }
+    },
+    "BOUSHH": {
+      "sampleSize": 1117,
+      "loadoutId": "4-7",
+      "weights": {
+        "health": 0.499351,
+        "protection": 0.464338,
+        "offense": 0.669034,
+        "defense": 0.51258,
+        "speed": 0.605441,
+        "potency": 0.888275,
+        "tenacity": 0.498064,
+        "critChance": 0.495202
+      }
+    },
+    "BRUTUS": {
+      "sampleSize": 1047,
+      "loadoutId": "2-5",
+      "weights": {
+        "health": 0.531451,
+        "protection": 0.480993,
+        "offense": 0.741327,
+        "defense": 0.516196,
+        "speed": 0.556118,
+        "potency": 0.501741,
+        "tenacity": 0.486284,
+        "critChance": 0.578745
+      }
+    },
+    "BT1": {
+      "sampleSize": 1151,
+      "loadoutId": "2-5",
+      "weights": {
+        "health": 0.401626,
+        "protection": 0.468193,
+        "offense": 0.749635,
+        "defense": 0.460294,
+        "speed": 0.51744,
+        "potency": 0.506758,
+        "tenacity": 0.446409,
+        "critChance": 0.675945
+      }
+    },
+    "C3POLEGENDARY": {
+      "sampleSize": 917,
+      "loadoutId": "4-7",
+      "weights": {
+        "health": 0.50707,
+        "protection": 0.518977,
+        "offense": 0.287425,
+        "defense": 0.540624,
+        "speed": 0.489897,
+        "potency": 0.794043,
+        "tenacity": 0.581046,
+        "critChance": 0.362591
+      }
+    },
+    "CADBANE": {
+      "sampleSize": 685,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.466838,
+        "protection": 0.486793,
+        "offense": 0.512052,
+        "defense": 0.566185,
+        "speed": 0.417757,
+        "potency": 0.572465,
+        "tenacity": 0.520075,
+        "critChance": 0.585755
+      }
+    },
+    "CALKESTIS": {
+      "sampleSize": 1020,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.816652,
+        "protection": 0.505505,
+        "offense": 0.367729,
+        "defense": 0.574679,
+        "speed": 0.450677,
+        "potency": 0.522122,
+        "tenacity": 0.487951,
+        "critChance": 0.372543
+      }
+    },
+    "CANDEROUSORDO": {
+      "sampleSize": 495,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.373733,
+        "protection": 0.422744,
+        "offense": 0.619846,
+        "defense": 0.383189,
+        "speed": 0.403985,
+        "potency": 0.495498,
+        "tenacity": 0.410291,
+        "critChance": 0.485176
+      }
+    },
+    "CARSONTEVA": {
+      "sampleSize": 795,
+      "loadoutId": "2-5",
+      "weights": {
+        "health": 0.491038,
+        "protection": 0.430596,
+        "offense": 0.608646,
+        "defense": 0.427913,
+        "speed": 0.507304,
+        "potency": 0.465999,
+        "tenacity": 0.461186,
+        "critChance": 0.535682
+      }
+    },
+    "CAPTAINDROGAN": {
+      "sampleSize": 1208,
+      "loadoutId": "2-5",
+      "weights": {
+        "health": 0.501937,
+        "protection": 0.434828,
+        "offense": 0.843752,
+        "defense": 0.483033,
+        "speed": 0.614021,
+        "potency": 0.474184,
+        "tenacity": 0.457777,
+        "critChance": 0.76548
+      }
+    },
+    "CAPTAINENOCH": {
+      "sampleSize": 1217,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.540716,
+        "protection": 0.507264,
+        "offense": 0.436468,
+        "defense": 0.576981,
+        "speed": 0.51357,
+        "potency": 0.508735,
+        "tenacity": 0.537207,
+        "critChance": 0.474479
+      }
+    },
+    "HOTHHAN": {
+      "sampleSize": 597,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.452055,
+        "protection": 0.42495,
+        "offense": 0.310483,
+        "defense": 0.390444,
+        "speed": 0.350631,
+        "potency": 0.361332,
+        "tenacity": 0.474771,
+        "critChance": 0.44187
+      }
+    },
+    "ITHANO": {
+      "sampleSize": 957,
+      "loadoutId": "2-5",
+      "weights": {
+        "health": 0.513922,
+        "protection": 0.466759,
+        "offense": 0.628847,
+        "defense": 0.502324,
+        "speed": 0.502443,
+        "potency": 0.507896,
+        "tenacity": 0.484522,
+        "critChance": 0.574442
+      }
+    },
+    "PHASMA": {
+      "sampleSize": 591,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.410999,
+        "protection": 0.423072,
+        "offense": 0.364238,
+        "defense": 0.435653,
+        "speed": 0.422153,
+        "potency": 0.452957,
+        "tenacity": 0.436296,
+        "critChance": 0.479398
+      }
+    },
+    "CAPTAINREX": {
+      "sampleSize": 920,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.536218,
+        "protection": 0.506056,
+        "offense": 0.499907,
+        "defense": 0.466174,
+        "speed": 0.60067,
+        "potency": 0.663233,
+        "tenacity": 0.522706,
+        "critChance": 0.555541
+      }
+    },
+    "CAPTAINSILVO": {
+      "sampleSize": 1236,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.623128,
+        "protection": 0.523835,
+        "offense": 0.468839,
+        "defense": 0.539088,
+        "speed": 0.570444,
+        "potency": 0.654083,
+        "tenacity": 0.503879,
+        "critChance": 0.465892
+      }
+    },
+    "CAPTAINTARPALS": {
+      "sampleSize": 531,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.410814,
+        "protection": 0.529154,
+        "offense": 0.627614,
+        "defense": 0.477008,
+        "speed": 0.520312,
+        "potency": 0.464828,
+        "tenacity": 0.467981,
+        "critChance": 0.505027
+      }
+    },
+    "CARADUNE": {
+      "sampleSize": 814,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.543936,
+        "protection": 0.465626,
+        "offense": 0.301438,
+        "defense": 0.372686,
+        "speed": 0.380712,
+        "potency": 0.536338,
+        "tenacity": 0.397624,
+        "critChance": 0.408115
+      }
+    },
+    "CARTHONASI": {
+      "sampleSize": 491,
+      "loadoutId": "6-7",
+      "weights": {
+        "health": 0.389013,
+        "protection": 0.425779,
+        "offense": 0.399451,
+        "defense": 0.387476,
+        "speed": 0.283859,
+        "potency": 0.510683,
+        "tenacity": 0.442627,
+        "critChance": 0.487168
+      }
+    },
+    "CASSIANANDOR": {
+      "sampleSize": 531,
+      "loadoutId": "2-7",
+      "weights": {
+        "health": 0.450698,
+        "protection": 0.479606,
+        "offense": 0.396737,
+        "defense": 0.467737,
+        "speed": 0.408728,
+        "potency": 0.733973,
+        "tenacity": 0.459644,
+        "critChance": 0.434164
+      }
+    },
+    "CASSIANUNDERCOVER": {
+      "sampleSize": 995,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.700504,
+        "protection": 0.505195,
+        "offense": 0.477295,
+        "defense": 0.501245,
+        "speed": 0.610303,
+        "potency": 0.511995,
+        "tenacity": 0.495535,
+        "critChance": 0.455205
+      }
+    },
+    "APPO": {
+      "sampleSize": 747,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.516728,
+        "protection": 0.474934,
+        "offense": 0.860626,
+        "defense": 0.458022,
+        "speed": 0.629177,
+        "potency": 0.501764,
+        "tenacity": 0.470429,
+        "critChance": 0.529812
+      }
+    },
+    "CC2224": {
+      "sampleSize": 648,
+      "loadoutId": "4-5",
+      "weights": {
+        "health": 0.323258,
+        "protection": 0.406554,
+        "offense": 0.361094,
+        "defense": 0.389919,
+        "speed": 0.316242,
+        "potency": 0.334522,
+        "tenacity": 0.413477,
+        "critChance": 0.765412
+      }
+    },
+    "CEREJUNDA": {
+      "sampleSize": 1070,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.638657,
+        "protection": 0.743759,
+        "offense": 0.421563,
+        "defense": 0.584046,
+        "speed": 0.498907,
+        "potency": 0.411734,
+        "tenacity": 0.507981,
+        "critChance": 0.412951
+      }
+    },
+    "CHEWBACCALEGENDARY": {
+      "sampleSize": 604,
+      "loadoutId": "8-8-8",
+      "weights": {
+        "health": 0.424572,
+        "protection": 0.481622,
+        "offense": 0.566534,
+        "defense": 0.455903,
+        "speed": 0.571825,
+        "potency": 0.442611,
+        "tenacity": 0.991777,
+        "critChance": 0.404187
+      }
+    },
+    "CHIEFCHIRPA": {
+      "sampleSize": 539,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.36883,
+        "protection": 0.410042,
+        "offense": 0.311132,
+        "defense": 0.404437,
+        "speed": 0.35712,
+        "potency": 0.269289,
+        "tenacity": 0.451626,
+        "critChance": 0.484727
+      }
+    },
+    "CHIEFNEBIT": {
+      "sampleSize": 1040,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.431011,
+        "protection": 0.617132,
+        "offense": 0.256459,
+        "defense": 0.441162,
+        "speed": 0.386837,
+        "potency": 0.387018,
+        "tenacity": 0.390265,
+        "critChance": 0.407517
+      }
+    },
+    "CHIRRUTIMWE": {
+      "sampleSize": 486,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.498828,
+        "protection": 0.388874,
+        "offense": 0.502491,
+        "defense": 0.374622,
+        "speed": 0.445389,
+        "potency": 0.329894,
+        "tenacity": 0.477397,
+        "critChance": 0.541883
+      }
+    },
+    "CHOPPERS3": {
+      "sampleSize": 572,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.426775,
+        "protection": 0.520058,
+        "offense": 0.337044,
+        "defense": 0.497788,
+        "speed": 0.411844,
+        "potency": 0.375313,
+        "tenacity": 0.496075,
+        "critChance": 0.409289
+      }
+    },
+    "CINTA": {
+      "sampleSize": 594,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.478711,
+        "protection": 0.458098,
+        "offense": 0.669451,
+        "defense": 0.434222,
+        "speed": 0.542661,
+        "potency": 0.431727,
+        "tenacity": 0.465607,
+        "critChance": 0.489448
+      }
+    },
+    "CLONESERGEANTPHASEI": {
+      "sampleSize": 658,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.388334,
+        "protection": 0.432209,
+        "offense": 0.376507,
+        "defense": 0.370146,
+        "speed": 0.256145,
+        "potency": 0.402036,
+        "tenacity": 0.446637,
+        "critChance": 0.544081
+      }
+    },
+    "CLONEWARSCHEWBACCA": {
+      "sampleSize": 518,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.429956,
+        "protection": 0.515622,
+        "offense": 0.260865,
+        "defense": 0.547246,
+        "speed": 0.372765,
+        "potency": 0.27406,
+        "tenacity": 0.38104,
+        "critChance": 0.386816
+      }
+    },
+    "COBBVANTH": {
+      "sampleSize": 601,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.53188,
+        "protection": 0.48921,
+        "offense": 0.641782,
+        "defense": 0.50557,
+        "speed": 0.600052,
+        "potency": 0.436953,
+        "tenacity": 0.514751,
+        "critChance": 0.529597
+      }
+    },
+    "COLONELSTARCK": {
+      "sampleSize": 545,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.34655,
+        "protection": 0.426843,
+        "offense": 0.348433,
+        "defense": 0.395025,
+        "speed": 0.426805,
+        "potency": 0.520195,
+        "tenacity": 0.439988,
+        "critChance": 0.510695
+      }
+    },
+    "BISHOP": {
+      "sampleSize": 552,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.461649,
+        "protection": 0.562398,
+        "offense": 0.412461,
+        "defense": 0.422824,
+        "speed": 0.516923,
+        "potency": 0.469266,
+        "tenacity": 0.488568,
+        "critChance": 0.439688
+      }
+    },
+    "COMMANDERAHSOKA": {
+      "sampleSize": 1499,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.629079,
+        "protection": 0.475274,
+        "offense": 0.702818,
+        "defense": 0.580577,
+        "speed": 0.670602,
+        "potency": 0.438558,
+        "tenacity": 0.499297,
+        "critChance": 0.598683
+      }
+    },
+    "COMMANDERLUKESKYWALKER": {
+      "sampleSize": 498,
+      "loadoutId": "2-8",
+      "weights": {
+        "health": 0.400086,
+        "protection": 0.479623,
+        "offense": 0.666634,
+        "defense": 0.441366,
+        "speed": 0.579947,
+        "potency": 0.4789,
+        "tenacity": 0.858333,
+        "critChance": 0.457142
+      }
+    },
+    "CORUSCANTUNDERWORLDPOLICE": {
+      "sampleSize": 620,
+      "loadoutId": "4-7",
+      "weights": {
+        "health": 0.418897,
+        "protection": 0.432371,
+        "offense": 0.425036,
+        "defense": 0.455321,
+        "speed": 0.439749,
+        "potency": 0.674349,
+        "tenacity": 0.446539,
+        "critChance": 0.42173
+      }
+    },
+    "COUNTDOOKU": {
+      "sampleSize": 1013,
+      "loadoutId": "4-7",
+      "weights": {
+        "health": 0.408863,
+        "protection": 0.441731,
+        "offense": 0.501821,
+        "defense": 0.440831,
+        "speed": 0.454876,
+        "potency": 0.705135,
+        "tenacity": 0.461815,
+        "critChance": 0.491375
+      }
+    },
+    "CROSSHAIRS3": {
+      "sampleSize": 740,
+      "loadoutId": "2-5",
+      "weights": {
+        "health": 0.462707,
+        "protection": 0.44198,
+        "offense": 0.586875,
+        "defense": 0.468706,
+        "speed": 0.495336,
+        "potency": 0.454434,
+        "tenacity": 0.465778,
+        "critChance": 0.538772
+      }
+    },
+    "CT210408": {
+      "sampleSize": 462,
+      "loadoutId": "2-5",
+      "weights": {
+        "health": 0.443824,
+        "protection": 0.481804,
+        "offense": 0.627186,
+        "defense": 0.489124,
+        "speed": 0.453492,
+        "potency": 0.529139,
+        "tenacity": 0.484199,
+        "critChance": 0.576461
+      }
+    },
+    "CT5555": {
+      "sampleSize": 464,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.673631,
+        "protection": 0.666349,
+        "offense": 0.494348,
+        "defense": 0.526609,
+        "speed": 0.50975,
+        "potency": 0.40155,
+        "tenacity": 0.465344,
+        "critChance": 0.385359
+      }
+    },
+    "CT7567": {
+      "sampleSize": 1388,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.570032,
+        "protection": 0.484171,
+        "offense": 0.484751,
+        "defense": 0.580065,
+        "speed": 0.586044,
+        "potency": 0.463515,
+        "tenacity": 0.579428,
+        "critChance": 0.528498
+      }
+    },
+    "OPERATIVE": {
+      "sampleSize": 1430,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.609233,
+        "protection": 0.600002,
+        "offense": 0.569156,
+        "defense": 0.55657,
+        "speed": 0.62314,
+        "potency": 0.488358,
+        "tenacity": 0.518921,
+        "critChance": 0.486341
+      }
+    },
+    "DARKTROOPER": {
+      "sampleSize": 862,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.396272,
+        "protection": 0.42387,
+        "offense": 0.839485,
+        "defense": 0.410077,
+        "speed": 0.439542,
+        "potency": 0.360268,
+        "tenacity": 0.435725,
+        "critChance": 0.490674
+      }
+    },
+    "MOFFGIDEONS3": {
+      "sampleSize": 618,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.490687,
+        "protection": 0.739657,
+        "offense": 0.447587,
+        "defense": 0.597218,
+        "speed": 0.565049,
+        "potency": 0.428505,
+        "tenacity": 0.507776,
+        "critChance": 0.424891
+      }
+    },
+    "DARTHBANE": {
+      "sampleSize": 1643,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.892771,
+        "protection": 0.425949,
+        "offense": 0.702687,
+        "defense": 0.493784,
+        "speed": 0.653015,
+        "potency": 0.37428,
+        "tenacity": 0.381672,
+        "critChance": 0.418868
+      }
+    },
+    "DARTHJARJAR": {
+      "sampleSize": 186,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.506668,
+        "protection": 0.464502,
+        "offense": 0.580766,
+        "defense": 0.499422,
+        "speed": 0.609581,
+        "potency": 0.442009,
+        "tenacity": 0.519786,
+        "critChance": 0.400286
+      }
+    },
+    "DARTHMALAK": {
+      "sampleSize": 505,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.604419,
+        "protection": 0.865181,
+        "offense": 0.345092,
+        "defense": 0.57107,
+        "speed": 0.571948,
+        "potency": 0.42863,
+        "tenacity": 0.582722,
+        "critChance": 0.317467
+      }
+    },
+    "DARTHMALGUS": {
+      "sampleSize": 1499,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.888804,
+        "protection": 0.535275,
+        "offense": 0.417907,
+        "defense": 0.660606,
+        "speed": 0.601494,
+        "potency": 0.403327,
+        "tenacity": 0.486723,
+        "critChance": 0.390322
+      }
+    },
+    "MAUL": {
+      "sampleSize": 619,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.439628,
+        "protection": 0.447739,
+        "offense": 0.51471,
+        "defense": 0.450917,
+        "speed": 0.423054,
+        "potency": 0.522182,
+        "tenacity": 0.469395,
+        "critChance": 0.587857
+      }
+    },
+    "DARTHNIHILUS": {
+      "sampleSize": 673,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.592109,
+        "protection": 0.477525,
+        "offense": 0.403178,
+        "defense": 0.527316,
+        "speed": 0.515772,
+        "potency": 0.475307,
+        "tenacity": 0.496335,
+        "critChance": 0.489664
+      }
+    },
+    "DARTHREVAN": {
+      "sampleSize": 1080,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.525131,
+        "protection": 0.462793,
+        "offense": 0.715161,
+        "defense": 0.592942,
+        "speed": 0.665706,
+        "potency": 0.542409,
+        "tenacity": 0.516732,
+        "critChance": 0.587955
+      }
+    },
+    "DARTHSIDIOUS": {
+      "sampleSize": 496,
+      "loadoutId": "7-7-7",
+      "weights": {
+        "health": 0.496059,
+        "protection": 0.401067,
+        "offense": 0.423482,
+        "defense": 0.419374,
+        "speed": 0.497301,
+        "potency": 0.889707,
+        "tenacity": 0.444005,
+        "critChance": 0.413853
+      }
+    },
+    "DARTHSION": {
+      "sampleSize": 547,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.453678,
+        "protection": 0.581771,
+        "offense": 0.330302,
+        "defense": 0.558694,
+        "speed": 0.436615,
+        "potency": 0.372191,
+        "tenacity": 0.414211,
+        "critChance": 0.376404
+      }
+    },
+    "DARTHTALON": {
+      "sampleSize": 966,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.445202,
+        "protection": 0.468858,
+        "offense": 0.538431,
+        "defense": 0.433232,
+        "speed": 0.429476,
+        "potency": 0.420663,
+        "tenacity": 0.450746,
+        "critChance": 0.447333
+      }
+    },
+    "DARTHTRAYA": {
+      "sampleSize": 755,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.604363,
+        "protection": 0.512671,
+        "offense": 0.476911,
+        "defense": 0.535493,
+        "speed": 0.543069,
+        "potency": 0.470017,
+        "tenacity": 0.489428,
+        "critChance": 0.449063
+      }
+    },
+    "VADER": {
+      "sampleSize": 347,
+      "loadoutId": "2-7",
+      "weights": {
+        "health": 0.419545,
+        "protection": 0.402735,
+        "offense": 0.677623,
+        "defense": 0.42973,
+        "speed": 0.593479,
+        "potency": 0.888902,
+        "tenacity": 0.419135,
+        "critChance": 0.590589
+      }
+    },
+    "VADERDUELSEND": {
+      "sampleSize": 1187,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.562487,
+        "protection": 0.44338,
+        "offense": 0.755519,
+        "defense": 0.490429,
+        "speed": 0.57861,
+        "potency": 0.512343,
+        "tenacity": 0.461758,
+        "critChance": 0.561708
+      }
+    },
+    "DASHRENDAR": {
+      "sampleSize": 863,
+      "loadoutId": "4-5",
+      "weights": {
+        "health": 0.468689,
+        "protection": 0.443053,
+        "offense": 0.574803,
+        "defense": 0.531942,
+        "speed": 0.494551,
+        "potency": 0.52333,
+        "tenacity": 0.508365,
+        "critChance": 0.697807
+      }
+    },
+    "DATHCHA": {
+      "sampleSize": 525,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.32339,
+        "protection": 0.524324,
+        "offense": 0.264495,
+        "defense": 0.274809,
+        "speed": 0.300946,
+        "potency": 0.383891,
+        "tenacity": 0.393633,
+        "critChance": 0.46187
+      }
+    },
+    "DEATHTROOPER": {
+      "sampleSize": 763,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.39326,
+        "protection": 0.431467,
+        "offense": 0.482827,
+        "defense": 0.408626,
+        "speed": 0.406642,
+        "potency": 0.522481,
+        "tenacity": 0.44775,
+        "critChance": 0.518667
+      }
+    },
+    "DEATHTROOPERPERIDEA": {
+      "sampleSize": 1178,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.466308,
+        "protection": 0.437653,
+        "offense": 0.642935,
+        "defense": 0.499658,
+        "speed": 0.542347,
+        "potency": 0.523594,
+        "tenacity": 0.462222,
+        "critChance": 0.599926
+      }
+    },
+    "DEDRAMEERO": {
+      "sampleSize": 1300,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.556158,
+        "protection": 0.466983,
+        "offense": 0.467269,
+        "defense": 0.432586,
+        "speed": 0.490308,
+        "potency": 0.38658,
+        "tenacity": 0.484635,
+        "critChance": 0.475088
+      }
+    },
+    "DENGAR": {
+      "sampleSize": 606,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.457597,
+        "protection": 0.498113,
+        "offense": 0.489784,
+        "defense": 0.532236,
+        "speed": 0.439475,
+        "potency": 0.57341,
+        "tenacity": 0.514992,
+        "critChance": 0.657919
+      }
+    },
+    "DEPABILLABA": {
+      "sampleSize": 878,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.490445,
+        "protection": 0.471344,
+        "offense": 0.84424,
+        "defense": 0.458446,
+        "speed": 0.592747,
+        "potency": 0.449279,
+        "tenacity": 0.459842,
+        "critChance": 0.540459
+      }
+    },
+    "DIRECTORKRENNIC": {
+      "sampleSize": 620,
+      "loadoutId": "4-5",
+      "weights": {
+        "health": 0.374493,
+        "protection": 0.432014,
+        "offense": 0.363734,
+        "defense": 0.419561,
+        "speed": 0.354277,
+        "potency": 0.398201,
+        "tenacity": 0.434053,
+        "critChance": 0.616593
+      }
+    },
+    "DISGUISEDCLONETROOPER": {
+      "sampleSize": 872,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.476847,
+        "protection": 0.643615,
+        "offense": 0.710908,
+        "defense": 0.484786,
+        "speed": 0.602255,
+        "potency": 0.506241,
+        "tenacity": 0.462618,
+        "critChance": 0.457531
+      }
+    },
+    "DOCTORAPHRA": {
+      "sampleSize": 1124,
+      "loadoutId": "7-7-7",
+      "weights": {
+        "health": 0.460432,
+        "protection": 0.491631,
+        "offense": 0.49945,
+        "defense": 0.478066,
+        "speed": 0.614283,
+        "potency": 1,
+        "tenacity": 0.489219,
+        "critChance": 0.415105
+      }
+    },
+    "DROIDEKA": {
+      "sampleSize": 803,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.362235,
+        "protection": 0.420382,
+        "offense": 0.78264,
+        "defense": 0.382855,
+        "speed": 0.237554,
+        "potency": 0.367495,
+        "tenacity": 0.465027,
+        "critChance": 0.501615
+      }
+    },
+    "BADBATCHECHO": {
+      "sampleSize": 1017,
+      "loadoutId": "4-7",
+      "weights": {
+        "health": 0.463409,
+        "protection": 0.487404,
+        "offense": 0.407092,
+        "defense": 0.528855,
+        "speed": 0.545578,
+        "potency": 0.696991,
+        "tenacity": 0.533441,
+        "critChance": 0.467661
+      }
+    },
+    "EETHKOTH": {
+      "sampleSize": 855,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.337588,
+        "protection": 0.529764,
+        "offense": 0.269137,
+        "defense": 0.284926,
+        "speed": 0.310114,
+        "potency": 0.423579,
+        "tenacity": 0.422524,
+        "critChance": 0.419929
+      }
+    },
+    "EIGHTHBROTHER": {
+      "sampleSize": 809,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.482152,
+        "protection": 0.518706,
+        "offense": 0.548348,
+        "defense": 0.46472,
+        "speed": 0.504338,
+        "potency": 0.522946,
+        "tenacity": 0.473396,
+        "critChance": 0.521487
+      }
+    },
+    "EMBO": {
+      "sampleSize": 999,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.426375,
+        "protection": 0.668849,
+        "offense": 0.468809,
+        "defense": 0.464611,
+        "speed": 0.497303,
+        "potency": 0.399755,
+        "tenacity": 0.474276,
+        "critChance": 0.560968
+      }
+    },
+    "EMPERORPALPATINE": {
+      "sampleSize": 956,
+      "loadoutId": "4-7",
+      "weights": {
+        "health": 0.450617,
+        "protection": 0.588067,
+        "offense": 0.48665,
+        "defense": 0.511498,
+        "speed": 0.538844,
+        "potency": 0.922742,
+        "tenacity": 0.452193,
+        "critChance": 0.463325
+      }
+    },
+    "ENFYSNEST": {
+      "sampleSize": 712,
+      "loadoutId": "8-8-8",
+      "weights": {
+        "health": 0.479333,
+        "protection": 0.366239,
+        "offense": 0.450476,
+        "defense": 0.43554,
+        "speed": 0.396385,
+        "potency": 0.450301,
+        "tenacity": 1,
+        "critChance": 0.386678
+      }
+    },
+    "EWOKELDER": {
+      "sampleSize": 682,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.368671,
+        "protection": 0.407147,
+        "offense": 0.296985,
+        "defense": 0.389402,
+        "speed": 0.28201,
+        "potency": 0.318013,
+        "tenacity": 0.478366,
+        "critChance": 0.534677
+      }
+    },
+    "EWOKSCOUT": {
+      "sampleSize": 437,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.3658,
+        "protection": 0.401527,
+        "offense": 0.364192,
+        "defense": 0.393443,
+        "speed": 0.245493,
+        "potency": 0.350568,
+        "tenacity": 0.432621,
+        "critChance": 0.527967
+      }
+    },
+    "EZRABRIDGERS3": {
+      "sampleSize": 478,
+      "loadoutId": "2-5",
+      "weights": {
+        "health": 0.468713,
+        "protection": 0.480266,
+        "offense": 0.469873,
+        "defense": 0.441722,
+        "speed": 0.381213,
+        "potency": 0.463339,
+        "tenacity": 0.473302,
+        "critChance": 0.544346
+      }
+    },
+    "EZRAEXILE": {
+      "sampleSize": 1317,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.807793,
+        "protection": 0.486827,
+        "offense": 0.546582,
+        "defense": 0.616687,
+        "speed": 0.6772,
+        "potency": 0.495894,
+        "tenacity": 0.494732,
+        "critChance": 0.503608
+      }
+    },
+    "FENNECSHAND": {
+      "sampleSize": 835,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.398943,
+        "protection": 0.455979,
+        "offense": 0.756034,
+        "defense": 0.467643,
+        "speed": 0.502938,
+        "potency": 0.417751,
+        "tenacity": 0.427879,
+        "critChance": 0.497985
+      }
+    },
+    "FIFTHBROTHER": {
+      "sampleSize": 1125,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.472575,
+        "protection": 0.6059,
+        "offense": 0.48677,
+        "defense": 0.558151,
+        "speed": 0.537492,
+        "potency": 0.509873,
+        "tenacity": 0.551058,
+        "critChance": 0.48709
+      }
+    },
+    "FINN": {
+      "sampleSize": 365,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.422126,
+        "protection": 0.64741,
+        "offense": 0.295172,
+        "defense": 0.473974,
+        "speed": 0.432472,
+        "potency": 0.384436,
+        "tenacity": 0.479986,
+        "critChance": 0.373423
+      }
+    },
+    "FIRSTORDEREXECUTIONER": {
+      "sampleSize": 406,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.516918,
+        "protection": 0.20793,
+        "offense": 0.396268,
+        "defense": 0.186021,
+        "speed": 0.350891,
+        "potency": 0.257432,
+        "tenacity": 0.323085,
+        "critChance": 0.741844
+      }
+    },
+    "FIRSTORDEROFFICERMALE": {
+      "sampleSize": 778,
+      "loadoutId": "4-7",
+      "weights": {
+        "health": 0.417328,
+        "protection": 0.471317,
+        "offense": 0.391215,
+        "defense": 0.496377,
+        "speed": 0.451004,
+        "potency": 0.652337,
+        "tenacity": 0.464325,
+        "critChance": 0.508963
+      }
+    },
+    "FIRSTORDERSPECIALFORCESPILOT": {
+      "sampleSize": 792,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.396089,
+        "protection": 0.440711,
+        "offense": 0.421286,
+        "defense": 0.404112,
+        "speed": 0.340531,
+        "potency": 0.423056,
+        "tenacity": 0.43995,
+        "critChance": 0.575247
+      }
+    },
+    "FIRSTORDERTROOPER": {
+      "sampleSize": 445,
+      "loadoutId": "3-3-3",
+      "weights": {
+        "health": 0.45786,
+        "protection": 0.618641,
+        "offense": 0.320396,
+        "defense": 0.610669,
+        "speed": 0.319171,
+        "potency": 0.436266,
+        "tenacity": 0.440789,
+        "critChance": 0.399016
+      }
+    },
+    "FIRSTORDERTIEPILOT": {
+      "sampleSize": 842,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.378771,
+        "protection": 0.444121,
+        "offense": 0.374351,
+        "defense": 0.377442,
+        "speed": 0.323299,
+        "potency": 0.370237,
+        "tenacity": 0.476093,
+        "critChance": 0.56085
+      }
+    },
+    "GAMORREANGUARD": {
+      "sampleSize": 682,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.442708,
+        "protection": 0.531738,
+        "offense": 0.247783,
+        "defense": 0.468828,
+        "speed": 0.379107,
+        "potency": 0.364144,
+        "tenacity": 0.41413,
+        "critChance": 0.35521
+      }
+    },
+    "GARSAXON": {
+      "sampleSize": 430,
+      "loadoutId": "8-8-8",
+      "weights": {
+        "health": 0.358959,
+        "protection": 0.406783,
+        "offense": 0.458691,
+        "defense": 0.44621,
+        "speed": 0.434395,
+        "potency": 0.368807,
+        "tenacity": 0.916161,
+        "critChance": 0.42106
+      }
+    },
+    "ZEBS3": {
+      "sampleSize": 515,
+      "loadoutId": "1-6",
+      "weights": {
+        "health": 0.368832,
+        "protection": 0.466217,
+        "offense": 0.329375,
+        "defense": 0.421435,
+        "speed": 0.324753,
+        "potency": 0.479679,
+        "tenacity": 0.435259,
+        "critChance": 0.527699
+      }
+    },
+    "GRIEVOUS": {
+      "sampleSize": 1475,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.937304,
+        "protection": 0.369581,
+        "offense": 0.366083,
+        "defense": 0.412924,
+        "speed": 0.475307,
+        "potency": 0.613822,
+        "tenacity": 0.419943,
+        "critChance": 0.505304
+      }
+    },
+    "GENERALHUX": {
+      "sampleSize": 949,
+      "loadoutId": "4-8",
+      "weights": {
+        "health": 0.537185,
+        "protection": 0.53763,
+        "offense": 0.442768,
+        "defense": 0.561057,
+        "speed": 0.581739,
+        "potency": 0.406745,
+        "tenacity": 0.871471,
+        "critChance": 0.485447
+      }
+    },
+    "GENERALKENOBI": {
+      "sampleSize": 850,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.82561,
+        "protection": 0.64398,
+        "offense": 0.351978,
+        "defense": 0.702951,
+        "speed": 0.45479,
+        "potency": 0.350126,
+        "tenacity": 0.53677,
+        "critChance": 0.353808
+      }
+    },
+    "GENERALSKYWALKER": {
+      "sampleSize": 606,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.390029,
+        "protection": 0.834358,
+        "offense": 0.731842,
+        "defense": 0.523427,
+        "speed": 0.625694,
+        "potency": 0.450439,
+        "tenacity": 0.436415,
+        "critChance": 0.452238
+      }
+    },
+    "GENERALSYNDULLA": {
+      "sampleSize": 1246,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.548874,
+        "protection": 0.493949,
+        "offense": 0.478821,
+        "defense": 0.58982,
+        "speed": 0.579069,
+        "potency": 0.624049,
+        "tenacity": 0.531261,
+        "critChance": 0.504714
+      }
+    },
+    "VEERS": {
+      "sampleSize": 396,
+      "loadoutId": "4-5",
+      "weights": {
+        "health": 0.394311,
+        "protection": 0.461117,
+        "offense": 0.414789,
+        "defense": 0.44749,
+        "speed": 0.369448,
+        "potency": 0.40168,
+        "tenacity": 0.429309,
+        "critChance": 0.652469
+      }
+    },
+    "GEONOSIANBROODALPHA": {
+      "sampleSize": 710,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.49437,
+        "protection": 0.632748,
+        "offense": 0.358759,
+        "defense": 0.431885,
+        "speed": 0.467676,
+        "potency": 0.351294,
+        "tenacity": 0.547295,
+        "critChance": 0.419043
+      }
+    },
+    "GEONOSIANSOLDIER": {
+      "sampleSize": 763,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.420517,
+        "protection": 0.434069,
+        "offense": 0.41094,
+        "defense": 0.429188,
+        "speed": 0.345478,
+        "potency": 0.381308,
+        "tenacity": 0.417611,
+        "critChance": 0.731229
+      }
+    },
+    "GEONOSIANSPY": {
+      "sampleSize": 1092,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.395896,
+        "protection": 0.415548,
+        "offense": 0.578085,
+        "defense": 0.415335,
+        "speed": 0.395288,
+        "potency": 0.396667,
+        "tenacity": 0.426334,
+        "critChance": 0.666551
+      }
+    },
+    "GRANDADMIRALTHRAWN": {
+      "sampleSize": 945,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.487943,
+        "protection": 0.616228,
+        "offense": 0.414968,
+        "defense": 0.566766,
+        "speed": 0.571458,
+        "potency": 0.429818,
+        "tenacity": 0.590098,
+        "critChance": 0.483928
+      }
+    },
+    "GRANDINQUISITOR": {
+      "sampleSize": 733,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.457141,
+        "protection": 0.518915,
+        "offense": 0.765413,
+        "defense": 0.528959,
+        "speed": 0.624582,
+        "potency": 0.546392,
+        "tenacity": 0.491645,
+        "critChance": 0.52889
+      }
+    },
+    "GRANDMASTERYODA": {
+      "sampleSize": 505,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.618614,
+        "protection": 0.412937,
+        "offense": 0.607622,
+        "defense": 0.471536,
+        "speed": 0.544638,
+        "potency": 0.451694,
+        "tenacity": 0.460359,
+        "critChance": 0.560775
+      }
+    },
+    "GRANDMOFFTARKIN": {
+      "sampleSize": 703,
+      "loadoutId": "4-7",
+      "weights": {
+        "health": 0.458591,
+        "protection": 0.482002,
+        "offense": 0.629959,
+        "defense": 0.492306,
+        "speed": 0.573819,
+        "potency": 1,
+        "tenacity": 0.47749,
+        "critChance": 0.496381
+      }
+    },
+    "GREATMOTHERS": {
+      "sampleSize": 1584,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.657398,
+        "protection": 0.566287,
+        "offense": 0.483247,
+        "defense": 0.566667,
+        "speed": 0.632999,
+        "potency": 0.499111,
+        "tenacity": 0.560394,
+        "critChance": 0.462682
+      }
+    },
+    "GREEDO": {
+      "sampleSize": 792,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.381265,
+        "protection": 0.409118,
+        "offense": 0.426369,
+        "defense": 0.377651,
+        "speed": 0.383419,
+        "potency": 0.488666,
+        "tenacity": 0.388737,
+        "critChance": 0.704385
+      }
+    },
+    "GREEFKARGA": {
+      "sampleSize": 1310,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.471028,
+        "protection": 0.497781,
+        "offense": 0.391541,
+        "defense": 0.530554,
+        "speed": 0.502147,
+        "potency": 0.408167,
+        "tenacity": 0.510947,
+        "critChance": 0.524285
+      }
+    },
+    "GOPHERANTS": {
+      "sampleSize": 493,
+      "loadoutId": "4-8",
+      "weights": {
+        "health": 0.549941,
+        "protection": 0.452353,
+        "offense": 0.306413,
+        "defense": 0.503932,
+        "speed": 0.545113,
+        "potency": 0.406987,
+        "tenacity": 0.801461,
+        "critChance": 0.396071
+      }
+    },
+    "BOOMADIER": {
+      "sampleSize": 603,
+      "loadoutId": "2-5",
+      "weights": {
+        "health": 0.398895,
+        "protection": 0.524107,
+        "offense": 0.623841,
+        "defense": 0.446131,
+        "speed": 0.502661,
+        "potency": 0.47181,
+        "tenacity": 0.460989,
+        "critChance": 0.607422
+      }
+    },
+    "GUNGANPHALANX": {
+      "sampleSize": 822,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.452546,
+        "protection": 0.792928,
+        "offense": 0.294592,
+        "defense": 0.486553,
+        "speed": 0.503829,
+        "potency": 0.44032,
+        "tenacity": 0.458609,
+        "critChance": 0.374179
+      }
+    },
+    "HANSOLO": {
+      "sampleSize": 969,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.477905,
+        "protection": 0.495278,
+        "offense": 0.714222,
+        "defense": 0.488141,
+        "speed": 0.575571,
+        "potency": 0.50507,
+        "tenacity": 0.487016,
+        "critChance": 0.621341
+      }
+    },
+    "HERASYNDULLAS3": {
+      "sampleSize": 818,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.431614,
+        "protection": 0.520816,
+        "offense": 0.388451,
+        "defense": 0.500956,
+        "speed": 0.461126,
+        "potency": 0.405663,
+        "tenacity": 0.499369,
+        "critChance": 0.457248
+      }
+    },
+    "HERMITYODA": {
+      "sampleSize": 1384,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.566773,
+        "protection": 0.59228,
+        "offense": 0.28748,
+        "defense": 0.641246,
+        "speed": 0.544842,
+        "potency": 0.409599,
+        "tenacity": 0.599554,
+        "critChance": 0.392831
+      }
+    },
+    "HK47": {
+      "sampleSize": 788,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.377436,
+        "protection": 0.45792,
+        "offense": 0.471818,
+        "defense": 0.418475,
+        "speed": 0.363974,
+        "potency": 0.421904,
+        "tenacity": 0.445793,
+        "critChance": 0.535794
+      }
+    },
+    "HONDO": {
+      "sampleSize": 1172,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.526671,
+        "protection": 0.509807,
+        "offense": 0.630866,
+        "defense": 0.556033,
+        "speed": 0.572095,
+        "potency": 0.499235,
+        "tenacity": 0.587022,
+        "critChance": 0.546734
+      }
+    },
+    "HOTHREBELSCOUT": {
+      "sampleSize": 435,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.375611,
+        "protection": 0.439997,
+        "offense": 0.350513,
+        "defense": 0.384377,
+        "speed": 0.337099,
+        "potency": 0.384681,
+        "tenacity": 0.454981,
+        "critChance": 0.568234
+      }
+    },
+    "HOTHREBELSOLDIER": {
+      "sampleSize": 789,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.308463,
+        "protection": 0.574903,
+        "offense": 0.258387,
+        "defense": 0.30374,
+        "speed": 0.257062,
+        "potency": 0.330931,
+        "tenacity": 0.405494,
+        "critChance": 0.404008
+      }
+    },
+    "BADBATCHHUNTER": {
+      "sampleSize": 824,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.419346,
+        "protection": 0.448576,
+        "offense": 0.493351,
+        "defense": 0.425008,
+        "speed": 0.438718,
+        "potency": 0.493097,
+        "tenacity": 0.480614,
+        "critChance": 0.486652
+      }
+    },
+    "HUNTERS3": {
+      "sampleSize": 1012,
+      "loadoutId": "4-7",
+      "weights": {
+        "health": 0.469363,
+        "protection": 0.517252,
+        "offense": 0.458844,
+        "defense": 0.440459,
+        "speed": 0.483802,
+        "potency": 0.657557,
+        "tenacity": 0.473516,
+        "critChance": 0.487334
+      }
+    },
+    "HUYANG": {
+      "sampleSize": 1122,
+      "loadoutId": "2-5",
+      "weights": {
+        "health": 0.552919,
+        "protection": 0.491003,
+        "offense": 0.67981,
+        "defense": 0.501682,
+        "speed": 0.556427,
+        "potency": 0.497681,
+        "tenacity": 0.46701,
+        "critChance": 0.578024
+      }
+    },
+    "IDENVERSIOEMPIRE": {
+      "sampleSize": 624,
+      "loadoutId": "6-7",
+      "weights": {
+        "health": 0.422705,
+        "protection": 0.461535,
+        "offense": 0.487313,
+        "defense": 0.470763,
+        "speed": 0.472355,
+        "potency": 0.710754,
+        "tenacity": 0.4605,
+        "critChance": 0.499519
+      }
+    },
+    "MAGNAGUARD": {
+      "sampleSize": 456,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.398461,
+        "protection": 0.684673,
+        "offense": 0.246608,
+        "defense": 0.456621,
+        "speed": 0.332106,
+        "potency": 0.338806,
+        "tenacity": 0.449425,
+        "critChance": 0.342777
+      }
+    },
+    "IG11": {
+      "sampleSize": 904,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.616254,
+        "protection": 0.426144,
+        "offense": 0.240964,
+        "defense": 0.483636,
+        "speed": 0.401243,
+        "potency": 0.38879,
+        "tenacity": 0.402231,
+        "critChance": 0.376967
+      }
+    },
+    "IG12": {
+      "sampleSize": 1258,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.719765,
+        "protection": 0.54002,
+        "offense": 0.341104,
+        "defense": 0.584277,
+        "speed": 0.56775,
+        "potency": 0.608798,
+        "tenacity": 0.582653,
+        "critChance": 0.433116
+      }
+    },
+    "IG86SENTINELDROID": {
+      "sampleSize": 419,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.346122,
+        "protection": 0.440841,
+        "offense": 0.347779,
+        "defense": 0.308437,
+        "speed": 0.284216,
+        "potency": 0.404449,
+        "tenacity": 0.417753,
+        "critChance": 0.558842
+      }
+    },
+    "IG88": {
+      "sampleSize": 718,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.419021,
+        "protection": 0.467338,
+        "offense": 0.454772,
+        "defense": 0.480793,
+        "speed": 0.379662,
+        "potency": 0.554135,
+        "tenacity": 0.500875,
+        "critChance": 0.591261
+      }
+    },
+    "IG90": {
+      "sampleSize": 694,
+      "loadoutId": "4-8",
+      "weights": {
+        "health": 0.466003,
+        "protection": 0.588793,
+        "offense": 0.429226,
+        "defense": 0.486132,
+        "speed": 0.560695,
+        "potency": 0.44871,
+        "tenacity": 0.797548,
+        "critChance": 0.490671
+      }
+    },
+    "IMAGUNDI": {
+      "sampleSize": 827,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.31475,
+        "protection": 0.548027,
+        "offense": 0.279223,
+        "defense": 0.301198,
+        "speed": 0.304696,
+        "potency": 0.313059,
+        "tenacity": 0.399843,
+        "critChance": 0.414716
+      }
+    },
+    "IMPERIALPROBEDROID": {
+      "sampleSize": 821,
+      "loadoutId": "4-7",
+      "weights": {
+        "health": 0.402855,
+        "protection": 0.424933,
+        "offense": 0.349486,
+        "defense": 0.410214,
+        "speed": 0.413554,
+        "potency": 0.724776,
+        "tenacity": 0.418521,
+        "critChance": 0.453236
+      }
+    },
+    "IMPERIALSUPERCOMMANDO": {
+      "sampleSize": 386,
+      "loadoutId": "8-8-8",
+      "weights": {
+        "health": 0.363704,
+        "protection": 0.408015,
+        "offense": 0.51173,
+        "defense": 0.398287,
+        "speed": 0.417008,
+        "potency": 0.363435,
+        "tenacity": 0.957011,
+        "critChance": 0.393451
+      }
+    },
+    "INQUISITORBARRISS": {
+      "sampleSize": 1038,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.656513,
+        "protection": 0.48371,
+        "offense": 0.472566,
+        "defense": 0.521298,
+        "speed": 0.517054,
+        "potency": 0.470595,
+        "tenacity": 0.50078,
+        "critChance": 0.449652
+      }
+    },
+    "JABBATHEHUTT": {
+      "sampleSize": 1641,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.817,
+        "protection": 0.54054,
+        "offense": 0.406999,
+        "defense": 0.599989,
+        "speed": 0.671516,
+        "potency": 0.58543,
+        "tenacity": 0.793154,
+        "critChance": 0.408934
+      }
+    },
+    "JANGOFETT": {
+      "sampleSize": 785,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.454268,
+        "protection": 0.462582,
+        "offense": 0.555692,
+        "defense": 0.460486,
+        "speed": 0.473834,
+        "potency": 0.490573,
+        "tenacity": 0.445801,
+        "critChance": 0.564416
+      }
+    },
+    "JARJARBINKS": {
+      "sampleSize": 1155,
+      "loadoutId": "4-7",
+      "weights": {
+        "health": 0.440803,
+        "protection": 0.62978,
+        "offense": 0.460297,
+        "defense": 0.485766,
+        "speed": 0.5866,
+        "potency": 0.866982,
+        "tenacity": 0.453375,
+        "critChance": 0.467075
+      }
+    },
+    "JAWA": {
+      "sampleSize": 472,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.312267,
+        "protection": 0.503578,
+        "offense": 0.302415,
+        "defense": 0.30281,
+        "speed": 0.313577,
+        "potency": 0.361891,
+        "tenacity": 0.368874,
+        "critChance": 0.471379
+      }
+    },
+    "JAWAENGINEER": {
+      "sampleSize": 438,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.411837,
+        "protection": 0.417955,
+        "offense": 0.253017,
+        "defense": 0.439222,
+        "speed": 0.377974,
+        "potency": 0.414013,
+        "tenacity": 0.435839,
+        "critChance": 0.36579
+      }
+    },
+    "JAWASCAVENGER": {
+      "sampleSize": 478,
+      "loadoutId": "4-7",
+      "weights": {
+        "health": 0.411614,
+        "protection": 0.481825,
+        "offense": 0.364233,
+        "defense": 0.421326,
+        "speed": 0.38779,
+        "potency": 0.706918,
+        "tenacity": 0.427727,
+        "critChance": 0.450092
+      }
+    },
+    "JAXXON": {
+      "sampleSize": 131,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.523619,
+        "protection": 0.477348,
+        "offense": 0.36757,
+        "defense": 0.356842,
+        "speed": 0.424264,
+        "potency": 0.301898,
+        "tenacity": 0.390247,
+        "critChance": 0.544613
+      }
+    },
+    "JEDIKNIGHTCONSULAR": {
+      "sampleSize": 761,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.486963,
+        "protection": 0.37234,
+        "offense": 0.265761,
+        "defense": 0.37323,
+        "speed": 0.329597,
+        "potency": 0.34804,
+        "tenacity": 0.430816,
+        "critChance": 0.447912
+      }
+    },
+    "ANAKINKNIGHT": {
+      "sampleSize": 620,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.459404,
+        "protection": 0.393274,
+        "offense": 0.711032,
+        "defense": 0.429593,
+        "speed": 0.549452,
+        "potency": 0.525802,
+        "tenacity": 0.451338,
+        "critChance": 0.685512
+      }
+    },
+    "JEDIKNIGHTCAL": {
+      "sampleSize": 676,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.693359,
+        "protection": 0.464781,
+        "offense": 0.74407,
+        "defense": 0.513364,
+        "speed": 0.64177,
+        "potency": 0.520342,
+        "tenacity": 0.485144,
+        "critChance": 0.497321
+      }
+    },
+    "JEDIKNIGHTGUARDIAN": {
+      "sampleSize": 612,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.439044,
+        "protection": 0.431664,
+        "offense": 0.258656,
+        "defense": 0.466586,
+        "speed": 0.319033,
+        "potency": 0.348064,
+        "tenacity": 0.400703,
+        "critChance": 0.453956
+      }
+    },
+    "JEDIKNIGHTLUKE": {
+      "sampleSize": 956,
+      "loadoutId": "2-5",
+      "weights": {
+        "health": 0.473897,
+        "protection": 0.514312,
+        "offense": 0.883959,
+        "defense": 0.511317,
+        "speed": 0.512445,
+        "potency": 0.509699,
+        "tenacity": 0.487215,
+        "critChance": 0.648655
+      }
+    },
+    "JEDIKNIGHTREVAN": {
+      "sampleSize": 1201,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.651078,
+        "protection": 0.539523,
+        "offense": 0.583896,
+        "defense": 0.537363,
+        "speed": 0.663902,
+        "potency": 0.458609,
+        "tenacity": 0.490755,
+        "critChance": 0.543414
+      }
+    },
+    "JEDIMASTERKENOBI": {
+      "sampleSize": 1560,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.657527,
+        "protection": 0.470576,
+        "offense": 0.809958,
+        "defense": 0.520193,
+        "speed": 0.676547,
+        "potency": 0.412192,
+        "tenacity": 0.48866,
+        "critChance": 0.488211
+      }
+    },
+    "GRANDMASTERLUKE": {
+      "sampleSize": 1146,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.5219,
+        "protection": 0.934878,
+        "offense": 0.429843,
+        "defense": 0.543914,
+        "speed": 0.67503,
+        "potency": 0.565685,
+        "tenacity": 0.406377,
+        "critChance": 0.346962
+      }
+    },
+    "JEDIMASTERMACEWINDU": {
+      "sampleSize": 1000,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.557518,
+        "protection": 0.436605,
+        "offense": 0.864797,
+        "defense": 0.479901,
+        "speed": 0.642898,
+        "potency": 0.485107,
+        "tenacity": 0.466749,
+        "critChance": 0.49763
+      }
+    },
+    "JOCASTANU": {
+      "sampleSize": 792,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.455404,
+        "protection": 0.723989,
+        "offense": 0.684649,
+        "defense": 0.479941,
+        "speed": 0.601102,
+        "potency": 0.452796,
+        "tenacity": 0.486203,
+        "critChance": 0.51099
+      }
+    },
+    "JOLEEBINDO": {
+      "sampleSize": 1136,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.687518,
+        "protection": 0.482848,
+        "offense": 0.313082,
+        "defense": 0.526925,
+        "speed": 0.509361,
+        "potency": 0.360416,
+        "tenacity": 0.697497,
+        "critChance": 0.438626
+      }
+    },
+    "JUHANI": {
+      "sampleSize": 684,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.446951,
+        "protection": 0.692772,
+        "offense": 0.331638,
+        "defense": 0.550571,
+        "speed": 0.461582,
+        "potency": 0.398859,
+        "tenacity": 0.457504,
+        "critChance": 0.394984
+      }
+    },
+    "JYNERSO": {
+      "sampleSize": 586,
+      "loadoutId": "4-5",
+      "weights": {
+        "health": 0.373022,
+        "protection": 0.394761,
+        "offense": 0.465665,
+        "defense": 0.441758,
+        "speed": 0.547836,
+        "potency": 0.590711,
+        "tenacity": 0.506774,
+        "critChance": 0.905842
+      }
+    },
+    "K2SO": {
+      "sampleSize": 572,
+      "loadoutId": "8-8-8",
+      "weights": {
+        "health": 0.429071,
+        "protection": 0.643766,
+        "offense": 0.296661,
+        "defense": 0.451603,
+        "speed": 0.343538,
+        "potency": 0.374092,
+        "tenacity": 0.634632,
+        "critChance": 0.398734
+      }
+    },
+    "KANANJARRUSS3": {
+      "sampleSize": 671,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.482402,
+        "protection": 0.551806,
+        "offense": 0.228496,
+        "defense": 0.489396,
+        "speed": 0.388553,
+        "potency": 0.286535,
+        "tenacity": 0.487635,
+        "critChance": 0.451968
+      }
+    },
+    "KELLERANBEQ": {
+      "sampleSize": 1029,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.498647,
+        "protection": 0.910469,
+        "offense": 0.46288,
+        "defense": 0.480038,
+        "speed": 0.592509,
+        "potency": 0.394823,
+        "tenacity": 0.355489,
+        "critChance": 0.404709
+      }
+    },
+    "KIADIMUNDI": {
+      "sampleSize": 698,
+      "loadoutId": "2-5",
+      "weights": {
+        "health": 0.442405,
+        "protection": 0.439436,
+        "offense": 0.636821,
+        "defense": 0.441088,
+        "speed": 0.51134,
+        "potency": 0.399601,
+        "tenacity": 0.47296,
+        "critChance": 0.722012
+      }
+    },
+    "KITFISTO": {
+      "sampleSize": 620,
+      "loadoutId": "1-6",
+      "weights": {
+        "health": 0.423809,
+        "protection": 0.424576,
+        "offense": 0.4226,
+        "defense": 0.417702,
+        "speed": 0.417348,
+        "potency": 0.405797,
+        "tenacity": 0.476835,
+        "critChance": 0.55996
+      }
+    },
+    "KIX": {
+      "sampleSize": 1301,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.614046,
+        "protection": 0.52028,
+        "offense": 0.412975,
+        "defense": 0.537035,
+        "speed": 0.523608,
+        "potency": 0.421595,
+        "tenacity": 0.606288,
+        "critChance": 0.472877
+      }
+    },
+    "KLEYA": {
+      "sampleSize": 687,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.505783,
+        "protection": 0.417979,
+        "offense": 0.68291,
+        "defense": 0.458144,
+        "speed": 0.581981,
+        "potency": 0.500287,
+        "tenacity": 0.464709,
+        "critChance": 0.479337
+      }
+    },
+    "KRRSANTAN": {
+      "sampleSize": 502,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.720104,
+        "protection": 0.693681,
+        "offense": 0.289731,
+        "defense": 0.685343,
+        "speed": 0.538229,
+        "potency": 0.376044,
+        "tenacity": 0.571251,
+        "critChance": 0.352985
+      }
+    },
+    "KUIIL": {
+      "sampleSize": 578,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.410437,
+        "protection": 0.458949,
+        "offense": 0.316257,
+        "defense": 0.432677,
+        "speed": 0.434939,
+        "potency": 0.444382,
+        "tenacity": 0.418573,
+        "critChance": 0.430169
+      }
+    },
+    "KXSECURITYDROID": {
+      "sampleSize": 474,
+      "loadoutId": "1-1-3",
+      "weights": {
+        "health": 0.625766,
+        "protection": 0.539427,
+        "offense": 0.390426,
+        "defense": 0.580517,
+        "speed": 0.524905,
+        "potency": 0.31786,
+        "tenacity": 0.458994,
+        "critChance": 0.352583
+      }
+    },
+    "KYLEKATARN": {
+      "sampleSize": 532,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.40855,
+        "protection": 0.459397,
+        "offense": 0.608007,
+        "defense": 0.428292,
+        "speed": 0.510562,
+        "potency": 0.477832,
+        "tenacity": 0.516562,
+        "critChance": 0.543494
+      }
+    },
+    "KYLOREN": {
+      "sampleSize": 456,
+      "loadoutId": "2-8",
+      "weights": {
+        "health": 0.413705,
+        "protection": 0.505828,
+        "offense": 0.391867,
+        "defense": 0.480006,
+        "speed": 0.355615,
+        "potency": 0.454829,
+        "tenacity": 0.528523,
+        "critChance": 0.543434
+      }
+    },
+    "KYLORENUNMASKED": {
+      "sampleSize": 593,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.840909,
+        "protection": 0.619834,
+        "offense": 0.323694,
+        "defense": 0.675096,
+        "speed": 0.472932,
+        "potency": 0.390327,
+        "tenacity": 0.501997,
+        "critChance": 0.34623
+      }
+    },
+    "L3_37": {
+      "sampleSize": 1083,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.475484,
+        "protection": 0.648154,
+        "offense": 0.253857,
+        "defense": 0.483518,
+        "speed": 0.340333,
+        "potency": 0.33954,
+        "tenacity": 0.428658,
+        "critChance": 0.335225
+      }
+    },
+    "ADMINISTRATORLANDO": {
+      "sampleSize": 823,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.368883,
+        "protection": 0.406268,
+        "offense": 0.343182,
+        "defense": 0.355174,
+        "speed": 0.320789,
+        "potency": 0.351226,
+        "tenacity": 0.403613,
+        "critChance": 0.676004
+      }
+    },
+    "LEIAJEDITRAINING": {
+      "sampleSize": 658,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.437279,
+        "protection": 0.720744,
+        "offense": 0.773231,
+        "defense": 0.456824,
+        "speed": 0.643732,
+        "potency": 0.391456,
+        "tenacity": 0.413948,
+        "critChance": 0.442323
+      }
+    },
+    "GLLEIA": {
+      "sampleSize": 1619,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.853712,
+        "protection": 0.534774,
+        "offense": 0.535086,
+        "defense": 0.638113,
+        "speed": 0.674482,
+        "potency": 0.462982,
+        "tenacity": 0.496962,
+        "critChance": 0.405149
+      }
+    },
+    "LOBOT": {
+      "sampleSize": 941,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.439438,
+        "protection": 0.484708,
+        "offense": 0.401129,
+        "defense": 0.502701,
+        "speed": 0.467274,
+        "potency": 0.419036,
+        "tenacity": 0.515785,
+        "critChance": 0.449138
+      }
+    },
+    "LOGRAY": {
+      "sampleSize": 296,
+      "loadoutId": "4-7",
+      "weights": {
+        "health": 0.324834,
+        "protection": 0.428018,
+        "offense": 0.273551,
+        "defense": 0.352509,
+        "speed": 0.341898,
+        "potency": 0.62339,
+        "tenacity": 0.456065,
+        "critChance": 0.416158
+      }
+    },
+    "LORDVADER": {
+      "sampleSize": 1487,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.53097,
+        "protection": 0.825414,
+        "offense": 0.679065,
+        "defense": 0.463907,
+        "speed": 0.676566,
+        "potency": 0.428677,
+        "tenacity": 0.416035,
+        "critChance": 0.404336
+      }
+    },
+    "LUKESKYWALKER": {
+      "sampleSize": 392,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.375547,
+        "protection": 0.402237,
+        "offense": 0.367911,
+        "defense": 0.328874,
+        "speed": 0.212303,
+        "potency": 0.40128,
+        "tenacity": 0.448007,
+        "critChance": 0.509862
+      }
+    },
+    "LUMINARAUNDULI": {
+      "sampleSize": 972,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.632939,
+        "protection": 0.40983,
+        "offense": 0.305058,
+        "defense": 0.389288,
+        "speed": 0.428918,
+        "potency": 0.406551,
+        "tenacity": 0.442425,
+        "critChance": 0.432092
+      }
+    },
+    "LUTHENRAEL": {
+      "sampleSize": 1253,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.519399,
+        "protection": 0.503639,
+        "offense": 0.484325,
+        "defense": 0.509171,
+        "speed": 0.572499,
+        "potency": 0.625404,
+        "tenacity": 0.541279,
+        "critChance": 0.595689
+      }
+    },
+    "MACEWINDU": {
+      "sampleSize": 1182,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.63283,
+        "protection": 0.471897,
+        "offense": 0.415503,
+        "defense": 0.542817,
+        "speed": 0.507932,
+        "potency": 0.565162,
+        "tenacity": 0.495013,
+        "critChance": 0.505228
+      }
+    },
+    "MAGMATROOPER": {
+      "sampleSize": 528,
+      "loadoutId": "2-8",
+      "weights": {
+        "health": 0.36489,
+        "protection": 0.404705,
+        "offense": 0.353661,
+        "defense": 0.375843,
+        "speed": 0.343622,
+        "potency": 0.480486,
+        "tenacity": 0.506124,
+        "critChance": 0.518813
+      }
+    },
+    "MAJORPARTAGAZ": {
+      "sampleSize": 803,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.514805,
+        "protection": 0.460431,
+        "offense": 0.340364,
+        "defense": 0.4271,
+        "speed": 0.500963,
+        "potency": 0.539794,
+        "tenacity": 0.523167,
+        "critChance": 0.439434
+      }
+    },
+    "MARAJADESKYWALKER": {
+      "sampleSize": 121,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.521284,
+        "protection": 0.411869,
+        "offense": 0.667785,
+        "defense": 0.476151,
+        "speed": 0.5633,
+        "potency": 0.440839,
+        "tenacity": 0.380515,
+        "critChance": 0.429495
+      }
+    },
+    "MARAJADE": {
+      "sampleSize": 1075,
+      "loadoutId": "4-7",
+      "weights": {
+        "health": 0.41435,
+        "protection": 0.509023,
+        "offense": 0.537924,
+        "defense": 0.458072,
+        "speed": 0.640961,
+        "potency": 0.983162,
+        "tenacity": 0.471263,
+        "critChance": 0.534315
+      }
+    },
+    "MARROK": {
+      "sampleSize": 657,
+      "loadoutId": "2-5",
+      "weights": {
+        "health": 0.415829,
+        "protection": 0.440005,
+        "offense": 0.688099,
+        "defense": 0.475407,
+        "speed": 0.58205,
+        "potency": 0.513723,
+        "tenacity": 0.46192,
+        "critChance": 0.790049
+      }
+    },
+    "MASTERQUIGON": {
+      "sampleSize": 961,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.706244,
+        "protection": 0.499423,
+        "offense": 0.528776,
+        "defense": 0.59315,
+        "speed": 0.606321,
+        "potency": 0.494939,
+        "tenacity": 0.535831,
+        "critChance": 0.501302
+      }
+    },
+    "MAULS7": {
+      "sampleSize": 1240,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.534441,
+        "protection": 0.582963,
+        "offense": 0.845959,
+        "defense": 0.469554,
+        "speed": 0.62272,
+        "potency": 0.427271,
+        "tenacity": 0.415771,
+        "critChance": 0.448495
+      }
+    },
+    "MAULHATEFUELED": {
+      "sampleSize": 1502,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.858755,
+        "protection": 0.478812,
+        "offense": 0.621232,
+        "defense": 0.516583,
+        "speed": 0.636602,
+        "potency": 0.401567,
+        "tenacity": 0.446113,
+        "critChance": 0.444322
+      }
+    },
+    "MAZKANATA": {
+      "sampleSize": 1159,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.635449,
+        "protection": 0.559311,
+        "offense": 0.461303,
+        "defense": 0.602161,
+        "speed": 0.588356,
+        "potency": 0.534998,
+        "tenacity": 0.577965,
+        "critChance": 0.453016
+      }
+    },
+    "MERRIN": {
+      "sampleSize": 555,
+      "loadoutId": "8-8-8",
+      "weights": {
+        "health": 0.409069,
+        "protection": 0.597036,
+        "offense": 0.347096,
+        "defense": 0.458962,
+        "speed": 0.339319,
+        "potency": 0.532753,
+        "tenacity": 1,
+        "critChance": 0.386751
+      }
+    },
+    "MISSIONVAO": {
+      "sampleSize": 808,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.386367,
+        "protection": 0.448229,
+        "offense": 0.550799,
+        "defense": 0.401279,
+        "speed": 0.403863,
+        "potency": 0.448084,
+        "tenacity": 0.44774,
+        "critChance": 0.594228
+      }
+    },
+    "HUMANTHUG": {
+      "sampleSize": 703,
+      "loadoutId": "4-7",
+      "weights": {
+        "health": 0.363056,
+        "protection": 0.45991,
+        "offense": 0.37946,
+        "defense": 0.394523,
+        "speed": 0.365731,
+        "potency": 0.658131,
+        "tenacity": 0.419723,
+        "critChance": 0.412434
+      }
+    },
+    "MOFFGIDEONS1": {
+      "sampleSize": 860,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.464201,
+        "protection": 0.520002,
+        "offense": 0.448041,
+        "defense": 0.576832,
+        "speed": 0.595093,
+        "potency": 0.472415,
+        "tenacity": 0.556573,
+        "critChance": 0.495842
+      }
+    },
+    "MONMOTHMA": {
+      "sampleSize": 722,
+      "loadoutId": "4-8",
+      "weights": {
+        "health": 0.476083,
+        "protection": 0.483773,
+        "offense": 0.325436,
+        "defense": 0.477318,
+        "speed": 0.437664,
+        "potency": 0.345094,
+        "tenacity": 0.687491,
+        "critChance": 0.419323
+      }
+    },
+    "MORGANELSBETH": {
+      "sampleSize": 795,
+      "loadoutId": "1-1-3",
+      "weights": {
+        "health": 0.558144,
+        "protection": 0.624285,
+        "offense": 0.383886,
+        "defense": 0.68358,
+        "speed": 0.57656,
+        "potency": 0.446985,
+        "tenacity": 0.59543,
+        "critChance": 0.408164
+      }
+    },
+    "MOTHERTALZIN": {
+      "sampleSize": 704,
+      "loadoutId": "2-7",
+      "weights": {
+        "health": 0.448984,
+        "protection": 0.404445,
+        "offense": 0.418735,
+        "defense": 0.413963,
+        "speed": 0.405552,
+        "potency": 0.697721,
+        "tenacity": 0.459093,
+        "critChance": 0.458095
+      }
+    },
+    "NIGHTTROOPER": {
+      "sampleSize": 614,
+      "loadoutId": "2-7",
+      "weights": {
+        "health": 0.490137,
+        "protection": 0.439086,
+        "offense": 0.593976,
+        "defense": 0.464626,
+        "speed": 0.544395,
+        "potency": 0.690248,
+        "tenacity": 0.45771,
+        "critChance": 0.508107
+      }
+    },
+    "NIGHTSISTERACOLYTE": {
+      "sampleSize": 571,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.387504,
+        "protection": 0.398291,
+        "offense": 0.398077,
+        "defense": 0.372204,
+        "speed": 0.341714,
+        "potency": 0.375033,
+        "tenacity": 0.390941,
+        "critChance": 0.620301
+      }
+    },
+    "NIGHTSISTERINITIATE": {
+      "sampleSize": 420,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.353951,
+        "protection": 0.411435,
+        "offense": 0.315536,
+        "defense": 0.349959,
+        "speed": 0.298868,
+        "potency": 0.381064,
+        "tenacity": 0.4472,
+        "critChance": 0.560062
+      }
+    },
+    "NIGHTSISTERSPIRIT": {
+      "sampleSize": 816,
+      "loadoutId": "2-7",
+      "weights": {
+        "health": 0.441935,
+        "protection": 0.45421,
+        "offense": 0.608445,
+        "defense": 0.480541,
+        "speed": 0.478258,
+        "potency": 0.579872,
+        "tenacity": 0.449085,
+        "critChance": 0.562946
+      }
+    },
+    "NIGHTSISTERZOMBIE": {
+      "sampleSize": 496,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.51448,
+        "protection": 0.435802,
+        "offense": 0.308272,
+        "defense": 0.473517,
+        "speed": 0.39166,
+        "potency": 0.318425,
+        "tenacity": 0.501248,
+        "critChance": 0.34602
+      }
+    },
+    "NINTHSISTER": {
+      "sampleSize": 691,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.616778,
+        "protection": 0.595119,
+        "offense": 0.323084,
+        "defense": 0.591629,
+        "speed": 0.46477,
+        "potency": 0.400745,
+        "tenacity": 0.456613,
+        "critChance": 0.36911
+      }
+    },
+    "NUTEGUNRAY": {
+      "sampleSize": 791,
+      "loadoutId": "4-7",
+      "weights": {
+        "health": 0.424222,
+        "protection": 0.471982,
+        "offense": 0.35943,
+        "defense": 0.453644,
+        "speed": 0.407591,
+        "potency": 0.631714,
+        "tenacity": 0.479756,
+        "critChance": 0.450657
+      }
+    },
+    "OLDBENKENOBI": {
+      "sampleSize": 390,
+      "loadoutId": "4-7",
+      "weights": {
+        "health": 0.405746,
+        "protection": 0.553905,
+        "offense": 0.292441,
+        "defense": 0.554295,
+        "speed": 0.454987,
+        "potency": 0.780523,
+        "tenacity": 0.452135,
+        "critChance": 0.327781
+      }
+    },
+    "DAKA": {
+      "sampleSize": 1212,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.817053,
+        "protection": 0.379704,
+        "offense": 0.275687,
+        "defense": 0.447608,
+        "speed": 0.452827,
+        "potency": 0.566439,
+        "tenacity": 0.517659,
+        "critChance": 0.381303
+      }
+    },
+    "BADBATCHOMEGA": {
+      "sampleSize": 664,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.396206,
+        "protection": 0.436463,
+        "offense": 0.426978,
+        "defense": 0.383418,
+        "speed": 0.381846,
+        "potency": 0.418219,
+        "tenacity": 0.440386,
+        "critChance": 0.520187
+      }
+    },
+    "OMEGAS3": {
+      "sampleSize": 772,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.470851,
+        "protection": 0.553324,
+        "offense": 0.458671,
+        "defense": 0.533652,
+        "speed": 0.545287,
+        "potency": 0.37467,
+        "tenacity": 0.656058,
+        "critChance": 0.436236
+      }
+    },
+    "PADAWANOBIWAN": {
+      "sampleSize": 933,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.496672,
+        "protection": 0.437491,
+        "offense": 0.876218,
+        "defense": 0.462615,
+        "speed": 0.611569,
+        "potency": 0.465719,
+        "tenacity": 0.459603,
+        "critChance": 0.536707
+      }
+    },
+    "PADAWANSABINE": {
+      "sampleSize": 861,
+      "loadoutId": "2-5",
+      "weights": {
+        "health": 0.516718,
+        "protection": 0.498581,
+        "offense": 0.661491,
+        "defense": 0.53182,
+        "speed": 0.56249,
+        "potency": 0.502303,
+        "tenacity": 0.539006,
+        "critChance": 0.58125
+      }
+    },
+    "PADMEAMIDALA": {
+      "sampleSize": 1295,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.766759,
+        "protection": 0.471075,
+        "offense": 0.440654,
+        "defense": 0.530134,
+        "speed": 0.56379,
+        "potency": 0.537062,
+        "tenacity": 0.478443,
+        "critChance": 0.486974
+      }
+    },
+    "PAO": {
+      "sampleSize": 443,
+      "loadoutId": "2-8",
+      "weights": {
+        "health": 0.395365,
+        "protection": 0.437007,
+        "offense": 0.415575,
+        "defense": 0.423425,
+        "speed": 0.368034,
+        "potency": 0.458718,
+        "tenacity": 0.534309,
+        "critChance": 0.546604
+      }
+    },
+    "PAPLOO": {
+      "sampleSize": 316,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.352226,
+        "protection": 0.484298,
+        "offense": 0.252059,
+        "defense": 0.432495,
+        "speed": 0.340462,
+        "potency": 0.292706,
+        "tenacity": 0.406867,
+        "critChance": 0.362615
+      }
+    },
+    "PAZVIZSLA": {
+      "sampleSize": 1138,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.695084,
+        "protection": 0.617996,
+        "offense": 0.392317,
+        "defense": 0.539907,
+        "speed": 0.505617,
+        "potency": 0.450828,
+        "tenacity": 0.470715,
+        "critChance": 0.389677
+      }
+    },
+    "GLHONDO": {
+      "sampleSize": 1270,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.831009,
+        "protection": 0.529592,
+        "offense": 0.557263,
+        "defense": 0.640251,
+        "speed": 0.677178,
+        "potency": 0.451308,
+        "tenacity": 0.541293,
+        "critChance": 0.441616
+      }
+    },
+    "PLOKOON": {
+      "sampleSize": 689,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.577017,
+        "protection": 0.474825,
+        "offense": 0.373105,
+        "defense": 0.549266,
+        "speed": 0.443577,
+        "potency": 0.433733,
+        "tenacity": 0.462902,
+        "critChance": 0.45211
+      }
+    },
+    "POE": {
+      "sampleSize": 790,
+      "loadoutId": "4-7",
+      "weights": {
+        "health": 0.359165,
+        "protection": 0.46643,
+        "offense": 0.318775,
+        "defense": 0.451077,
+        "speed": 0.327431,
+        "potency": 0.586043,
+        "tenacity": 0.42366,
+        "critChance": 0.417577
+      }
+    },
+    "POGGLETHELESSER": {
+      "sampleSize": 728,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.441627,
+        "protection": 0.472195,
+        "offense": 0.307726,
+        "defense": 0.419033,
+        "speed": 0.351261,
+        "potency": 0.585972,
+        "tenacity": 0.458636,
+        "critChance": 0.430282
+      }
+    },
+    "PRINCESSKNEESAA": {
+      "sampleSize": 795,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.355788,
+        "protection": 0.410617,
+        "offense": 0.393349,
+        "defense": 0.375397,
+        "speed": 0.368374,
+        "potency": 0.395537,
+        "tenacity": 0.422469,
+        "critChance": 0.650383
+      }
+    },
+    "PRINCESSLEIA": {
+      "sampleSize": 885,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.408329,
+        "protection": 0.437473,
+        "offense": 0.527354,
+        "defense": 0.400276,
+        "speed": 0.40263,
+        "potency": 0.387441,
+        "tenacity": 0.428216,
+        "critChance": 0.629325
+      }
+    },
+    "QIRA": {
+      "sampleSize": 720,
+      "loadoutId": "4-5",
+      "weights": {
+        "health": 0.369459,
+        "protection": 0.416647,
+        "offense": 0.388735,
+        "defense": 0.392223,
+        "speed": 0.399959,
+        "potency": 0.533259,
+        "tenacity": 0.452744,
+        "critChance": 0.721226
+      }
+    },
+    "QUEENAMIDALA": {
+      "sampleSize": 1532,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.756404,
+        "protection": 0.602375,
+        "offense": 0.459104,
+        "defense": 0.589104,
+        "speed": 0.624723,
+        "potency": 0.502739,
+        "tenacity": 0.527677,
+        "critChance": 0.455394
+      }
+    },
+    "QUIGONJINN": {
+      "sampleSize": 611,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.42673,
+        "protection": 0.433346,
+        "offense": 0.621742,
+        "defense": 0.435357,
+        "speed": 0.489527,
+        "potency": 0.360049,
+        "tenacity": 0.442057,
+        "critChance": 0.532742
+      }
+    },
+    "QUIGGOLD": {
+      "sampleSize": 959,
+      "loadoutId": "1-1-3",
+      "weights": {
+        "health": 0.519911,
+        "protection": 0.622087,
+        "offense": 0.36381,
+        "defense": 0.650867,
+        "speed": 0.518911,
+        "potency": 0.42203,
+        "tenacity": 0.496218,
+        "critChance": 0.410751
+      }
+    },
+    "R2D2_LEGENDARY": {
+      "sampleSize": 612,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.753416,
+        "protection": 0.44395,
+        "offense": 0.770812,
+        "defense": 0.464016,
+        "speed": 0.621673,
+        "potency": 0.587201,
+        "tenacity": 0.451959,
+        "critChance": 0.365349
+      }
+    },
+    "R5D4": {
+      "sampleSize": 670,
+      "loadoutId": "4-7",
+      "weights": {
+        "health": 0.549415,
+        "protection": 0.470715,
+        "offense": 0.396236,
+        "defense": 0.463152,
+        "speed": 0.555184,
+        "potency": 0.817818,
+        "tenacity": 0.480987,
+        "critChance": 0.392546
+      }
+    },
+    "RANGETROOPER": {
+      "sampleSize": 395,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.38066,
+        "protection": 0.423908,
+        "offense": 0.463212,
+        "defense": 0.384017,
+        "speed": 0.420629,
+        "potency": 0.317554,
+        "tenacity": 0.458133,
+        "critChance": 0.462024
+      }
+    },
+    "SCORCH": {
+      "sampleSize": 995,
+      "loadoutId": "1-1-3",
+      "weights": {
+        "health": 0.639375,
+        "protection": 0.762752,
+        "offense": 0.364257,
+        "defense": 0.71112,
+        "speed": 0.578062,
+        "potency": 0.463054,
+        "tenacity": 0.503637,
+        "critChance": 0.348731
+      }
+    },
+    "HOTHLEIA": {
+      "sampleSize": 564,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.393375,
+        "protection": 0.415143,
+        "offense": 0.418254,
+        "defense": 0.376254,
+        "speed": 0.367691,
+        "potency": 0.44276,
+        "tenacity": 0.438492,
+        "critChance": 0.600584
+      }
+    },
+    "EPIXFINN": {
+      "sampleSize": 835,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.479919,
+        "protection": 0.415672,
+        "offense": 0.560044,
+        "defense": 0.470049,
+        "speed": 0.539432,
+        "potency": 0.372223,
+        "tenacity": 0.506488,
+        "critChance": 0.537782
+      }
+    },
+    "EPIXPOE": {
+      "sampleSize": 788,
+      "loadoutId": "2-7",
+      "weights": {
+        "health": 0.410973,
+        "protection": 0.443587,
+        "offense": 0.393709,
+        "defense": 0.420573,
+        "speed": 0.400129,
+        "potency": 0.617765,
+        "tenacity": 0.467585,
+        "critChance": 0.471709
+      }
+    },
+    "RESISTANCEPILOT": {
+      "sampleSize": 438,
+      "loadoutId": "4-7",
+      "weights": {
+        "health": 0.339897,
+        "protection": 0.406301,
+        "offense": 0.382455,
+        "defense": 0.354396,
+        "speed": 0.22321,
+        "potency": 0.537924,
+        "tenacity": 0.427712,
+        "critChance": 0.463985
+      }
+    },
+    "RESISTANCETROOPER": {
+      "sampleSize": 383,
+      "loadoutId": "2-7",
+      "weights": {
+        "health": 0.362873,
+        "protection": 0.451372,
+        "offense": 0.342343,
+        "defense": 0.378225,
+        "speed": 0.261029,
+        "potency": 0.506829,
+        "tenacity": 0.401424,
+        "critChance": 0.588485
+      }
+    },
+    "GLREY": {
+      "sampleSize": 1331,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.799388,
+        "protection": 0.360168,
+        "offense": 0.884374,
+        "defense": 0.449838,
+        "speed": 0.654799,
+        "potency": 0.269612,
+        "tenacity": 0.340369,
+        "critChance": 0.398071
+      }
+    },
+    "DARKREY": {
+      "sampleSize": 792,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.676591,
+        "protection": 0.469213,
+        "offense": 0.727637,
+        "defense": 0.526944,
+        "speed": 0.656902,
+        "potency": 0.520688,
+        "tenacity": 0.474162,
+        "critChance": 0.52419
+      }
+    },
+    "REYJEDITRAINING": {
+      "sampleSize": 559,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.652785,
+        "protection": 0.459278,
+        "offense": 0.317142,
+        "defense": 0.426356,
+        "speed": 0.486712,
+        "potency": 0.587047,
+        "tenacity": 0.413948,
+        "critChance": 0.425501
+      }
+    },
+    "REY": {
+      "sampleSize": 445,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.376719,
+        "protection": 0.443251,
+        "offense": 0.518856,
+        "defense": 0.434839,
+        "speed": 0.418328,
+        "potency": 0.342337,
+        "tenacity": 0.448354,
+        "critChance": 0.5696
+      }
+    },
+    "ROSETICO": {
+      "sampleSize": 400,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.436305,
+        "protection": 0.368878,
+        "offense": 0.354045,
+        "defense": 0.397405,
+        "speed": 0.411337,
+        "potency": 0.573022,
+        "tenacity": 0.414673,
+        "critChance": 0.539982
+      }
+    },
+    "RACCOON": {
+      "sampleSize": 727,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.643447,
+        "protection": 0.409044,
+        "offense": 0.803635,
+        "defense": 0.475215,
+        "speed": 0.626642,
+        "potency": 0.419578,
+        "tenacity": 0.432344,
+        "critChance": 0.458198
+      }
+    },
+    "ROYALGUARD": {
+      "sampleSize": 868,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.737794,
+        "protection": 0.623313,
+        "offense": 0.246,
+        "defense": 0.553866,
+        "speed": 0.376959,
+        "potency": 0.417375,
+        "tenacity": 0.397171,
+        "critChance": 0.299502
+      }
+    },
+    "SABINEWRENS3": {
+      "sampleSize": 777,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.417637,
+        "protection": 0.454655,
+        "offense": 0.436509,
+        "defense": 0.418789,
+        "speed": 0.41607,
+        "potency": 0.536332,
+        "tenacity": 0.434613,
+        "critChance": 0.549256
+      }
+    },
+    "SANASTARROS": {
+      "sampleSize": 576,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.325848,
+        "protection": 0.426729,
+        "offense": 0.418404,
+        "defense": 0.438462,
+        "speed": 0.433039,
+        "potency": 0.401184,
+        "tenacity": 0.448161,
+        "critChance": 0.50192
+      }
+    },
+    "SATELESHAN": {
+      "sampleSize": 977,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.494277,
+        "protection": 0.922443,
+        "offense": 0.438077,
+        "defense": 0.550189,
+        "speed": 0.665691,
+        "potency": 0.383467,
+        "tenacity": 0.463575,
+        "critChance": 0.323372
+      }
+    },
+    "SAVAGEOPRESS": {
+      "sampleSize": 927,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.723975,
+        "protection": 0.44472,
+        "offense": 0.495201,
+        "defense": 0.577609,
+        "speed": 0.463352,
+        "potency": 0.344304,
+        "tenacity": 0.455695,
+        "critChance": 0.447368
+      }
+    },
+    "SAWGERRERA": {
+      "sampleSize": 1209,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.608033,
+        "protection": 0.449675,
+        "offense": 0.44435,
+        "defense": 0.535386,
+        "speed": 0.513658,
+        "potency": 0.567023,
+        "tenacity": 0.516526,
+        "critChance": 0.44378
+      }
+    },
+    "SCARIFREBEL": {
+      "sampleSize": 569,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.414409,
+        "protection": 0.559864,
+        "offense": 0.23673,
+        "defense": 0.459328,
+        "speed": 0.35093,
+        "potency": 0.346992,
+        "tenacity": 0.419703,
+        "critChance": 0.368644
+      }
+    },
+    "SCOUTTROOPER_V3": {
+      "sampleSize": 1163,
+      "loadoutId": "4-7",
+      "weights": {
+        "health": 0.405108,
+        "protection": 0.444306,
+        "offense": 0.492897,
+        "defense": 0.454762,
+        "speed": 0.4787,
+        "potency": 0.655249,
+        "tenacity": 0.470148,
+        "critChance": 0.589467
+      }
+    },
+    "SECONDSISTER": {
+      "sampleSize": 793,
+      "loadoutId": "2-5",
+      "weights": {
+        "health": 0.430491,
+        "protection": 0.469843,
+        "offense": 0.476994,
+        "defense": 0.476387,
+        "speed": 0.413955,
+        "potency": 0.459725,
+        "tenacity": 0.472531,
+        "critChance": 0.616096
+      }
+    },
+    "SEVENTHSISTER": {
+      "sampleSize": 1055,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.505987,
+        "protection": 0.57618,
+        "offense": 0.470482,
+        "defense": 0.556915,
+        "speed": 0.576406,
+        "potency": 0.503422,
+        "tenacity": 0.660727,
+        "critChance": 0.484263
+      }
+    },
+    "SHAAKTI": {
+      "sampleSize": 1324,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.622142,
+        "protection": 0.541924,
+        "offense": 0.461303,
+        "defense": 0.522404,
+        "speed": 0.544854,
+        "potency": 0.40417,
+        "tenacity": 0.623064,
+        "critChance": 0.49223
+      }
+    },
+    "SHINHATI": {
+      "sampleSize": 817,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.476532,
+        "protection": 0.429545,
+        "offense": 0.779711,
+        "defense": 0.4792,
+        "speed": 0.604464,
+        "potency": 0.499778,
+        "tenacity": 0.498411,
+        "critChance": 0.519497
+      }
+    },
+    "SHORETROOPER": {
+      "sampleSize": 1084,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.440909,
+        "protection": 0.69336,
+        "offense": 0.193892,
+        "defense": 0.407171,
+        "speed": 0.330678,
+        "potency": 0.294557,
+        "tenacity": 0.435471,
+        "critChance": 0.36182
+      }
+    },
+    "SITHASSASSIN": {
+      "sampleSize": 544,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.452727,
+        "protection": 0.433114,
+        "offense": 0.557766,
+        "defense": 0.504918,
+        "speed": 0.444294,
+        "potency": 0.441877,
+        "tenacity": 0.491849,
+        "critChance": 0.611249
+      }
+    },
+    "SITHTROOPER": {
+      "sampleSize": 716,
+      "loadoutId": "3-3-3",
+      "weights": {
+        "health": 0.477524,
+        "protection": 0.690091,
+        "offense": 0.336588,
+        "defense": 0.69451,
+        "speed": 0.335398,
+        "potency": 0.399732,
+        "tenacity": 0.475715,
+        "critChance": 0.36516
+      }
+    },
+    "SITHPALPATINE": {
+      "sampleSize": 1450,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.92224,
+        "protection": 0.493117,
+        "offense": 0.460427,
+        "defense": 0.544587,
+        "speed": 0.652947,
+        "potency": 0.4281,
+        "tenacity": 0.433056,
+        "critChance": 0.450268
+      }
+    },
+    "SITHMARAUDER": {
+      "sampleSize": 907,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.481094,
+        "protection": 0.484417,
+        "offense": 0.591443,
+        "defense": 0.517913,
+        "speed": 0.447705,
+        "potency": 0.474729,
+        "tenacity": 0.503838,
+        "critChance": 0.608695
+      }
+    },
+    "FOSITHTROOPER": {
+      "sampleSize": 509,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.464642,
+        "protection": 0.465808,
+        "offense": 0.743732,
+        "defense": 0.491258,
+        "speed": 0.466425,
+        "potency": 0.433171,
+        "tenacity": 0.499138,
+        "critChance": 0.532932
+      }
+    },
+    "UNDERCOVERLANDO": {
+      "sampleSize": 1056,
+      "loadoutId": "2-5",
+      "weights": {
+        "health": 0.482599,
+        "protection": 0.489087,
+        "offense": 0.598954,
+        "defense": 0.52628,
+        "speed": 0.516617,
+        "potency": 0.487019,
+        "tenacity": 0.512843,
+        "critChance": 0.579886
+      }
+    },
+    "SM33": {
+      "sampleSize": 1215,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.564019,
+        "protection": 0.463043,
+        "offense": 0.816628,
+        "defense": 0.498183,
+        "speed": 0.58306,
+        "potency": 0.477529,
+        "tenacity": 0.484386,
+        "critChance": 0.563928
+      }
+    },
+    "SNOWTROOPER": {
+      "sampleSize": 789,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.376381,
+        "protection": 0.423728,
+        "offense": 0.429604,
+        "defense": 0.340029,
+        "speed": 0.35554,
+        "potency": 0.306644,
+        "tenacity": 0.407451,
+        "critChance": 0.702048
+      }
+    },
+    "REMNANTSNOWCOMMANDER": {
+      "sampleSize": 532,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.449018,
+        "protection": 0.670203,
+        "offense": 0.344059,
+        "defense": 0.464336,
+        "speed": 0.499755,
+        "potency": 0.301778,
+        "tenacity": 0.434761,
+        "critChance": 0.394532
+      }
+    },
+    "STAP": {
+      "sampleSize": 628,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.3863,
+        "protection": 0.440284,
+        "offense": 0.569038,
+        "defense": 0.380392,
+        "speed": 0.474702,
+        "potency": 0.441188,
+        "tenacity": 0.448469,
+        "critChance": 0.490909
+      }
+    },
+    "STARKILLER": {
+      "sampleSize": 1176,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.651342,
+        "protection": 0.401746,
+        "offense": 0.879498,
+        "defense": 0.462886,
+        "speed": 0.643575,
+        "potency": 0.436598,
+        "tenacity": 0.417375,
+        "critChance": 0.469987
+      }
+    },
+    "LUKESTARKILLER": {
+      "sampleSize": 237,
+      "loadoutId": "4-7",
+      "weights": {
+        "health": 0.421245,
+        "protection": 0.418069,
+        "offense": 0.400896,
+        "defense": 0.383409,
+        "speed": 0.507346,
+        "potency": 0.71202,
+        "tenacity": 0.489746,
+        "critChance": 0.428178
+      }
+    },
+    "STORMTROOPER": {
+      "sampleSize": 627,
+      "loadoutId": "3-3-3",
+      "weights": {
+        "health": 0.380242,
+        "protection": 0.504577,
+        "offense": 0.288452,
+        "defense": 0.64916,
+        "speed": 0.322514,
+        "potency": 0.36492,
+        "tenacity": 0.453855,
+        "critChance": 0.423042
+      }
+    },
+    "STORMTROOPERCONCEPT": {
+      "sampleSize": 111,
+      "loadoutId": "1-3-3",
+      "weights": {
+        "health": 0.505399,
+        "protection": 0.468702,
+        "offense": 0.318464,
+        "defense": 0.519232,
+        "speed": 0.401061,
+        "potency": 0.278652,
+        "tenacity": 0.464235,
+        "critChance": 0.284284
+      }
+    },
+    "STORMTROOPERHAN": {
+      "sampleSize": 420,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.393929,
+        "protection": 0.623974,
+        "offense": 0.262352,
+        "defense": 0.481866,
+        "speed": 0.369177,
+        "potency": 0.341152,
+        "tenacity": 0.395894,
+        "critChance": 0.405328
+      }
+    },
+    "STORMTROOPERLUKE": {
+      "sampleSize": 1178,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.540498,
+        "protection": 0.554995,
+        "offense": 0.408483,
+        "defense": 0.505283,
+        "speed": 0.499058,
+        "potency": 0.462327,
+        "tenacity": 0.499649,
+        "critChance": 0.449708
+      }
+    },
+    "SUNFAC": {
+      "sampleSize": 569,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.411344,
+        "protection": 0.603821,
+        "offense": 0.283911,
+        "defense": 0.487411,
+        "speed": 0.365918,
+        "potency": 0.384873,
+        "tenacity": 0.471732,
+        "critChance": 0.365009
+      }
+    },
+    "SUPREMELEADERKYLOREN": {
+      "sampleSize": 1479,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.66407,
+        "protection": 0.413776,
+        "offense": 0.859586,
+        "defense": 0.480756,
+        "speed": 0.673308,
+        "potency": 0.414013,
+        "tenacity": 0.415915,
+        "critChance": 0.466617
+      }
+    },
+    "T3_M4": {
+      "sampleSize": 355,
+      "loadoutId": "4-7",
+      "weights": {
+        "health": 0.369522,
+        "protection": 0.466776,
+        "offense": 0.325844,
+        "defense": 0.412168,
+        "speed": 0.397071,
+        "potency": 0.656112,
+        "tenacity": 0.438008,
+        "critChance": 0.380463
+      }
+    },
+    "TALIA": {
+      "sampleSize": 590,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.458164,
+        "protection": 0.386805,
+        "offense": 0.344543,
+        "defense": 0.349173,
+        "speed": 0.320409,
+        "potency": 0.373627,
+        "tenacity": 0.459207,
+        "critChance": 0.461285
+      }
+    },
+    "TARFFUL": {
+      "sampleSize": 710,
+      "loadoutId": "1-1-3",
+      "weights": {
+        "health": 0.595854,
+        "protection": 0.429854,
+        "offense": 0.311328,
+        "defense": 0.62084,
+        "speed": 0.442972,
+        "potency": 0.368911,
+        "tenacity": 0.4336,
+        "critChance": 0.382707
+      }
+    },
+    "TARONMALICOS": {
+      "sampleSize": 1198,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.569921,
+        "protection": 0.425944,
+        "offense": 0.886586,
+        "defense": 0.468056,
+        "speed": 0.597268,
+        "potency": 0.439581,
+        "tenacity": 0.42423,
+        "critChance": 0.486948
+      }
+    },
+    "BADBATCHTECH": {
+      "sampleSize": 1098,
+      "loadoutId": "4-7",
+      "weights": {
+        "health": 0.436101,
+        "protection": 0.453294,
+        "offense": 0.439206,
+        "defense": 0.452577,
+        "speed": 0.467702,
+        "potency": 0.732104,
+        "tenacity": 0.476669,
+        "critChance": 0.425656
+      }
+    },
+    "TEEBO": {
+      "sampleSize": 458,
+      "loadoutId": "7-7-7",
+      "weights": {
+        "health": 0.343231,
+        "protection": 0.410292,
+        "offense": 0.31296,
+        "defense": 0.366794,
+        "speed": 0.265548,
+        "potency": 0.583298,
+        "tenacity": 0.426321,
+        "critChance": 0.438374
+      }
+    },
+    "VANGUARDTEMPLEGUARD": {
+      "sampleSize": 885,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.635286,
+        "protection": 0.684253,
+        "offense": 0.359153,
+        "defense": 0.596145,
+        "speed": 0.508046,
+        "potency": 0.460374,
+        "tenacity": 0.484843,
+        "critChance": 0.356392
+      }
+    },
+    "ARMORER": {
+      "sampleSize": 1115,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.466072,
+        "protection": 0.532949,
+        "offense": 0.378041,
+        "defense": 0.560089,
+        "speed": 0.490924,
+        "potency": 0.371402,
+        "tenacity": 0.554198,
+        "critChance": 0.428205
+      }
+    },
+    "THEMANDALORIAN": {
+      "sampleSize": 606,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.440854,
+        "protection": 0.486831,
+        "offense": 0.482856,
+        "defense": 0.436541,
+        "speed": 0.512746,
+        "potency": 0.370741,
+        "tenacity": 0.428797,
+        "critChance": 0.785386
+      }
+    },
+    "THEMANDALORIANBESKARARMOR": {
+      "sampleSize": 967,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.492279,
+        "protection": 0.557736,
+        "offense": 0.792909,
+        "defense": 0.55696,
+        "speed": 0.618654,
+        "potency": 0.517016,
+        "tenacity": 0.523776,
+        "critChance": 0.445609
+      }
+    },
+    "THERONIN": {
+      "sampleSize": 152,
+      "loadoutId": "4-5",
+      "weights": {
+        "health": 0.407823,
+        "protection": 0.485953,
+        "offense": 0.45302,
+        "defense": 0.447897,
+        "speed": 0.478185,
+        "potency": 0.406749,
+        "tenacity": 0.393304,
+        "critChance": 0.4893
+      }
+    },
+    "STRANGER": {
+      "sampleSize": 1429,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.778355,
+        "protection": 0.414901,
+        "offense": 0.752172,
+        "defense": 0.49761,
+        "speed": 0.677054,
+        "potency": 0.421611,
+        "tenacity": 0.442202,
+        "critChance": 0.454039
+      }
+    },
+    "THIRDSISTER": {
+      "sampleSize": 1289,
+      "loadoutId": "1-2",
+      "weights": {
+        "health": 0.733471,
+        "protection": 0.507971,
+        "offense": 0.680977,
+        "defense": 0.574086,
+        "speed": 0.627989,
+        "potency": 0.431487,
+        "tenacity": 0.439036,
+        "critChance": 0.400659
+      }
+    },
+    "C3POCHEWBACCA": {
+      "sampleSize": 567,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.468263,
+        "protection": 0.482966,
+        "offense": 0.599595,
+        "defense": 0.520903,
+        "speed": 0.511537,
+        "potency": 0.494483,
+        "tenacity": 0.580956,
+        "critChance": 0.567581
+      }
+    },
+    "TIEFIGHTERPILOT": {
+      "sampleSize": 553,
+      "loadoutId": "4-5",
+      "weights": {
+        "health": 0.347166,
+        "protection": 0.429543,
+        "offense": 0.445268,
+        "defense": 0.405092,
+        "speed": 0.301253,
+        "potency": 0.42924,
+        "tenacity": 0.472593,
+        "critChance": 0.644783
+      }
+    },
+    "TUSKENCHIEFTAIN": {
+      "sampleSize": 736,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.514802,
+        "protection": 0.488601,
+        "offense": 0.274032,
+        "defense": 0.484092,
+        "speed": 0.447884,
+        "potency": 0.331553,
+        "tenacity": 0.517379,
+        "critChance": 0.414402
+      }
+    },
+    "TUSKENRAIDER": {
+      "sampleSize": 454,
+      "loadoutId": "2-8",
+      "weights": {
+        "health": 0.374616,
+        "protection": 0.456291,
+        "offense": 0.34454,
+        "defense": 0.418001,
+        "speed": 0.340266,
+        "potency": 0.396915,
+        "tenacity": 0.467801,
+        "critChance": 0.569053
+      }
+    },
+    "TUSKENSHAMAN": {
+      "sampleSize": 665,
+      "loadoutId": "4-7",
+      "weights": {
+        "health": 0.349801,
+        "protection": 0.467406,
+        "offense": 0.27506,
+        "defense": 0.375267,
+        "speed": 0.326948,
+        "potency": 0.562361,
+        "tenacity": 0.448908,
+        "critChance": 0.423818
+      }
+    },
+    "TUSKENHUNTRESS": {
+      "sampleSize": 802,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.396699,
+        "protection": 0.443781,
+        "offense": 0.452595,
+        "defense": 0.41334,
+        "speed": 0.42341,
+        "potency": 0.435756,
+        "tenacity": 0.440259,
+        "critChance": 0.532353
+      }
+    },
+    "UGNAUGHT": {
+      "sampleSize": 372,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.465811,
+        "protection": 0.543748,
+        "offense": 0.390326,
+        "defense": 0.486162,
+        "speed": 0.519977,
+        "potency": 0.40992,
+        "tenacity": 0.463765,
+        "critChance": 0.486289
+      }
+    },
+    "URORRURRR": {
+      "sampleSize": 845,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.380128,
+        "protection": 0.51548,
+        "offense": 0.306543,
+        "defense": 0.383967,
+        "speed": 0.331375,
+        "potency": 0.35738,
+        "tenacity": 0.410782,
+        "critChance": 0.418649
+      }
+    },
+    "YOUNGCHEWBACCA": {
+      "sampleSize": 1261,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.622521,
+        "protection": 0.461154,
+        "offense": 0.294039,
+        "defense": 0.44196,
+        "speed": 0.386703,
+        "potency": 0.311686,
+        "tenacity": 0.416574,
+        "critChance": 0.435399
+      }
+    },
+    "VANE": {
+      "sampleSize": 529,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.796794,
+        "protection": 0.596161,
+        "offense": 0.346733,
+        "defense": 0.668207,
+        "speed": 0.5618,
+        "potency": 0.398557,
+        "tenacity": 0.495129,
+        "critChance": 0.331544
+      }
+    },
+    "VEL": {
+      "sampleSize": 545,
+      "loadoutId": "1-1-3",
+      "weights": {
+        "health": 0.489236,
+        "protection": 0.616771,
+        "offense": 0.359698,
+        "defense": 0.603493,
+        "speed": 0.543824,
+        "potency": 0.39133,
+        "tenacity": 0.497349,
+        "critChance": 0.388332
+      }
+    },
+    "SMUGGLERCHEWBACCA": {
+      "sampleSize": 687,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.356814,
+        "protection": 0.43745,
+        "offense": 0.37673,
+        "defense": 0.391375,
+        "speed": 0.317256,
+        "potency": 0.4162,
+        "tenacity": 0.446011,
+        "critChance": 0.54699
+      }
+    },
+    "SMUGGLERHAN": {
+      "sampleSize": 615,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.356428,
+        "protection": 0.415834,
+        "offense": 0.350219,
+        "defense": 0.353161,
+        "speed": 0.270887,
+        "potency": 0.483429,
+        "tenacity": 0.398965,
+        "critChance": 0.534356
+      }
+    },
+    "VISASMARR": {
+      "sampleSize": 922,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.712452,
+        "protection": 0.440448,
+        "offense": 0.359939,
+        "defense": 0.474643,
+        "speed": 0.501669,
+        "potency": 0.374856,
+        "tenacity": 0.483913,
+        "critChance": 0.529109
+      }
+    },
+    "WAMPA": {
+      "sampleSize": 608,
+      "loadoutId": "1-1-8",
+      "weights": {
+        "health": 0.660968,
+        "protection": 0.363121,
+        "offense": 0.508942,
+        "defense": 0.401712,
+        "speed": 0.52684,
+        "potency": 0.444303,
+        "tenacity": 1,
+        "critChance": 0.404727
+      }
+    },
+    "WATTAMBOR": {
+      "sampleSize": 869,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.537433,
+        "protection": 0.507302,
+        "offense": 0.248692,
+        "defense": 0.531307,
+        "speed": 0.498014,
+        "potency": 0.508251,
+        "tenacity": 0.57674,
+        "critChance": 0.387775
+      }
+    },
+    "WEDGEANTILLES": {
+      "sampleSize": 702,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.3604,
+        "protection": 0.433196,
+        "offense": 0.403917,
+        "defense": 0.360569,
+        "speed": 0.293452,
+        "potency": 0.352051,
+        "tenacity": 0.450977,
+        "critChance": 0.574391
+      }
+    },
+    "WICKET": {
+      "sampleSize": 788,
+      "loadoutId": "5-6",
+      "weights": {
+        "health": 0.371545,
+        "protection": 0.400605,
+        "offense": 0.387494,
+        "defense": 0.350618,
+        "speed": 0.292672,
+        "potency": 0.336675,
+        "tenacity": 0.427244,
+        "critChance": 0.595924
+      }
+    },
+    "BADBATCHWRECKER": {
+      "sampleSize": 556,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.399849,
+        "protection": 0.654171,
+        "offense": 0.281909,
+        "defense": 0.453453,
+        "speed": 0.421544,
+        "potency": 0.40581,
+        "tenacity": 0.490841,
+        "critChance": 0.383833
+      }
+    },
+    "WRECKERS3": {
+      "sampleSize": 670,
+      "loadoutId": "1-1-8",
+      "weights": {
+        "health": 0.587449,
+        "protection": 0.539302,
+        "offense": 0.302872,
+        "defense": 0.493555,
+        "speed": 0.464366,
+        "potency": 0.364196,
+        "tenacity": 0.595892,
+        "critChance": 0.397248
+      }
+    },
+    "YODADSV": {
+      "sampleSize": 158,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.606496,
+        "protection": 0.473609,
+        "offense": 0.352634,
+        "defense": 0.507817,
+        "speed": 0.571531,
+        "potency": 0.425068,
+        "tenacity": 0.492816,
+        "critChance": 0.403863
+      }
+    },
+    "YODACHEWBACCA": {
+      "sampleSize": 506,
+      "loadoutId": "3-4",
+      "weights": {
+        "health": 0.468894,
+        "protection": 0.504677,
+        "offense": 0.404758,
+        "defense": 0.694327,
+        "speed": 0.525262,
+        "potency": 0.407733,
+        "tenacity": 0.488333,
+        "critChance": 0.389734
+      }
+    },
+    "YOUNGHAN": {
+      "sampleSize": 560,
+      "loadoutId": "2-5",
+      "weights": {
+        "health": 0.386477,
+        "protection": 0.429163,
+        "offense": 0.409018,
+        "defense": 0.392445,
+        "speed": 0.344467,
+        "potency": 0.389059,
+        "tenacity": 0.429323,
+        "critChance": 0.514861
+      }
+    },
+    "YOUNGLANDO": {
+      "sampleSize": 498,
+      "loadoutId": "2-5",
+      "weights": {
+        "health": 0.397839,
+        "protection": 0.415785,
+        "offense": 0.395343,
+        "defense": 0.413205,
+        "speed": 0.30755,
+        "potency": 0.399466,
+        "tenacity": 0.424966,
+        "critChance": 0.56115
+      }
+    },
+    "ZAALBAR": {
+      "sampleSize": 833,
+      "loadoutId": "1-1-1",
+      "weights": {
+        "health": 0.500835,
+        "protection": 0.677795,
+        "offense": 0.306243,
+        "defense": 0.43053,
+        "speed": 0.375601,
+        "potency": 0.347774,
+        "tenacity": 0.49186,
+        "critChance": 0.382411
+      }
+    },
+    "ZAMWESELL": {
+      "sampleSize": 723,
+      "loadoutId": "4-7",
+      "weights": {
+        "health": 0.396582,
+        "protection": 0.45371,
+        "offense": 0.43925,
+        "defense": 0.464099,
+        "speed": 0.416271,
+        "potency": 0.637618,
+        "tenacity": 0.436397,
+        "critChance": 0.498294
+      }
+    },
+    "RANGERZEB": {
+      "sampleSize": 948,
+      "loadoutId": "1-1-3",
+      "weights": {
+        "health": 0.495389,
+        "protection": 0.540898,
+        "offense": 0.336321,
+        "defense": 0.609522,
+        "speed": 0.518639,
+        "potency": 0.407608,
+        "tenacity": 0.439188,
+        "critChance": 0.389775
+      }
+    },
+    "ZORIIBLISS_V2": {
+      "sampleSize": 839,
+      "loadoutId": "1-4",
+      "weights": {
+        "health": 0.431714,
+        "protection": 0.508708,
+        "offense": 0.460415,
+        "defense": 0.511135,
+        "speed": 0.52914,
+        "potency": 0.490096,
+        "tenacity": 0.473467,
+        "critChance": 0.46982
+      }
+    },
+    "ZUCKUSS": {
+      "sampleSize": 762,
+      "loadoutId": "4-8",
+      "weights": {
+        "health": 0.412789,
+        "protection": 0.578321,
+        "offense": 0.367154,
+        "defense": 0.512698,
+        "speed": 0.462811,
+        "potency": 0.422383,
+        "tenacity": 0.636639,
+        "critChance": 0.435975
+      }
+    }
+  }
+}

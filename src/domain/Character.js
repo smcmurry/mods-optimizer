@@ -6,6 +6,7 @@ import characterSettings from "../constants/characterSettings";
 import {CharacterSettings, GameSettings, OptimizerSettings, PlayerValues} from "./CharacterDataClasses";
 import groupByKey from "../utils/groupByKey";
 import {mapObject} from "../utils/mapObject";
+import isManagedMetaTarget from '../utils/isManagedMetaTarget';
 
 export default class Character {
   baseID;
@@ -206,19 +207,13 @@ export default class Character {
       );
 
 
-    /**
-     * Kyber Meta is generated data.
-     *
-     * Always use the current generated version rather than a stale copy that
-     * may have been saved in the player's IndexedDB profile.
-     */
-    if (
-      defaultTargets["Kyber Meta"]
-    ) {
-      mergedTargets["Kyber Meta"] =
-        defaultTargets["Kyber Meta"];
-    }
-
+    // Always refresh the generated wrapper around the original default weights.
+    Object.keys(mergedTargets).filter(name => isManagedMetaTarget({name}))
+      .forEach(name => { delete mergedTargets[name]; });
+    Object.values(defaultTargets).filter(isManagedMetaTarget)
+      .forEach(target => { mergedTargets[target.name] = target; });
+    Object.keys(mergedTargets).filter(name => name.startsWith('Kyber Meta') || name === 'Combat Utility')
+      .forEach(name => { delete mergedTargets[name]; });
 
     const targets =
       Object.values(
@@ -227,13 +222,12 @@ export default class Character {
 
 
     /**
-     * Force Kyber Meta to the first position in the target dropdown.
+     * Force original weights to the first position in the target dropdown.
      */
     const kyberIndex =
       targets.findIndex(
         target =>
-          target.name ===
-          "Kyber Meta"
+          isManagedMetaTarget(target)
       );
 
 
@@ -265,13 +259,12 @@ export default class Character {
 
 
     /**
-     * Kyber Meta is the default everywhere it exists.
+     * Original weights is the default everywhere it exists.
      */
     return (
       targets.find(
         target =>
-          target.name ===
-          "Kyber Meta"
+          isManagedMetaTarget(target)
       ) ||
       targets[0] ||
       new OptimizationPlan(

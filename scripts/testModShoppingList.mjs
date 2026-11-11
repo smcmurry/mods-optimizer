@@ -1,0 +1,92 @@
+import assert from 'node:assert/strict';
+import { createFrontendLoader } from './lib/loadFrontend.mjs';
+const load=createFrontendLoader();
+const build=load('src/utils/buildModShoppingList.js').default;
+const {ggScore}=load('src/utils/ggScore.js');
+const slots=['square','arrow','diamond','triangle','circle','cross'];
+const limits={primaries:{arrow:['Speed','Health %'],triangle:['Health %','Protection %'],circle:['Protection %','Health %'],cross:['Health %','Protection %']},setCombinations:[{speed:1,health:1},{health:3}]};
+const makeMods=()=>slots.map((slot,i)=> {
+  const primary=slot==='square'?'Offense %':slot==='diamond'?'Defense %':slot==='arrow'?'Speed':slot==='circle'?'Protection %':'Health %';
+  const maximums={'Speed':6,'Offense %':1.7,'Health %':2,'Protection %':3,'Defense %':4};
+  const secondaryStats=Object.keys(maximums).filter(type=>type!==primary).slice(0,4)
+    .map((type,index)=>({type,rolls:index<2?5:1,value:maximums[type]*(index<2?5:1)+(type==='Speed'?1:0)}));
+  return {id:String(i),slot,pips:6,tier:5,level:15,set:{name:i<4?'speed':'health'},primaryStat:{type:primary,value:30},secondaryStats};
+});
+const assignment=(id,mods)=>({id,target:{metaRestrictions:limits},assignedMods:mods});
+assert.equal(build([assignment('FIRST',makeMods())]).length,0,'Top complete combination, top primaries and GG 40+ pass');
+const mods=makeMods();
+assert.equal(build([assignment('FIRST',mods)]).length,0,'Speed-primary arrow with good secondaries passes');
+const weakArrow=makeMods();weakArrow[1].secondaryStats=[];
+assert.ok(build([assignment('FIRST',weakArrow)])[0].reasons.includes('GG score below 40'),'Speed primary alone does not satisfy quality');
+mods[0].secondaryStats=[{type:'Speed',value:13,rolls:2}];mods[3].primaryStat={type:'Critical Damage %',value:42};
+let list=build([assignment('Z',mods),assignment('A',makeMods().slice(1))],{Z:{name:'First'},A:{name:'Second'}});
+assert.deepEqual(list.map(item=>item.characterId),['Z','Z','A'],'Preserve optimization order, not alphabetical order');
+assert.deepEqual(list.map(item=>item.slot),['square','triangle','square']);
+assert.ok(list[2].reasons.includes('Missing mod'));
+assert.deepEqual(list.map(item=>item.priority),[1,2,3]);
+const mixed=makeMods();mixed[3].set.name='health';
+list=build([assignment('FIRST',mixed)]);
+assert.equal(list.length,1,'Detect wrong set counts even when every mod uses an allowed set type');
+assert.equal(list[0].desiredSet,'Speed');
+mixed[5].secondaryStats=[];
+list=build([assignment('FIRST',mixed)]);
+assert.equal(list.length,1,'Repair set mismatch by replacing the mod with low GG score');
+assert.equal(list[0].slot,'cross');
+assert.equal(list[0].reasons.length,2);
+assert.equal(build([{id:'UNKNOWN',target:{},assignedMods:makeMods()}]).length,0);
+assert.equal(build([{id:'UNKNOWN',target:{},assignedMods:[]}]).length,6);
+assert.deepEqual(build([]),[]);
+const React=load('node_modules/react/index.js');
+const {renderToStaticMarkup}=load('node_modules/react-dom/server.js');
+const Shopping=load('src/components/ModShoppingList.js').default;
+const html=renderToStaticMarkup(React.createElement(Shopping,{items:list}));
+assert.ok(html.includes('Priority mod shopping list')&&html.includes('GG score 40+')&&html.includes('cross'));
+assert.ok(!html.includes('17+ Speed'));
+console.log('Passed: shopping priority, GG quality, speed arrows, primary choices, complete set counts, minimal replacements, missing mods, and rendered shopping table.');
+const totals=load('src/components/ModShoppingList.js').shoppingSetTotals;
+const sample=Array.from({length:105},(_,index)=>({desiredSet:index<60?'Speed':index<100?'Health':'Offense'}));
+assert.deepEqual(totals(sample),[['Speed',60],['Health',40]]);
+assert.deepEqual(totals([{desiredSet:'Any set'},{desiredSet:'Health'}]),[['Any set',1],['Health',1]]);
+assert.deepEqual(totals([]),[]);
+console.log('Passed: top-100 set aggregation, shorter lists, and empty lists.');
+
+const secondChoices=makeMods();
+secondChoices.forEach(mod=>{mod.set.name='health';});
+secondChoices[1].primaryStat={type:'Health %',value:10};
+secondChoices[1].secondaryStats=makeMods()[3].secondaryStats;
+secondChoices[4].primaryStat={type:'Health %',value:10};
+secondChoices[4].secondaryStats=makeMods()[3].secondaryStats;
+const topOnly=build([assignment('FIRST',secondChoices)]);
+assert.equal(topOnly.filter(item=>item.desiredSet==='Speed').length,4);
+const arrowUpgrade=secondChoices.map(mod=>mod.slot==='arrow'?{...mod,secondaryStats:[]}:mod);
+assert.deepEqual(build([assignment('FIRST',arrowUpgrade)]).find(item=>item.slot==='arrow').desiredPrimaries,['Speed','Health %']);
+assert.deepEqual(topOnly.find(item=>item.slot==='circle').desiredPrimaries,['Protection %']);
+assert.ok(topOnly.filter(item=>item.slot!=='arrow').every(item=>item.desiredPrimaries.length===1));
+console.log('Passed: second-ranked sets and primaries always produce top-ranked shopping recommendations.');
+
+const secondArrow=makeMods();
+secondArrow[1].primaryStat={type:'Health %',value:10};
+secondArrow[1].secondaryStats=makeMods()[3].secondaryStats;
+assert.equal(build([assignment('FIRST',secondArrow)]).length,0,'Second-choice arrow primary does not require a purchase');
+console.log('Passed: arrows retain both primary choices while other slots recommend only the first.');
+
+const arrow=makeMods()[1];
+assert.ok(ggScore(arrow).score>=40);
+arrow.primaryStat={type:'Offense %',value:8.5};
+arrow.secondaryStats=[{type:'Health %',value:10,rolls:5},{type:'Protection %',value:15,rolls:5},
+  {type:'Defense %',value:4,rolls:1},{type:'Tenacity %',value:3,rolls:1}];
+arrow.set.name='health';
+assert.ok(ggScore(arrow).score>=40);
+assert.equal(build([{id:'UNKNOWN',assignedMods:[arrow]}]).some(item=>item.slot==='arrow'),false,'High GG without Speed passes');
+const scaleTo=(mod,score)=> {
+  const factor=score/ggScore(mod).score;
+  return {...mod,secondaryStats:mod.secondaryStats.map(stat=>({...stat,
+    value:stat.type==='Speed'?(stat.value-1)*factor+1:stat.value*factor}))};
+};
+const boundary=scaleTo(arrow,40);
+assert.equal(ggScore(boundary).score,40);
+assert.equal(build([{id:'UNKNOWN',assignedMods:[boundary]}]).some(item=>item.slot==='arrow'),false,'Exactly 40 passes');
+assert.ok(build([{id:'UNKNOWN',assignedMods:[scaleTo(arrow,39.99)]}]).find(item=>item.slot==='arrow').reasons.includes('GG score below 40'),'Use unrounded score');
+const invalid={...arrow,secondaryStats:[{type:'Health %',value:10}]};
+assert.ok(build([{id:'UNKNOWN',assignedMods:[invalid]}]).find(item=>item.slot==='arrow').reasons.includes('GG score unavailable — review mod data'));
+console.log('Passed: GG threshold boundary, high quality without speed, and unavailable scores.');

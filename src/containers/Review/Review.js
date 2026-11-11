@@ -1,10 +1,13 @@
 // @flow
+import buildModShoppingList from '../../utils/buildModShoppingList';
+import ModShoppingList from '../../components/ModShoppingList';
 
 import React from 'react';
 import ModDetail from "../../components/ModDetail/ModDetail";
 import CharacterAvatar from "../../components/CharacterAvatar/CharacterAvatar";
 
 import './Review.css';
+import ShipPreferenceImpact from '../../components/ShipPreferenceImpact';
 import Arrow from "../../components/Arrow/Arrow";
 import Toggle from "../../components/Toggle/Toggle";
 import ModSet from "../../domain/ModSet";
@@ -229,7 +232,11 @@ class Review extends React.PureComponent {
       <div className="review-list">
         <h2>Reassigning {this.props.numMovingMods} mods {summaryButton}</h2>
         {subHeading}
-        {reviewContent}
+        <ShipPreferenceImpact assignments={this.props.assignedMods} gameSettings={this.props.gameSettings} />
+        <div className="review-results" tabIndex={0} aria-label="Optimized mods and shopping list">
+          {reviewContent}
+          <ModShoppingList items={this.props.shoppingList} />
+        </div>
       </div>
     </div>;
   }
@@ -302,7 +309,7 @@ class Review extends React.PureComponent {
    */
   setsView(modAssignments) {
     // Iterate over each character to render a full mod set
-    return modAssignments.map(({ id: characterID, target, assignedMods: mods, missedGoals }, index) => {
+    return modAssignments.map(({ id: characterID, target, assignedMods: mods, missedGoals, messages = [] }, index) => {
       const character = this.props.characters[characterID];
 
       if (!character) {
@@ -310,6 +317,9 @@ class Review extends React.PureComponent {
       }
 
       return <div className={'mod-row set'} key={index}>
+        {messages.length > 0 && <div className={'optimization-warnings'} role="status">
+          {messages.map((message, messageIndex) => <p key={messageIndex}>{message}</p>)}
+        </div>}
         <div className={'character-id'}>
           <CharacterAvatar character={character} />
           <Arrow />
@@ -666,10 +676,12 @@ const mapStateToProps = (state) => {
   const modsById = groupByKey(profile.mods, mod => mod.id);
   const modAssignments = profile.modAssignments
     .filter(x => null !== x)
-    .map(({ id, target, assignedMods, missedGoals }) => ({
+    .map(({ id, target, assignedMods, missedGoals, messages, shipPreferenceImpact }) => ({
+      shipPreferenceImpact,
       id: id,
       target: target,
       assignedMods: assignedMods ? assignedMods.map(id => modsById[id]).filter(mod => !!mod) : [],
+      messages: messages || [],
       missedGoals: missedGoals || []
     }));
 
@@ -822,6 +834,8 @@ const mapStateToProps = (state) => {
    * }}
    */
   return {
+    shoppingList: buildModShoppingList(modAssignments.filter(row =>
+      !row.shipPreferenceImpact || !row.shipPreferenceImpact.shipFocused), state.gameSettings),
     allyCode: state.allyCode,
     assignedMods: profile.modAssignments,
     currentSetValue: currentSetValue,

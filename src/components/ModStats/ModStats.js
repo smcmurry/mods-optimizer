@@ -1,5 +1,6 @@
 // @flow
 import React from 'react';
+import { GGScore } from '../GGScore';
 import './ModStats.css';
 import CharacterAvatar from "../CharacterAvatar/CharacterAvatar";
 import { connect } from "react-redux";
@@ -22,6 +23,7 @@ class ModStats extends React.PureComponent {
 
     return (
       <div className='mod-stats'>
+        <GGScore mod={mod} />
         <h4>Primary Stat</h4>
         <ul>
           <li>{mod.primaryStat.show()}</li>

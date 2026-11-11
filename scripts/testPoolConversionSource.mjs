@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import { compilePoolConversion, convertedPools } from './lib/poolConversionSource.mjs';
+const effects = Object.fromEntries(JSON.parse(fs.readFileSync('data/gameData-cache/effect.json', 'utf8')).data.map(effect => [effect.id, effect]));
+const abilities = Object.fromEntries(JSON.parse(fs.readFileSync('data/gameData-cache/ability.json', 'utf8')).data.map(ability => [ability.id, ability]));
+const nih = compilePoolConversion(effects.leaderability_darthnihilus_health_handler, abilities.leaderability_darthnihilus.tier.at(-1).effectReference, effects);
+assert.equal(nih.contextOwner, 'affected-recipient');
+assert.equal(nih.markerId, 'leaderability_darthnihilus_health_handler_trigger');
+assert.ok(effects.leaderability_darthnihilus_health_handler.target[0].category.category.some(category => category.categoryId === 'selftag_darthmalak' && category.exclude));
+const malak = compilePoolConversion(effects.uniqueability_darthmalak02_health_handler, abilities.uniqueability_darthmalak02.tier.at(-1).effectReference, effects);
+assert.equal(malak.contextOwner, 'affected-recipient');
+assert.equal(malak.markerId, undefined);
+assert.deepEqual(convertedPools({ health: 10000, protection: 20000 }), { health: 30000, protection: 0 });
+assert.deepEqual(convertedPools({ health: 40000, protection: 80000 }), { health: 120000, protection: 0 });
+assert.deepEqual(convertedPools(convertedPools({ health: 40000, protection: 80000 })), { health: 120000, protection: 0 });
+console.log('Nihilus receiver-owned once-marker conversion and Malak own start conversion source shapes checked.');

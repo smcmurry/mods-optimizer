@@ -2,6 +2,7 @@
 
 import React, { PureComponent } from "react";
 import CharacterAvatar from "../../components/CharacterAvatar/CharacterAvatar";
+import { CharacterGGScore } from '../../components/GGScore';
 
 import "./CharacterList.css";
 import { connect } from "react-redux";
@@ -12,7 +13,7 @@ import {
   changeCharacterTarget,
   lockCharacter, moveSelectedCharacter,
   selectCharacter, toggleCharacterLock,
-  unselectCharacter, toggleSliceMods,
+  unselectCharacter, toggleSliceMods, toggleSixDotPreference, toggleHighestGGMods, toggleFullLoadoutOnly,
   toggleUpgradeMods, changeMinimumModDots, setOptimizeIndex
 } from "../../state/actions/characterEdit";
 import characterSettings from "../../constants/characterSettings";
@@ -145,7 +146,29 @@ class CharacterList extends PureComponent {
           {this.props.gameSettings[character.baseID] ?
             this.props.gameSettings[character.baseID].name :
             character.baseID}
+          <CharacterGGScore characterId={character.baseID} />
         </div>
+        <label className="ship-mod-preference" onDoubleClick={event => event.stopPropagation()}
+          title="Use existing 6-dot mods for the ship and minimize value lost. Prefer the target sets and primaries only when doing so costs no additional value.">
+          <input type="checkbox" checked={!!character.optimizerSettings.preferSixDotMods}
+            disabled={character.optimizerSettings.isLocked || character.playerValues.gearLevel < 12}
+            onChange={() => this.props.toggleSixDotPreference(character.baseID)} />
+          Prefer 6-dot mods for ship
+        </label>
+        <label className="ship-mod-preference highest-gg-preference" onDoubleClick={event => event.stopPropagation()}
+          title="At this character's priority, equip the highest current GG score level 15 mod remaining in each slot. Ignores sets, primaries, stat targets, minimum dots, and ship preference. Locked mods and 6-dot gear requirements still apply.">
+          <input type="checkbox" checked={!!character.optimizerSettings.highestGGMods}
+            disabled={character.optimizerSettings.isLocked}
+            onChange={() => this.props.toggleHighestGGMods(character.baseID)} />
+          Highest remaining level 15 GG mods
+        </label>
+        <label className="ship-mod-preference full-loadout-preference" onDoubleClick={event => event.stopPropagation()}
+          title="Choose the highest-value intact six-mod loadout from one character using the active scoring mode. Ignores sets, primaries, stat requirements, minimum dots, upgrades, slicing, Highest GG and ship preferences. Locks and gear eligibility still apply.">
+          <input type="checkbox" checked={!!character.optimizerSettings.fullLoadoutOnly}
+            disabled={character.optimizerSettings.isLocked}
+            onChange={() => this.props.toggleFullLoadoutOnly(character.baseID)} />
+          Full loadout from one character only
+        </label>
         <div className={'target'}>
           <label>Target:</label>
           <Dropdown value={selectedPlan} onChange={onSelect.bind(this)} title={target.priorityDescription()}>
@@ -301,6 +324,9 @@ const mapDispatchToProps = (dispatch) => ({
   changeCharacterTarget: (characterID, target) => dispatch(changeCharacterTarget(characterID, target)),
   lockCharacter: (characterID) => dispatch(lockCharacter(characterID)),
   toggleCharacterLock: (characterID) => dispatch(toggleCharacterLock(characterID)),
+  toggleSixDotPreference: characterID => dispatch(toggleSixDotPreference(characterID)),
+  toggleFullLoadoutOnly: characterID => dispatch(toggleFullLoadoutOnly(characterID)),
+  toggleHighestGGMods: characterID => dispatch(toggleHighestGGMods(characterID)),
   toggleSliceMods: (characterID) => dispatch(toggleSliceMods(characterID)),
   toggleUpgradeMods: (characterIndex) => dispatch(toggleUpgradeMods(characterIndex)),
   changeMinimumModDots: (characterID, newMinimum) => dispatch(changeMinimumModDots(characterID, newMinimum)),

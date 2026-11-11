@@ -1,0 +1,53 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
+const w=vm.createContext({self:{},postMessage(){}});
+vm.runInContext(fs.readFileSync('public/workers/optimizer.js','utf8'),w);
+vm.runInContext('self.sets = setBonuses',w);
+const stats={health:30000,protection:40000,speed:150,physDmg:4000,specDmg:3000,physCritChance:30,specCritChance:20,critDmg:150,armor:300,resistance:200,potency:40,tenacity:40,accuracy:0,critAvoid:0};
+const a={baseID:'A',playerValues:{gearLevel:13,level:85,baseStats:stats,equippedStats:stats},optimizerSettings:{minimumModDots:5,sliceMods:false}};
+const b={...a,baseID:'B',optimizerSettings:{minimumModDots:6,sliceMods:false}};
+const slots=['square','arrow','diamond','triangle','circle','cross'];
+const make=(prefix,set,speed,pips=5,primary='Health %')=>slots.map((slot,i)=>({id:prefix+i,slot,set:w.self.sets[set],level:15,pips,tier:1,
+ primaryStat:w.deserializeStat(primary,'5%'),secondaryStats:[w.deserializeStat('Speed','+'+speed)],characterID:null}));
+const plan={name:'test',targetStats:[],upgradeMods:false,primaryStatRestrictions:{},setRestrictions:{},useOnlyFullSets:true};
+const limits={primaries:{},setCombinations:[{health:3},{defense:3}]};
+const run=(mods,scores,target=plan,config={})=>w.optimizeGGMods(mods,{A:a},[{id:'A',target}],{},
+ {scores,restrictions:{A:limits},...config})[0];
+const mods=[...make('h','health',1),...make('d','defense',10)];
+const scores=Object.fromEntries(mods.map(m=>[m.id,m.id.startsWith('h')?50:51]));
+assert.ok(run(mods,scores).assignedMods.every(id=>id.startsWith('h')),'First choice wins within 3%');
+mods.filter(m=>m.id.startsWith('d')).forEach(m=>scores[m.id]=60);
+assert.ok(run(mods,scores).assignedMods.every(id=>id.startsWith('d')),'Substantially stronger second choice wins');
+const floor={...plan,targetStats:[{stat:'Speed',minimum:210,maximum:220,optimizeForTarget:true}]};
+mods.filter(m=>m.id.startsWith('h')).forEach(m=>scores[m.id]=90);
+const constrained=run(mods,scores,floor);
+assert.ok(constrained.assignedMods.every(id=>id.startsWith('d')),'Stat minimum overrides GG');
+assert.equal(constrained.missedGoals.length,0);
+const bounded=run(mods,scores,{...plan,targetStats:[{stat:'Speed',minimum:150,maximum:160,optimizeForTarget:true}]});
+assert.ok(bounded.assignedMods.every(id=>id.startsWith('h')),'Stat maximum is enforced');
+const impossible=run(mods,scores,{...plan,targetStats:[{stat:'Speed',minimum:9999,maximum:10000,optimizeForTarget:true}]});
+assert.equal(impossible.assignedMods.length,0);
+assert.equal(impossible.missedGoals.length,1);
+assert.ok(impossible.messages.some(m=>m.includes('not successfully optimized')),'Impossible stat limits are not silently relaxed');
+const primaryMods=[...make('first','health',1,5,'Health %'),...make('second','health',1,5,'Protection %')];
+const primaryScores=Object.fromEntries(primaryMods.map(m=>[m.id,m.id.startsWith('first')?10:60]));
+assert.ok(run(primaryMods,primaryScores,plan,{restrictions:{A:{primaries:{arrow:['Health %','Protection %']},setCombinations:[{health:3}]}}}).assignedMods.includes('second1'));
+const low=make('five','health',1),high=make('six','health',1,6),mixed=[...low,...high];
+const mixedScores=Object.fromEntries(mixed.map(m=>[m.id,m.pips===6?90:40]));
+const reserved=w.optimizeGGMods(mixed,{A:a,B:b},[{id:'A',target:plan},{id:'B',target:plan}],{},
+ {scores:mixedScores,restrictions:{A:limits,B:limits}});
+assert.ok(reserved[0].assignedMods.every(id=>id.startsWith('five')),'Protect six-dot supply for a later minimum-six-dot character');
+assert.ok(reserved[1].assignedMods.every(id=>id.startsWith('six')));
+const relative={...plan,targetStats:[{stat:'Speed',type:'+',relativeCharacterId:'A',minimum:0,maximum:1000,optimizeForTarget:true}]};
+const relativeRows=w.optimizeGGMods(mixed,{A:a,B:b},[{id:'A',target:plan},{id:'B',target:relative}],{},
+ {scores:mixedScores,restrictions:{A:limits,B:limits}});
+assert.equal(relativeRows[1].assignedMods.length,6);
+assert.equal(relativeRows[1].missedGoals.length,0);
+const fallback=run(make('fallback','tenacity',1),Object.fromEntries(slots.map((s,i)=>['fallback'+i,40])));
+assert.equal(fallback.assignedMods.length,6);
+assert.ok(fallback.messages.some(m=>m.includes('other complete sets')));
+const equipped=make('old','tenacity',1).map(m=>({...m,characterID:'A'}));
+const equippedScores=Object.fromEntries([...mods,...equipped].map(m=>[m.id,m.id.startsWith('old')?100:30]));
+assert.ok(run([...mods,...equipped],equippedScores).assignedMods.every(id=>id.startsWith('old')),'Keep substantially stronger equipped builds');
+console.log('Passed GG fallbacks: top-two alternatives, 3% preference, stat floors/ceilings, infeasible/relative targets, scarce-dot protection and equipped quality guard.');

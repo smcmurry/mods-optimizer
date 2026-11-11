@@ -28,6 +28,7 @@ class OptimizationPlan {
   setRestrictions;
   targetStats;
   useOnlyFullSets;
+  metaRestrictions;
 
   constructor(name,
     health,
@@ -47,7 +48,8 @@ class OptimizationPlan {
     primaryStatRestrictions = {},
     setRestrictions = {},
     targetStats = [],
-    useOnlyFullSets = false
+    useOnlyFullSets = false,
+    metaRestrictions = null
   ) {
     this.name = name;
 
@@ -87,6 +89,7 @@ class OptimizationPlan {
     this.setRestrictions = setRestrictions;
     this.targetStats = targetStats;
     this.useOnlyFullSets = useOnlyFullSets;
+    this.metaRestrictions = metaRestrictions;
   }
 
   /**
@@ -114,7 +117,8 @@ class OptimizationPlan {
       this.primaryStatRestrictions,
       this.setRestrictions,
       this.targetStats,
-      this.useOnlyFullSets
+      this.useOnlyFullSets,
+      this.metaRestrictions
     );
   }
 
@@ -138,7 +142,8 @@ class OptimizationPlan {
       this.primaryStatRestrictions,
       this.setRestrictions,
       this.targetStats,
-      this.useOnlyFullSets
+      this.useOnlyFullSets,
+      this.metaRestrictions
     );
   }
 
@@ -166,7 +171,8 @@ class OptimizationPlan {
       areObjectsEquivalent(this.primaryStatRestrictions, that.primaryStatRestrictions) &&
       areObjectsEquivalent(this.setRestrictions, that.setRestrictions) &&
       areObjectsEquivalent(this.targetStats, that.targetStats) &&
-      this.useOnlyFullSets === that.useOnlyFullSets
+      this.useOnlyFullSets === that.useOnlyFullSets &&
+      areObjectsEquivalent(this.metaRestrictions, that.metaRestrictions)
   }
 
   /**
@@ -277,6 +283,7 @@ class OptimizationPlan {
     planObject.setRestrictions = this.setRestrictions;
     planObject.targetStats = this.targetStats;
     planObject.useOnlyFullSets = this.useOnlyFullSets;
+    planObject.metaRestrictions = this.metaRestrictions;
 
     return planObject;
   }
@@ -342,7 +349,8 @@ class OptimizationPlan {
         planJson.primaryStatRestrictions || {},
         planJson.setRestrictions || {},
         targetStats,
-        planJson.useOnlyFullSets || false
+        planJson.useOnlyFullSets || false,
+        planJson.metaRestrictions || null
       );
     } else {
       return null;

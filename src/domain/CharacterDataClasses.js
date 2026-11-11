@@ -313,6 +313,9 @@ class OptimizerSettings {
   minimumModDots;
   sliceMods;
   isLocked;
+  preferSixDotMods;
+  highestGGMods;
+  fullLoadoutOnly;
 
   /**
    * @param target OptimizationPlan
@@ -321,12 +324,15 @@ class OptimizerSettings {
    * @param sliceMods Boolean
    * @param isLocked Boolean
    */
-  constructor(target, targets, minimumModDots, sliceMods, isLocked) {
+  constructor(target, targets, minimumModDots, sliceMods, isLocked, preferSixDotMods = false, highestGGMods = false, fullLoadoutOnly = false) {
     this.target = target;
     this.targets = targets;
     this.minimumModDots = minimumModDots;
     this.sliceMods = sliceMods;
     this.isLocked = isLocked;
+    this.preferSixDotMods = preferSixDotMods;
+    this.highestGGMods = highestGGMods;
+    this.fullLoadoutOnly = fullLoadoutOnly;
     Object.freeze(this);
   }
 
@@ -350,7 +356,10 @@ class OptimizerSettings {
       Object.values(newTargetsObject),
       this.minimumModDots,
       this.sliceMods,
-      this.isLocked
+      this.isLocked,
+      this.preferSixDotMods,
+      this.highestGGMods,
+      this.fullLoadoutOnly
     );
   }
 
@@ -368,7 +377,10 @@ class OptimizerSettings {
       Object.values(Object.assign({}, oldTargetsObject, newTargetsObject)),
       this.minimumModDots,
       this.sliceMods,
-      this.isLocked
+      this.isLocked,
+      this.preferSixDotMods,
+      this.highestGGMods,
+      this.fullLoadoutOnly
     );
   }
 
@@ -389,7 +401,10 @@ class OptimizerSettings {
       newTargets,
       this.minimumModDots,
       this.sliceMods,
-      this.isLocked
+      this.isLocked,
+      this.preferSixDotMods,
+      this.highestGGMods,
+      this.fullLoadoutOnly
     );
   }
 
@@ -399,7 +414,10 @@ class OptimizerSettings {
       this.targets,
       this.minimumModDots,
       this.sliceMods,
-      true
+      true,
+      this.preferSixDotMods,
+      this.highestGGMods,
+      this.fullLoadoutOnly
     );
   }
 
@@ -409,7 +427,10 @@ class OptimizerSettings {
       this.targets,
       this.minimumModDots,
       this.sliceMods,
-      false
+      false,
+      this.preferSixDotMods,
+      this.highestGGMods,
+      this.fullLoadoutOnly
     );
   }
 
@@ -419,7 +440,10 @@ class OptimizerSettings {
       this.targets,
       minimumModDots,
       this.sliceMods,
-      this.isLocked
+      this.isLocked,
+      this.preferSixDotMods,
+      this.highestGGMods,
+      this.fullLoadoutOnly
     );
   }
 
@@ -429,8 +453,26 @@ class OptimizerSettings {
       this.targets,
       this.minimumModDots,
       sliceMods,
-      this.isLocked
+      this.isLocked,
+      this.preferSixDotMods,
+      this.highestGGMods,
+      this.fullLoadoutOnly
     );
+  }
+
+  withFullLoadoutOnly(fullLoadoutOnly) {
+    return new OptimizerSettings(this.target, this.targets, this.minimumModDots,
+      this.sliceMods, this.isLocked, this.preferSixDotMods, this.highestGGMods, fullLoadoutOnly);
+  }
+
+  withHighestGGMods(highestGGMods) {
+    return new OptimizerSettings(this.target, this.targets, this.minimumModDots,
+      this.sliceMods, this.isLocked, this.preferSixDotMods, highestGGMods, this.fullLoadoutOnly);
+  }
+
+  withSixDotPreference(preferSixDotMods) {
+    return new OptimizerSettings(this.target, this.targets, this.minimumModDots,
+      this.sliceMods, this.isLocked, preferSixDotMods, this.highestGGMods, this.fullLoadoutOnly);
   }
 
   serialize() {
@@ -438,6 +480,9 @@ class OptimizerSettings {
       targets: this.targets.map(target => target.serialize()),
       minimumModDots: this.minimumModDots,
       sliceMods: this.sliceMods,
+      preferSixDotMods: this.preferSixDotMods,
+      highestGGMods: this.highestGGMods,
+      fullLoadoutOnly: this.fullLoadoutOnly,
       isLocked: this.isLocked
     };
   }
@@ -459,7 +504,10 @@ class OptimizerSettings {
         settingsJson.targets.map(OptimizationPlan.deserialize),
         minimumModDots,
         settingsJson.sliceMods || false,
-        settingsJson.isLocked
+        settingsJson.isLocked,
+        settingsJson.preferSixDotMods || false,
+        settingsJson.highestGGMods || false,
+        settingsJson.fullLoadoutOnly || false
       );
     } else {
       return null;

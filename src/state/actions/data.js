@@ -436,6 +436,10 @@ function showFetchResult(fetchData, errorMessages, usedSession) {
 }
 
 export function fetchCharacterList(mode, overwrite, allyCode, parameters) {
+  // Fetch the full ranking before applying a local selection and its size limit.
+  const {includedCharacterIDs, ...remoteParameters} = parameters;
+  const selectedOnly = Array.isArray(includedCharacterIDs);
+  if (selectedOnly) delete remoteParameters.top;
   return function (dispatch) {
     dispatch(setIsBusy(true));
 
@@ -445,14 +449,17 @@ export function fetchCharacterList(mode, overwrite, allyCode, parameters) {
         allyCode: allyCode,
         mode: mode,
         parameters: filterObject(
-          parameters,
+          remoteParameters,
           (key, value) => !!value || value === 0
         ),
       }
     )
-      .then((characterList) =>
-        dispatch(applyCharacterList(overwrite, characterList))
-      )
+      .then((characterList) => {
+        const matching = selectedOnly ? characterList.filter(id => includedCharacterIDs.includes(id)) : characterList;
+        const maximum = Number(parameters.top);
+        const limited = selectedOnly && maximum > 0 ? matching.slice(0,maximum) : matching;
+        dispatch(applyCharacterList(overwrite, limited));
+      })
       .catch((error) => {
         dispatch(showError(error.message));
       })
@@ -462,7 +469,7 @@ export function fetchCharacterList(mode, overwrite, allyCode, parameters) {
 
 function applyCharacterList(overwrite, characterList) {
   return updateProfile((profile) => {
-    const startingList = overwrite ? [] : profile.selectedCharacters;
+    const startingList = overwrite === true || overwrite === 'true' ? [] : profile.selectedCharacters;
     const startingCharacterIDs = startingList.map(
       (selectedCharacter) => selectedCharacter.id
     );

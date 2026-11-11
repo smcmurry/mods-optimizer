@@ -5,6 +5,7 @@ import groupByKey from "../../utils/groupByKey";
 import collectByKey from "../../utils/collectByKey";
 import OptimizationPlan from "../../domain/OptimizationPlan";
 import generatedMetaSpeedRanking from "../../constants/generatedMetaSpeedRanking.json";
+import kyberRelicPriority from '../../utils/kyberRelicPriority';
 import getDatabase from "../storage/Database";
 import { loadCharacterTemplates } from "./storage";
 
@@ -113,7 +114,7 @@ export function unselectAllCharacters() {
 
 /**
  * Auto-generate the selected character list using average Speed-secondary
- * investment from the Kyber Comlink dataset.
+ * investment from the Kyber Comlink dataset, modestly adjusted by roster relic level.
  *
  * This intentionally ranks ONLY characters already present in the player's
  * loaded roster.
@@ -173,6 +174,7 @@ export function generateMetaSpeedCharacterList(
         Object.values(
           profile.characters
         )
+          .filter(character => !Array.isArray(parameters.includedCharacterIDs) || parameters.includedCharacterIDs.includes(character.baseID))
           .map(
             character => {
               const ranking =
@@ -192,6 +194,7 @@ export function generateMetaSpeedCharacterList(
 
               return {
                 character,
+                investmentPriority: kyberRelicPriority(Number(ranking.averageSecondarySpeed), character.playerValues),
 
                 averageSecondarySpeed:
                   Number(
@@ -271,8 +274,15 @@ export function generateMetaSpeedCharacterList(
               /**
                * PRIMARY:
                *
-               * Average Speed secondary.
+               * Kyber Speed investment adjusted for the player's relic investment.
                */
+              if (
+                right.investmentPriority !== left.investmentPriority
+              ) {
+                return right.investmentPriority - left.investmentPriority;
+              }
+
+              // Preserve the original Kyber ordering when adjusted priorities tie.
               if (
                 right.averageSecondarySpeed !==
                 left.averageSecondarySpeed
@@ -496,6 +506,33 @@ export function toggleCharacterLock(characterID) {
     });
 
     return profile.withCharacters(newCharacters);
+  });
+}
+
+export function toggleFullLoadoutOnly(characterID) {
+  return updateProfile(profile => {
+    const character = profile.characters[characterID];
+    return profile.withCharacters({ ...profile.characters,
+      [characterID]: character.withOptimizerSettings(character.optimizerSettings.withFullLoadoutOnly(
+        !character.optimizerSettings.fullLoadoutOnly)) });
+  });
+}
+
+export function toggleHighestGGMods(characterID) {
+  return updateProfile(profile => {
+    const character = profile.characters[characterID];
+    return profile.withCharacters({ ...profile.characters,
+      [characterID]: character.withOptimizerSettings(character.optimizerSettings.withHighestGGMods(
+        !character.optimizerSettings.highestGGMods)) });
+  });
+}
+
+export function toggleSixDotPreference(characterID) {
+  return updateProfile(profile => {
+    const character = profile.characters[characterID];
+    return profile.withCharacters({ ...profile.characters,
+      [characterID]: character.withOptimizerSettings(character.optimizerSettings.withSixDotPreference(
+        !character.optimizerSettings.preferSixDotMods)) });
   });
 }
 

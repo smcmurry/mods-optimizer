@@ -302,6 +302,14 @@ class CharacterEditForm extends React.Component {
 
             <div className={'header-row group primary-stats'}>
 
+              {this.props.target.metaRestrictions && <div>
+                <h4>Top two meta restrictions</h4>
+                <p>These set combinations and primaries are used when available. If no complete build fits, these restrictions are dropped and a warning appears above the optimized mods.</p>
+                <p>{this.props.target.metaRestrictions.setCombinations.map(sets =>
+                  Object.entries(sets).map(([name, count]) => count + ' × ' + name).join(' + ')).join(' or ')}</p>
+                {Object.entries(this.props.target.metaRestrictions.primaries).map(([slot, choices]) =>
+                  <p key={slot}>{slot}: {choices.join(' or ')}</p>)}
+              </div>}
               <h4>Restrict Primary Stats:</h4>
 
               <div className={'mod-blocks'}>
@@ -1608,7 +1616,8 @@ class CharacterEditForm extends React.Component {
 
         targetStats,
 
-        this.form['use-full-sets'].checked
+        this.form['use-full-sets'].checked,
+        this.props.target.metaRestrictions
 
       );
 
@@ -1654,7 +1663,8 @@ class CharacterEditForm extends React.Component {
 
         targetStats,
 
-        this.form['use-full-sets'].checked
+        this.form['use-full-sets'].checked,
+        this.props.target.metaRestrictions
 
       );
 

@@ -44,6 +44,7 @@ self.onmessage = function (message) {
         throw new Error('Unable to read your profile for optimization. Please clear your cache and try again.');
       }
       const allMods = profile.mods.map(deserializeMod);
+      allMods.forEach(mod => { mod.currentGGScore = (message.data.currentGGScores || {})[mod.id]; });
 
       const characters = {};
       const lastRunCharacters = {};
@@ -69,11 +70,13 @@ self.onmessage = function (message) {
         lastRun.selectedCharacters.map(({ id, target }) => ({ id: id, target: deserializeTarget(target) })) :
         lastRun.selectedCharacters;
 
-      const selectedCharacters = profile.selectedCharacters.map(({ id, target }) =>
+      const selectedCharacters = (message.data.selectedCharacters || profile.selectedCharacters).map(({ id, target }) =>
         ({ id: id, target: deserializeTarget(target) })
       );
 
-      const optimizerResults = optimizeMods(
+      const optimizerResults = message.data.ggOptimization ? optimizeGGMods(
+        allMods, characters, selectedCharacters, profile.globalSettings, message.data.ggOptimization
+      ) : optimizeMods(
         allMods,
         characters,
         selectedCharacters,
@@ -86,12 +89,12 @@ self.onmessage = function (message) {
       self.close();
     };
 
-    const profileRequest = getDataTransaction.objectStore('profiles').get(message.data);
+    const profileRequest = getDataTransaction.objectStore('profiles').get(typeof message.data === 'object' ? message.data.allyCode : message.data);
     profileRequest.onsuccess = function (event) {
       profile = event.target.result;
     };
 
-    const lastRunRequest = getDataTransaction.objectStore('lastRuns').get(message.data);
+    const lastRunRequest = getDataTransaction.objectStore('lastRuns').get(typeof message.data === 'object' ? message.data.allyCode : message.data);
     lastRunRequest.onsuccess = function (event) {
       const result = event.target.result;
 
@@ -339,17 +342,17 @@ const maxStatPrimaries = Object.freeze({
 });
 
 const statSlicingUpgradeFactors = Object.freeze({
-  'Offense %': 3.02,
-  'Defense %': 2.34,
-  'Health %': 1.86,
-  'Defense': 1.63,
-  'Tenacity': 1.33,
-  'Potency': 1.33,
-  'Protection %': 1.33,
-  'Health': 1.26,
-  'Protection': 1.11,
-  'Offense': 1.10,
-  'Critical Chance': 1.04
+  'Offense %': 1.7 / 0.56,
+  'Defense %': 4 / 1.7,
+  'Health %': 2 / 1.13,
+  'Defense': 16 / 9.8,
+  'Tenacity': 3 / 2.25,
+  'Potency': 3 / 2.25,
+  'Protection %': 3 / 2.25,
+  'Health': 540 / 428.6,
+  'Protection': 920 / 830.6,
+  'Offense': 50 / 45.6,
+  'Critical Chance': 2.35 / 2.25
 });
 
 const statWeights = Object.freeze({
@@ -692,7 +695,8 @@ function modSetSatisfiesCharacterRestrictions(modSet, character, target) {
   const modSetSlots = {};
   modSet.forEach(mod => modSetSlots[mod.slot] = mod);
 
-  return modSet.every(mod => mod.pips >= minimumDots) &&
+  return modSetFulfillsMetaRestrictions(modSet, target) &&
+    modSet.every(mod => mod.pips >= minimumDots) &&
     (!target.primaryStatRestrictions.arrow ||
       (modSetSlots.arrow && modSetSlots.arrow.primaryStat.type === target.primaryStatRestrictions.arrow)) &&
     (!target.primaryStatRestrictions.triangle ||
@@ -960,6 +964,7 @@ function scoreStat(stat, target) {
  * @param target {OptimizationPlan} The plan that represents what each stat is worth
  */
 function scoreMod(mod, character, target) {
+  if (target.ggScores) return target.ggScores[mod.id] || 0;
   const cacheHit = cache.modScores[mod.id];
   if (cacheHit) {
     return cacheHit;
@@ -1032,6 +1037,7 @@ function getUpgradedMod(mod, character, target) {
  * @param target {OptimizationPlan}
  */
 function scoreModSet(modSet, character, target) {
+  if (target.ggScores) return modSet.reduce((sum, mod) => sum + (target.ggScores[mod.id] || 0), 0);
   return getFlatStatsFromModSet(modSet, character, target)
     .reduce((score, stat) => score + scoreStat(stat, target), 0);
 }
@@ -1118,7 +1124,293 @@ Object.freeze(chooseTwoOptions);
  * @return {Object} An array with an entry for each item in `order`. Each entry will be of the form
  *                  {id, target, assignedMods, messages}
  */
+// Exact additive GG search: keep the best mod for each slot/set, then use
+// dynamic programming over required set-piece counts. No restriction relaxation.
+function findBestGGSet(mods, character, limits, scores) {
+  if (!limits || !limits.setCombinations || !limits.setCombinations.length) return null;
+  const combination = limits.setCombinations[0];
+  const names = Object.keys(combination);
+  if (names.some(name => !setBonuses[name])) return null;
+  const required = names.map(name => combination[name] * setBonuses[name].numberOfModsRequired);
+  if (required.reduce((sum, count) => sum + count, 0) !== 6) return null;
+  const slots = ['square', 'arrow', 'diamond', 'triangle', 'circle', 'cross'];
+  const better = (a, b) => !b || a.score > b.score || (a.score === b.score && a.unmoved > b.unmoved);
+  let states = new Map([ [required.map(() => 0).join(','), { counts: required.map(() => 0), score: 0, unmoved: 0, mods: [] }] ]);
+  for (const slot of slots) {
+    const choices = names.map(name => {
+      let best = null;
+      for (const mod of mods) {
+        if (mod.slot !== slot || mod.set.name !== name || !Number.isFinite(scores[mod.id]) ||
+            mod.pips < character.optimizerSettings.minimumModDots ||
+            (mod.pips === 6 && character.playerValues.gearLevel < 12 && mod.characterID !== character.baseID) ||
+            (limits.primaries[slot] && mod.primaryStat.type !== limits.primaries[slot][0])) continue;
+        const candidate = { mod, score: scores[mod.id], unmoved: Number(mod.characterID === character.baseID) };
+        if (better(candidate, best)) best = candidate;
+      }
+      return best;
+    });
+    const next = new Map();
+    for (const state of states.values()) choices.forEach((choice, i) => {
+      if (!choice || state.counts[i] >= required[i]) return;
+      const counts = state.counts.slice();
+      counts[i]++;
+      const candidate = { counts, score: state.score + choice.score,
+        unmoved: state.unmoved + choice.unmoved, mods: state.mods.concat(choice.mod) };
+      const key = counts.join(',');
+      if (better(candidate, next.get(key))) next.set(key, candidate);
+    });
+    states = next;
+  }
+  const best = states.get(required.join(','));
+  return best ? best.mods : null;
+}
+
+function characterGGValue(score, rolls, preferences) {
+  if (!Number.isFinite(score) || !preferences) return score;
+  let total = 0, weighted = 0;
+  for (const [key, count] of Object.entries(rolls || {})) {
+    total += count;
+    weighted += count * (Number.isFinite(preferences[key]) ? preferences[key] : 0.5);
+  }
+  return total ? score * (0.8 + 0.4 * Math.max(0, Math.min(1, weighted / total))) : score;
+}
+
+function ggEligible(mod, character) {
+  if (character.optimizerSettings.highestGGMods) return mod.level === 15 &&
+    Number.isFinite(mod.currentGGScore) && (mod.pips < 6 || character.playerValues.gearLevel >= 12);
+  return mod.pips >= (character.optimizerSettings.minimumModDots || 1) &&
+    (mod.pips < 6 || character.playerValues.gearLevel >= 12 || mod.characterID === character.baseID);
+}
+
+function ggFullSetCombinations() {
+  const names = Object.keys(setBonuses), result = [];
+  function visit(index, remaining, counts) {
+    if (!remaining) { result.push({ ...counts }); return; }
+    if (index === names.length) return;
+    const name = names[index], size = setBonuses[name].numberOfModsRequired;
+    for (let count = 0; count * size <= remaining; count++) {
+      if (count) counts[name] = count; else delete counts[name];
+      visit(index + 1, remaining - count * size, counts);
+    }
+    delete counts[name];
+  }
+  visit(0, 6, {});
+  return result;
+}
+
+function searchGGChoices(mods, character, limits, scores, target) {
+  const eligible = mods.filter(mod => ggEligible(mod, character) && Number.isFinite(scores[mod.id]) &&
+    (!limits.primaries[mod.slot] || limits.primaries[mod.slot].includes(mod.primaryStat.type)));
+  let best = null, bestValue = -Infinity;
+  for (const combination of limits.setCombinations) {
+    let candidate;
+    if (target.targetStats.length) {
+      const plan = { ...target, ggScores: scores, metaRestrictions: null,
+        setRestrictions: combination, primaryStatRestrictions: {}, useOnlyFullSets: true };
+      candidate = findBestModSetForCharacterBase(eligible.filter(m => combination[m.set.name]), character, plan).modSet;
+      clearCache();
+      candidate.forEach(m => getFlatStatsFromMod(m, character, plan));
+      if (candidate.length !== 6 || !modSetFulfillsSetRestriction(candidate, combination) ||
+          !modSetFulfillsTargetStatRestriction(candidate, character, plan)) continue;
+    } else {
+      candidate = findBestGGSet(eligible, character, { primaries: {}, setCombinations: [combination] }, scores);
+    }
+    if (!candidate) continue;
+    const value = candidate.reduce((sum, mod) => sum + scores[mod.id], 0);
+    if (value > bestValue) { best = candidate; bestValue = value; }
+  }
+  return best;
+}
+
+// Preserve a feasible slot assignment for later characters with minimum-dot/gear
+// restrictions. A slot-wise matching avoids consuming their last eligible mod.
+function ggCanFillLater(pool, later) {
+  const matched = new Map();
+  function match(character, seen) {
+    for (const mod of pool) {
+      if (seen.has(mod.id) || !ggEligible(mod, character)) continue;
+      seen.add(mod.id);
+      if (!matched.has(mod.id) || match(matched.get(mod.id), seen)) {
+        matched.set(mod.id, character); return true;
+      }
+    }
+    return false;
+  }
+  return later.every(character => match(character, new Set()));
+}
+
+// Evaluate original equipped loadouts as indivisible candidates from the remaining pool.
+function fullLoadoutAssignment(mods, character, target, settings, gg = null) {
+  const preferences = gg && gg.characterWeighted && gg.preferences[character.baseID] &&
+    gg.preferences[character.baseID].weights;
+  const scores = gg ? Object.fromEntries(mods.map(mod => [mod.id, preferences ?
+      characterGGValue(gg.scores[mod.id], gg.rolls[mod.id], preferences) : gg.scores[mod.id]])) : null;
+  const plan = { ...target, upgradeMods:false,
+    primaryStatRestrictions: {}, setRestrictions: {}, metaRestrictions: null,
+    targetStats: [], useOnlyFullSets: false,
+    ggScores: scores };
+  const recipient = { ...character, optimizerSettings:{ ...character.optimizerSettings,
+    sliceMods:false, minimumModDots:1 } };
+  const groups = new Map();
+  mods.forEach(mod => {
+    if (mod.characterID) {
+      if (!groups.has(mod.characterID)) groups.set(mod.characterID, []);
+      groups.get(mod.characterID).push(mod);
+    }
+  });
+  let best = null, bestValue = -Infinity;
+  for (const loadout of groups.values()) {
+    if (loadout.length !== 6 || !modSlots.every(slot => loadout.filter(mod => mod.slot === slot).length === 1) ||
+        loadout.some(mod => mod.pips === 6 && character.playerValues.gearLevel < 12) ||
+        (scores && loadout.some(mod => !Number.isFinite(scores[mod.id])))) continue;
+    clearCache();
+    loadout.forEach(mod => getFlatStatsFromMod(mod, recipient, plan));
+    const value = scoreModSet(loadout, recipient, plan);
+    if (value > bestValue || (value === bestValue && loadout[0].characterID === character.baseID)) {
+      best = loadout; bestValue = value;
+    }
+  }
+  const assigned = best || mods.filter(mod => mod.characterID === character.baseID);
+  clearCache();
+  const messages = best ? [`Using the highest-value complete equipped loadout from ${best[0].characterID}; other mod requirements and preferences ignored.`] :
+    ['No intact eligible six-mod loadout is available. Kept remaining current mods; no mixed-donor loadout was assigned.'];
+  assigned.forEach(mod => getFlatStatsFromMod(mod, recipient, plan));
+  const row = {id:character.baseID,target,assignedMods:assigned.map(mod => mod.id),
+    fullLoadoutOnly:true,messages,missedGoals:[]};
+  clearCache();
+  return row;
+}
+
+function highestGGAssignment(mods, character, target) {
+  const eligible = mods.filter(mod => mod.level === 15 && Number.isFinite(mod.currentGGScore) &&
+    (mod.pips < 6 || character.playerValues.gearLevel >= 12));
+  const assigned = modSlots.map(slot => eligible.filter(mod => mod.slot === slot).sort((a,b) =>
+    b.currentGGScore - a.currentGGScore ||
+    Number(b.characterID === character.baseID) - Number(a.characterID === character.baseID) ||
+    String(a.id).localeCompare(String(b.id)))[0]).filter(Boolean);
+  return {id:character.baseID,target,assignedMods:assigned.map(mod => mod.id),missedGoals:[],
+    highestGGMods:true, messages:['Equipped highest remaining current GG score level 15 mods per slot; target restrictions and ship preference bypassed.',
+      ...(assigned.length < 6 ? ['Not enough eligible level 15 mods with supported GG scores to fill all six slots.'] : [])]};
+}
+
+function optimizeGGMods(mods, characters, order, settings, gg) {
+  const selectedIds = new Set(order.map(row => row.id));
+  let available = mods.filter(mod => !mod.characterID ||
+    (characters[mod.characterID] && !characters[mod.characterID].optimizerSettings.isLocked &&
+      (!settings.lockUnselectedCharacters || selectedIds.has(mod.characterID))));
+  const results = [], combinations = ggFullSetCombinations();
+  const lockedIds = Object.keys(characters).filter(id => characters[id].optimizerSettings.isLocked ||
+    (settings.lockUnselectedCharacters && !selectedIds.has(id)));
+  order.forEach(({ id, target }, index) => {
+    const character = characters[id];
+    if (character.optimizerSettings.isLocked) { results.push(null); return; }
+    if (character.optimizerSettings.fullLoadoutOnly) {
+      const row = fullLoadoutAssignment(available, character, target, settings, gg);
+      row.target = target;
+      available = available.filter(mod => !row.assignedMods.includes(mod.id));
+      results.push(row);
+      return;
+    }
+    if (character.optimizerSettings.highestGGMods) {
+      const row = highestGGAssignment(available, character, target);
+      available = available.filter(mod => !row.assignedMods.includes(mod.id));
+      results.push(row);
+      return;
+    }
+    const absolute = changeRelativeTargetStatsToAbsolute(results, characters, lockedIds, mods,
+      { ...target, targetStats: target.targetStats || [] }, character);
+    const plan = { ...absolute, targetStats: absolute.targetStats.filter(stat => stat.optimizeForTarget),
+      primaryStatRestrictions: {}, setRestrictions: {}, useOnlyFullSets: true };
+    const later = order.slice(index + 1).map(row => characters[row.id]).filter(c => !c.optimizerSettings.isLocked);
+    const bySlot = {};
+    available.filter(mod => Number.isFinite(gg.scores[mod.id])).forEach(mod => { (bySlot[mod.slot] || (bySlot[mod.slot] = [])).push(mod); });
+    const protect = Object.fromEntries(Object.entries(bySlot).map(([slot, pool]) => [slot, ggCanFillLater(pool, later)]));
+    const safe = available.filter(mod => Number.isFinite(gg.scores[mod.id]) && (!protect[mod.slot] ||
+      ggCanFillLater(bySlot[mod.slot].filter(m => m.id !== mod.id), later)));
+    const preferences = gg.characterWeighted && gg.preferences[id] && gg.preferences[id].weights;
+    const scores = preferences ? Object.fromEntries(available.map(mod => [mod.id,
+      characterGGValue(gg.scores[mod.id], gg.rolls[mod.id], preferences)])) : gg.scores;
+    const limits = gg.restrictions[id];
+    const topLimits = limits && { primaries: Object.fromEntries(Object.entries(limits.primaries).map(([slot, choices]) => [slot, choices.slice(0, 1)])),
+      setCombinations: limits.setCombinations.slice(0, 1) };
+    const value = chosen => chosen ? chosen.reduce((sum, mod) => sum + (scores[mod.id] || 0), 0) : -Infinity;
+    let best = limits && searchGGChoices(safe, character, limits, scores, plan);
+    const top = topLimits && searchGGChoices(safe, character, topLimits, scores, plan);
+    // Prefer the first choice only when it is within 3% of the best top-two build.
+    if (top && value(top) >= value(best) * 0.97) best = top;
+    const messages = [];
+    if (!best) {
+      best = searchGGChoices(safe, character, { primaries: limits ? limits.primaries : {}, setCombinations: combinations }, scores, plan);
+      if (best) messages.push('Top set combinations unavailable; used other complete sets while preserving preferred primaries and stat requirements.');
+    }
+    if (!best) {
+      best = searchGGChoices(safe, character, { primaries: {}, setCombinations: combinations }, scores, plan);
+      if (best) messages.push('Top sets/primaries unavailable; used a complete alternative build meeting stat requirements.');
+    }
+    const old = safe.filter(mod => mod.characterID === id);
+    clearCache();
+    if (plan.targetStats.length) old.forEach(mod => getFlatStatsFromMod(mod, character, plan));
+    if (old.length === 6 && old.every(mod => ggEligible(mod, character)) &&
+        modSetFulfillsTargetStatRestriction(old, character, plan) &&
+        (!settings.forceCompleteSets || modSetFulfillsFullSetRestriction(old)) && value(old) > value(best) * 1.05) {
+      best = old;
+      messages.push('Kept a substantially stronger equipped build rather than forcing a weaker popular combination.');
+    }
+    // If no full-set build works, allow broken sets only when the user permits
+    // them. Stat requirements remain hard; never silently drop them.
+    if (!best && !settings.forceCompleteSets) {
+      const eligible = safe.filter(mod => ggEligible(mod, character) && Number.isFinite(scores[mod.id]));
+      if (!plan.targetStats.length) {
+        const chosen = Object.keys(bySlot).map(slot => eligible.filter(m => m.slot === slot).sort((a,b) => scores[b.id] - scores[a.id])[0]).filter(Boolean);
+        if (chosen.length === 6) best = chosen;
+      } else {
+        const loose = { ...plan, ggScores: scores, metaRestrictions: null, useOnlyFullSets: false };
+        const candidate = findBestModSetForCharacterBase(eligible, character, loose).modSet;
+        clearCache(); candidate.forEach(mod => getFlatStatsFromMod(mod, character, plan));
+        if (candidate.length === 6 && modSetFulfillsTargetStatRestriction(candidate, character, plan)) best = candidate;
+      }
+      if (best) messages.push('No complete-set build met requirements; used six mods with broken sets (allowed by global settings).');
+    }
+    if (!best) messages.push('Could not find a complete build meeting stat requirements and mod eligibility. Remaining equipped mods are shown for review; this character is not successfully optimized.');
+    const assigned = best || available.filter(mod => mod.characterID === id);
+    if (best && topLimits) {
+      const alternatives = assigned.filter(mod => topLimits.primaries[mod.slot] &&
+        !topLimits.primaries[mod.slot].includes(mod.primaryStat.type));
+      const setsChanged = !modSetFulfillsSetRestriction(assigned, topLimits.setCombinations[0]);
+      if (setsChanged || alternatives.length) messages.push('Alternatives to first choices: ' +
+        [setsChanged ? 'set combination' : '', ...alternatives.map(mod => `${mod.slot} ${mod.primaryStat.type}`)].filter(Boolean).join(', ') +
+        '. Review key character stats; popular alternatives may serve different roles.');
+    }
+    const assignedIds = new Set(assigned.map(mod => mod.id));
+    available = available.filter(mod => !assignedIds.has(mod.id));
+    const average = assigned.every(mod => Number.isFinite(gg.scores[mod.id])) ?
+      assigned.reduce((sum, mod) => sum + gg.scores[mod.id], 0) / 6 : null;
+    clearCache();
+    if (absolute.targetStats.length) assigned.forEach(mod => getFlatStatsFromMod(mod, character, plan));
+    if (gg.characterWeighted && !preferences) messages.push('No character secondary preference data; used plain GG.');
+    results.push({ id, target, assignedMods: Array.from(assignedIds),
+      missedGoals: getMissedGoals(assigned, character, absolute.targetStats, plan), ggOptimization: true,
+      messages: messages.concat(`${preferences ? 'Character-weighted GG' : 'GG'} optimization: average GG score ${average === null ? 'unavailable' : average.toFixed(1)} (unadjusted).`) });
+  });
+  clearCache();
+  return results;
+}
+
 function optimizeMods(availableMods, characters, order, incrementalOptimizeIndex, globalSettings, previousRun = {}) {
+  const enabled = order.some(({ id }) => characters[id].optimizerSettings.preferSixDotMods &&
+    !characters[id].optimizerSettings.highestGGMods &&
+    !characters[id].optimizerSettings.fullLoadoutOnly &&
+    !characters[id].optimizerSettings.isLocked);
+  const previouslyEnabled = Object.values(previousRun.characters || {})
+    .some(character => character.optimizerSettings.preferSixDotMods);
+  // Ship assignments affect the whole pool, including characters before an incremental edit.
+  const baseline = optimizeModsBase(availableMods, characters, order,
+    enabled || previouslyEnabled ? null : incrementalOptimizeIndex, globalSettings,
+    enabled || previouslyEnabled ? {} : previousRun);
+  return enabled ? assignShipMods(availableMods, characters, baseline, globalSettings) : baseline;
+}
+
+function optimizeModsBase(availableMods, characters, order, incrementalOptimizeIndex, globalSettings, previousRun = {}, fixedAssignments = new Map()) {
   // We only want to recalculate mods if settings have changed between runs. If global settings or locked
   // characters have changed, recalculate all characters
   let recalculateMods = !previousRun.globalSettings ||
@@ -1149,6 +1441,11 @@ function optimizeMods(availableMods, characters, order, incrementalOptimizeIndex
     usableMods = usableMods.filter(mod => !mod.characterID || selectedCharacterIds.includes(mod.characterID))
   }
 
+  // Reserve ship mods before searching any character, including higher-priority donors.
+  // Keep them in availableMods so relative-stat targets can still resolve them.
+  const reservedIds = new Set(Array.from(fixedAssignments.values()).flatMap(row => row.assignedMods));
+  usableMods = usableMods.filter(mod => !reservedIds.has(mod.id));
+
   const unselectedCharacters =
     Object.keys(characters).filter(characterID => !order.map(({ id }) => id).includes(characterID))
 
@@ -1169,6 +1466,27 @@ function optimizeMods(availableMods, characters, order, incrementalOptimizeIndex
       return modSuggestions;
     }
 
+    if (fixedAssignments.has(index)) {
+      modSuggestions.push(fixedAssignments.get(index));
+      return modSuggestions;
+    }
+
+    if (character.optimizerSettings.fullLoadoutOnly) {
+      const row = fullLoadoutAssignment(usableMods, character, target, globalSettings);
+      row.target = target;
+      usableMods = usableMods.filter(mod => !row.assignedMods.includes(mod.id));
+      modSuggestions.push(row);
+      recalculateMods = true;
+      return modSuggestions;
+    }
+    if (character.optimizerSettings.highestGGMods) {
+      const row = highestGGAssignment(usableMods, character, target);
+      usableMods = usableMods.filter(mod => !row.assignedMods.includes(mod.id));
+      modSuggestions.push(row);
+      recalculateMods = true;
+      return modSuggestions;
+    }
+
     // For each character, check if the settings for the previous run were the same, and skip the character if so
     if (
       !recalculateMods &&
@@ -1185,8 +1503,12 @@ function optimizeMods(availableMods, characters, order, incrementalOptimizeIndex
       previousCharacter.optimizerSettings &&
       character.optimizerSettings.minimumModDots === previousCharacter.optimizerSettings.minimumModDots &&
       character.optimizerSettings.sliceMods === previousCharacter.optimizerSettings.sliceMods &&
+      !!character.optimizerSettings.fullLoadoutOnly === !!previousCharacter.optimizerSettings.fullLoadoutOnly &&
+      !!character.optimizerSettings.highestGGMods === !!previousCharacter.optimizerSettings.highestGGMods &&
       character.optimizerSettings.isLocked === previousCharacter.optimizerSettings.isLocked &&
-      previousRun.modAssignments[index]
+      previousRun.modAssignments[index] &&
+      !previousRun.modAssignments[index].ggOptimization &&
+      (!target.metaRestrictions || previousRun.modAssignments[index].metaPreferenceVersion === 3)
     ) {
       const assignedMods = previousRun.modAssignments[index].assignedMods;
       const messages = previousRun.modAssignments[index].messages;
@@ -1203,7 +1525,8 @@ function optimizeMods(availableMods, characters, order, incrementalOptimizeIndex
         target: target,
         assignedMods: assignedMods,
         messages: messages,
-        missedGoals: missedGoals
+        missedGoals: missedGoals,
+        metaPreferenceVersion: previousRun.modAssignments[index].metaPreferenceVersion
       });
       return modSuggestions;
     } else {
@@ -1233,7 +1556,8 @@ function optimizeMods(availableMods, characters, order, incrementalOptimizeIndex
 
     const realTarget = combineTargetStats(filteredAbsoluteTarget, character);
 
-    const { modSet: newModSetForCharacter, messages: characterMessages } =
+    const { modSet: newModSetForCharacter, messages: characterMessages,
+      effectiveTarget = realTarget, restrictionMessages = [], prioritizeMetaChoice = false } =
       findBestModSetForCharacter(usableMods, character, realTarget);
 
     const oldModSetForCharacter = usableMods.filter(mod => mod.characterID === character.baseID);
@@ -1244,6 +1568,11 @@ function optimizeMods(availableMods, characters, order, incrementalOptimizeIndex
     // Assign the new mod set if any of the following are true:
     let assignedModSet, assignmentMessages = [];
     if (
+      // Popularity/Speed policy takes precedence over the old weighted-score threshold.
+      (prioritizeMetaChoice && newModSetForCharacter.length === 6) ||
+      // Hard meta restrictions also apply when the base search relaxes minimum dots.
+      (!modSetFulfillsMetaRestrictions(oldModSetForCharacter, effectiveTarget) &&
+        modSetFulfillsMetaRestrictions(newModSetForCharacter, effectiveTarget)) ||
       // Treat a threshold of 0 as "always change", so long as the new mod set is better than the old at all
       (globalSettings.modChangeThreshold === 0 && newModSetValue >= oldModSetValue) ||
       // If the new set is the same mods as the old set
@@ -1251,8 +1580,8 @@ function optimizeMods(availableMods, characters, order, incrementalOptimizeIndex
         oldModSetForCharacter.every(oldMod => newModSetForCharacter.find(newMod => newMod.id === oldMod.id))
       ) ||
       // If the old set doesn't satisfy the character/target restrictions, but the new set does
-      (!modSetSatisfiesCharacterRestrictions(oldModSetForCharacter, character, realTarget) &&
-        modSetSatisfiesCharacterRestrictions(newModSetForCharacter, character, realTarget)
+      (!modSetSatisfiesCharacterRestrictions(oldModSetForCharacter, character, effectiveTarget) &&
+        modSetSatisfiesCharacterRestrictions(newModSetForCharacter, character, effectiveTarget)
       ) ||
       // If the new set is better than the old set
       (newModSetValue / oldModSetValue) * 100 - 100 > globalSettings.modChangeThreshold ||
@@ -1264,7 +1593,8 @@ function optimizeMods(availableMods, characters, order, incrementalOptimizeIndex
       assignmentMessages = characterMessages;
     } else {
       assignedModSet = oldModSetForCharacter;
-      if (!modSetSatisfiesCharacterRestrictions(newModSetForCharacter, character, realTarget)) {
+      assignmentMessages = restrictionMessages.slice();
+      if (!modSetSatisfiesCharacterRestrictions(newModSetForCharacter, character, effectiveTarget)) {
         assignmentMessages.push(
           'Could not find a new mod set that satisfies the given restrictions. Leaving the old mods equipped.'
         )
@@ -1286,6 +1616,7 @@ function optimizeMods(availableMods, characters, order, incrementalOptimizeIndex
       target: target,
       assignedMods: assignedModSet.map(mod => mod.id),
       messages: assignmentMessages,
+      metaPreferenceVersion: target.metaRestrictions ? 3 : undefined,
       missedGoals: getMissedGoals(assignedModSet, character, goalStats, target)
     });
 
@@ -1426,7 +1757,79 @@ function combineTargetStats(target, character) {
  * @param target {OptimizationPlan}
  * @returns {{messages: Array<String>, modSet: Array<Mod>}}
  */
+function modSetFulfillsMetaRestrictions(modSet, target) {
+  const limits = target.metaRestrictions;
+  if (!limits) return true;
+  return modSet.length === 6 && new Set(modSet.map(mod => mod.slot)).size === 6 &&
+    modSet.every(mod => !limits.primaries[mod.slot] || limits.primaries[mod.slot].includes(mod.primaryStat.type)) &&
+    limits.setCombinations.some(sets => modSetFulfillsSetRestriction(modSet, sets));
+}
+
+// Optimize value within each choice first. A less-common build must improve
+// both value and total Speed (by more than ten) to displace a valid top build.
 function findBestModSetForCharacter(mods, character, target) {
+  if (!target.metaRestrictions) return findBestModSetForCharacterBase(mods, character, target);
+  const limits = target.metaRestrictions;
+  const topTarget = { ...target, metaRestrictions: {
+    primaries: Object.fromEntries(Object.entries(limits.primaries).map(([slot, choices]) => [slot, slot === 'arrow' ? choices : choices.slice(0, 1)])),
+    setCombinations: limits.setCombinations.slice(0, 1)
+  } };
+  const weighted = findBestModSetWithinMetaChoices(mods, character, target);
+  const evaluate = (result, plan) => {
+    clearCache();
+    result.modSet.forEach(mod => getFlatStatsFromMod(mod, character, target));
+    return {
+      value: scoreModSet(result.modSet, character, target),
+      speed: getStatValueForCharacterWithMods(result.modSet, character, 'Speed', target),
+      valid: result.modSet.length === 6 && modSetSatisfiesCharacterRestrictions(result.modSet, character, plan)
+    };
+  };
+  const weightedStats = evaluate(weighted, target);
+  const top = findBestModSetWithinMetaChoices(mods, character, topTarget);
+  const topStats = evaluate(top, topTarget);
+  let chosen = weighted;
+  if (topStats.valid) {
+    const useAlternative = weightedStats.valid && weightedStats.value > topStats.value &&
+      weightedStats.speed > topStats.speed + 10;
+    chosen = useAlternative ? { ...weighted, effectiveTarget: target, prioritizeMetaChoice: true } :
+      { ...top, effectiveTarget: topTarget, prioritizeMetaChoice: true };
+  } else if (weightedStats.valid) {
+    chosen = { ...weighted, effectiveTarget: target, prioritizeMetaChoice: true };
+  }
+  clearCache();
+  mods.forEach(mod => getFlatStatsFromMod(mod, character, target));
+  return chosen;
+}
+
+function findBestModSetWithinMetaChoices(mods, character, target) {
+  if (!target.metaRestrictions) return findBestModSetForCharacterBase(mods, character, target);
+  const limits = target.metaRestrictions;
+  const eligible = mods.filter(mod => !limits.primaries[mod.slot] || limits.primaries[mod.slot].includes(mod.primaryStat.type));
+  let best = null, bestScore = -Infinity, bestUnmoved = -1;
+  for (const sets of limits.setCombinations) {
+    const candidateTarget = { ...target, setRestrictions: sets, useOnlyFullSets: true };
+    const result = findBestModSetForCharacterBase(eligible.filter(mod => sets[mod.set.name]), character, candidateTarget);
+    if (!modSetFulfillsMetaRestrictions(result.modSet, target) ||
+        !modSetFulfillsSetRestriction(result.modSet, target.setRestrictions)) continue;
+    const score = scoreModSet(result.modSet, character, target);
+    const unmoved = result.modSet.filter(mod => mod.characterID === character.baseID).length;
+    if (score > bestScore || (score === bestScore && unmoved > bestUnmoved)) {
+      best = result; bestScore = score; bestUnmoved = unmoved;
+    }
+  }
+  if (!best) {
+    const effectiveTarget = { ...target, metaRestrictions: null };
+    best = findBestModSetForCharacterBase(mods, character, effectiveTarget);
+    best.effectiveTarget = effectiveTarget;
+    best.restrictionMessages = ['No available mods could form a complete build within the top two set combinations and primary choices, so those restrictions were dropped for this character.'];
+    best.messages = best.restrictionMessages.concat(best.messages);
+  }
+  // The outer assignment check also scores equipped mods excluded from this search.
+  mods.forEach(mod => getFlatStatsFromMod(mod, character, target));
+  return best;
+}
+
+function findBestModSetForCharacterBase(mods, character, target) {
   const modsToCache = character.playerValues.gearLevel < 12 ?
     mods.filter(mod => 6 > mod.pips || mod.characterID === character.baseID) :
     mods;
@@ -2407,4 +2810,254 @@ function* getCandidateSetsGenerator(potentialUsedSets, baseSets, setlessMods, se
       }
     }
   }
+}
+
+
+/**
+ * Starting from the toggle-off allocation, reserve spare six-dot mods, then choose
+ * the least costly legal donor/replacement pair for each remaining slot. This is
+ * a deterministic local search, not a proof of a global optimum. Pilot value is
+ * excluded from replacement decisions but included in the comparison report.
+ */
+// Sets and primaries are preferences for ship pilots, never a reason to pay
+// more optimizer value. Include partial set progress when no complete match exists.
+function shipModPreferenceFit(mods, target) {
+  const counts = {};
+  mods.forEach(mod => { counts[mod.set.name] = (counts[mod.set.name] || 0) + 1; });
+  const coverage = sets => Object.entries(sets || {}).reduce((sum, [name, count]) => {
+    const required = setBonuses[name].numberOfModsRequired;
+    return sum + (count < 0 ? -(counts[name] || 0) : Math.min(counts[name] || 0, count * required));
+  }, 0);
+  let matches = coverage(target.setRestrictions);
+  mods.forEach(mod => {
+    if (target.primaryStatRestrictions[mod.slot] === mod.primaryStat.type) matches++;
+  });
+  const limits = target.metaRestrictions;
+  if (limits) {
+    matches += Math.max(0, ...limits.setCombinations.map(coverage));
+    mods.forEach(mod => {
+      if (limits.primaries[mod.slot] && limits.primaries[mod.slot].includes(mod.primaryStat.type)) matches++;
+    });
+  }
+  const complete = modSetFulfillsSetRestriction(mods, target.setRestrictions) &&
+    Object.entries(target.primaryStatRestrictions).every(([slot, primary]) => !primary ||
+      mods.some(mod => mod.slot === slot && mod.primaryStat.type === primary)) &&
+    modSetFulfillsMetaRestrictions(mods, target) &&
+    (!target.useOnlyFullSets || modSetFulfillsFullSetRestriction(mods));
+  return (complete ? 100 : 0) + matches;
+}
+
+function assignShipMods(allMods, characters, baseline, globalSettings) {
+  const rows = baseline.filter(Boolean);
+  const priority = new Map(rows.map((row, index) => [row, index]));
+  const pilots = rows.filter(row => characters[row.id].optimizerSettings.preferSixDotMods &&
+    !characters[row.id].optimizerSettings.highestGGMods &&
+    !characters[row.id].optimizerSettings.fullLoadoutOnly &&
+    characters[row.id].playerValues.gearLevel >= 12);
+  const pilotIds = new Set(pilots.map(row => row.id));
+  const selectedIds = new Set(rows.map(row => row.id));
+  const byId = new Map(allMods.map(mod => [mod.id, mod]));
+  const loadouts = new Map(rows.map(row => [row, row.assignedMods.map(id => byId.get(id))]));
+  const original = new Map(rows.map(row => [row, loadouts.get(row).slice()]));
+  const usable = allMods.filter(mod => !mod.characterID ||
+    (!characters[mod.characterID].optimizerSettings.isLocked &&
+      (!globalSettings.lockUnselectedCharacters || selectedIds.has(mod.characterID))));
+  const used = new Set(rows.filter(row => !pilotIds.has(row.id)).flatMap(row => row.assignedMods));
+  const free = new Map(usable.filter(mod => !used.has(mod.id)).map(mod => [mod.id, mod]));
+  const score = (row, mods, shipMode = false) => {
+    clearCache();
+    const character = shipMode ? { ...characters[row.id], optimizerSettings: {
+      ...characters[row.id].optimizerSettings, sliceMods: false } } : characters[row.id];
+    mods.forEach(mod => getFlatStatsFromMod(mod, character, row.target));
+    return scoreModSet(mods, character, row.target);
+  };
+  const before = new Map(rows.map(row => [row, score(row, original.get(row))]));
+  pilots.forEach(row => loadouts.set(row, []));
+  for (const slot of modSlots) {
+    progressMessage(null, `Finding low-cost 6-dot ${slot} mods for ships`,
+      Math.round(100 * modSlots.indexOf(slot) / modSlots.length));
+    const waiting = pilots.slice();
+    // Existing pilot mods win ties, avoiding needless moves at zero donor cost.
+    while (waiting.length) {
+      const row = waiting[0];
+      const spare = original.get(row).find(mod => mod.slot === slot && mod.pips === 6 && free.has(mod.id)) ||
+        Array.from(free.values()).find(mod => mod.slot === slot && mod.pips === 6);
+      if (!spare) break;
+      loadouts.get(row).push(spare);
+      free.delete(spare.id);
+      waiting.shift();
+    }
+    while (waiting.length) {
+      const recipient = waiting[0];
+      let best = null;
+      for (const donor of rows.filter(row => !pilotIds.has(row.id) && !row.highestGGMods && !row.fullLoadoutOnly)) {
+        const current = loadouts.get(donor);
+        const six = current.find(mod => mod.slot === slot && mod.pips === 6);
+        if (!six) continue;
+        const character = characters[donor.id];
+        const currentScore = score(donor, current);
+        const lockedIds = Object.keys(characters).filter(id => characters[id].optimizerSettings.isLocked);
+        const suggestions = rows.map(row => ({ ...row, assignedMods: loadouts.get(row).map(mod => mod.id) }));
+        const protectRestrictions = priority.get(donor) < priority.get(recipient);
+        const target = protectRestrictions ? changeRelativeTargetStatsToAbsolute(
+          suggestions, characters, lockedIds, allMods, donor.target, character) : donor.target;
+        for (const replacement of free.values()) {
+          if (replacement.slot !== slot || replacement.pips === 6) continue;
+          const candidate = current.map(mod => mod === six ? replacement : mod);
+          candidate.forEach(mod => getFlatStatsFromMod(mod, character, donor.target));
+          if (protectRestrictions && !modSetSatisfiesCharacterRestrictions(candidate, character, target)) continue;
+          const loss = currentScore - scoreModSet(candidate, character, donor.target);
+          if (Number.isFinite(loss) && (!best || loss < best.loss)) {
+            best = { donor, six, replacement, candidate, loss };
+          }
+        }
+      }
+      if (!best) break;
+      loadouts.set(best.donor, best.candidate);
+      free.delete(best.replacement.id);
+      loadouts.get(waiting.shift()).push(best.six);
+    }
+    // When no legal six-dot assignment exists, keep a real lower-dot mod if available.
+    for (const row of waiting) {
+      const fallback = original.get(row).find(mod => mod.slot === slot && free.has(mod.id)) ||
+        Array.from(free.values()).find(mod => mod.slot === slot);
+      if (fallback) {
+        loadouts.get(row).push(fallback);
+        free.delete(fallback.id);
+      }
+    }
+  }
+  // The donor swaps above estimate the cost of reserving each six-dot mod. They
+  // must not become the final combat assignments: their temporary replacements
+  // come from leftovers and could strand a priority-one character with a weak mod.
+  // Re-run the complete search in priority order, reserving only the ship sixes.
+  // Every normal character can now use mods previously assigned below it, and
+  // each displacement cascades through the remainder of the priority list.
+  const fixedAssignments = new Map();
+  rows.forEach((row, index) => {
+    if (row.highestGGMods || row.fullLoadoutOnly) fixedAssignments.set(index, row);
+    if (pilotIds.has(row.id)) fixedAssignments.set(index, { ...row,
+      assignedMods: loadouts.get(row).filter(mod => mod.pips === 6).map(mod => mod.id),
+      messages: [], missedGoals: [] });
+  });
+  progressMessage(null, 'Reoptimizing characters in priority order around ship mods', 0);
+  const reoptimized = optimizeModsBase(allMods, characters,
+    rows.map(row => ({ id: row.id, target: row.target })), null,
+    { ...globalSettings, modChangeThreshold: 0 }, {}, fixedAssignments);
+  const finalRows = new Map(rows.map((row, index) => [row, reoptimized[index]]));
+  const assignedIds = new Set(reoptimized.flatMap(row => row.assignedMods));
+  const remaining = new Map(usable.filter(mod => !assignedIds.has(mod.id)).map(mod => [mod.id, mod]));
+  rows.forEach(row => loadouts.set(row, finalRows.get(row).assignedMods.map(id => byId.get(id))));
+  // Pilot fallback mods have no combat priority. Fill them only after the normal
+  // characters have searched the whole pool, never reserving a useful five-dot mod.
+  for (const row of pilots) {
+    const mods = loadouts.get(row);
+    for (const slot of modSlots.filter(slot => !mods.some(mod => mod.slot === slot))) {
+      const candidates = Array.from(remaining.values()).filter(mod => mod.slot === slot);
+      const fallback = candidates.find(mod => mod.pips === 6) ||
+        candidates.find(mod => original.get(row).some(old => old.id === mod.id)) || candidates[0];
+      if (fallback) {
+        mods.push(fallback);
+        remaining.delete(fallback.id);
+      }
+    }
+  }
+  // Improve pilot sets/primaries only after normal priority allocation is settled.
+  // First try spare mods; then also consider value-neutral exchanges with normal
+  // characters. Validate the entire proposed loadouts, since several swaps can
+  // jointly break a donor's set bonus even if each swap looks harmless in isolation.
+  const lockedIds = Object.keys(characters).filter(id => characters[id].optimizerSettings.isLocked);
+  const normalRows = rows.filter(row => !pilotIds.has(row.id) && !row.highestGGMods && !row.fullLoadoutOnly);
+  const satisfies = (row, mods, proposed) => {
+    const suggestions = rows.map(other => ({ ...other,
+      assignedMods: (proposed.get(other) || loadouts.get(other)).map(mod => mod.id) }));
+    const target = changeRelativeTargetStatsToAbsolute(suggestions, characters, lockedIds, allMods,
+      row.target, characters[row.id]);
+    score(row, mods);
+    return modSetSatisfiesCharacterRestrictions(mods, characters[row.id], target);
+  };
+  for (const pilot of pilots) {
+    if (shipModPreferenceFit(loadouts.get(pilot), pilot.target) >= 100) continue;
+    progressMessage(characters[pilot.id], 'Matching ship sets and primaries without additional value loss', 0);
+    for (const allowExchanges of [false, true]) {
+      const current = loadouts.get(pilot);
+      const currentScore = score(pilot, current, true);
+      const owners = new Map();
+      const pool = current.concat(Array.from(remaining.values()).filter(mod => mod.pips === 6));
+      if (allowExchanges) {
+        for (const donor of normalRows) {
+          const donorMods = loadouts.get(donor);
+          const donorScore = score(donor, donorMods);
+          for (const mod of donorMods.filter(mod => mod.pips === 6)) {
+            const replacement = current.find(old => old.slot === mod.slot && old.pips === 6);
+            if (!replacement) continue;
+            const changed = donorMods.map(old => old === mod ? replacement : old);
+            if (score(donor, changed) < donorScore) continue;
+            const proposed = new Map([[pilot, current.map(old => old === replacement ? mod : old)], [donor, changed]]);
+            if (priority.get(donor) < priority.get(pilot) && !satisfies(donor, changed, proposed)) continue;
+            owners.set(mod.id, donor);
+            pool.push(mod);
+          }
+        }
+      }
+      const pilotCharacter = { ...characters[pilot.id], optimizerSettings: {
+        ...characters[pilot.id].optimizerSettings, minimumModDots: 6, sliceMods: false } };
+      const preferenceTarget = { ...pilot.target, targetStats: [] };
+      const candidate = findBestModSetForCharacter(pool, pilotCharacter, preferenceTarget).modSet;
+      if (candidate.length < current.length ||
+          candidate.filter(mod => mod.pips === 6).length < current.filter(mod => mod.pips === 6).length ||
+          shipModPreferenceFit(candidate, pilot.target) <= shipModPreferenceFit(current, pilot.target) ||
+          score(pilot, candidate, true) < currentScore) continue;
+      const proposed = new Map([[pilot, candidate]]);
+      for (const mod of candidate) {
+        const donor = owners.get(mod.id);
+        if (!donor) continue;
+        const replacement = current.find(old => old.slot === mod.slot);
+        const donorMods = proposed.get(donor) || loadouts.get(donor);
+        proposed.set(donor, donorMods.map(old => old.id === mod.id ? replacement : old));
+      }
+      let safe = true;
+      for (const donor of normalRows) {
+        const changed = proposed.get(donor);
+        if (changed && score(donor, changed) < score(donor, loadouts.get(donor))) { safe = false; break; }
+        // Relative targets can change when a pilot or another donor changes mods.
+        if (priority.get(donor) < priority.get(pilot) &&
+            (changed || donor.target.targetStats.some(stat => stat.relativeCharacterId)) &&
+            !satisfies(donor, changed || loadouts.get(donor), proposed)) { safe = false; break; }
+      }
+      if (!safe) continue;
+      for (const [row, mods] of proposed) loadouts.set(row, mods);
+      const assigned = new Set(rows.flatMap(row => loadouts.get(row).map(mod => mod.id)));
+      remaining.clear();
+      usable.filter(mod => !assigned.has(mod.id)).forEach(mod => remaining.set(mod.id, mod));
+    }
+  }
+  const result = baseline.map(row => {
+    if (!row) return null;
+    if (row.highestGGMods || row.fullLoadoutOnly) return row;
+    const finalRow = finalRows.get(row);
+    const mods = loadouts.get(row);
+    const shipFocused = pilotIds.has(row.id);
+    const after = score(row, mods, shipFocused);
+    const loss = before.get(row) - after;
+    const messages = finalRow.messages.slice();
+    if (shipFocused) {
+      messages.length = 0;
+      const count = mods.filter(mod => mod.pips === 6).length;
+      if (count < 6) messages.push(`Ship preference: only ${count}/6 existing 6-dot mods could be assigned without violating higher-priority characters' restrictions.`);
+    } else if (characters[row.id].optimizerSettings.preferSixDotMods) {
+      messages.push('Ship preference requires gear level 12. Normal optimization was used.');
+    }
+    const absoluteTarget = shipFocused ? row.target : changeRelativeTargetStatsToAbsolute(
+      rows.map(other => ({ ...other, assignedMods: loadouts.get(other).map(mod => mod.id) })),
+      characters, lockedIds, allMods, row.target, characters[row.id]);
+    score(row, mods, shipFocused);
+    const missedGoals = shipFocused ? [] : getMissedGoals(mods, characters[row.id],
+      absoluteTarget.targetStats.filter(stat => !stat.optimizeForTarget), absoluteTarget);
+    return { ...row, assignedMods: mods.map(mod => mod.id), messages, missedGoals,
+      shipPreferenceImpact: { before: before.get(row), after, loss, shipFocused,
+        sixDotCount: mods.filter(mod => mod.pips === 6).length } };
+  });
+  clearCache();
+  return result;
 }

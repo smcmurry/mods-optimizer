@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import { findVariants } from './lib/gacVariants.mjs';
+const ids = ['LEAD', 'CORE', 'C', 'D', 'E', 'F', 'WRONG'];
+const kits = { source: { url: 'https://example.org/game' }, characters: Object.fromEntries(ids.map(id =>
+  [id, { name: id, categories: id === 'WRONG' ? [] : ['faction'], recommendedTeams: [] }])) };
+const roster = { characters: ids.map(baseId => ({ baseId, gearLevel: 13, relicTier: 7 })) };
+const rule = { id: 'test', mode: '5v5', core: ['LEAD', 'CORE', 'C'], pool: ['D', 'E', 'F', 'WRONG'],
+  category: 'faction', documented: [['D', 'E']], sources: ['https://example.org/guide'], note: 'Test' };
+const empty = { sections: { '5v5-offense': { candidates: [] }, '3v3-defense': { candidates: [] } } };
+let result = findVariants(roster, kits, empty, [rule]);
+assert.equal(result.candidates.length, 3);
+assert.ok(result.candidates[0].evidence.startsWith('Documented'));
+assert.ok(result.candidates.every(t => t.tier === null && t.winRate === null && t.members[0].id === 'LEAD'));
+assert.ok(result.candidates.every(t => !t.members.some(m => m.id === 'WRONG')));
+assert.equal(result.candidates[0].overlappingVariants.length, 2);
+const exact = { sections: { '5v5-defense': { candidates: [{ name: 'Known', members: ['LEAD', 'C', 'CORE', 'E', 'D'].map(id => ({ id, name: id })) }] } } };
+result = findVariants(roster, kits, exact, [rule]);
+assert.equal(result.candidates.length, 2, 'Deduplicate reordered followers across offense/defense');
+assert.ok(result.candidates.every(t => t.conflicts[0].team === 'Known'));
+roster.characters.find(c => c.baseId === 'CORE').relicTier = 2;
+assert.equal(findVariants(roster, kits, empty, [rule]).candidates.length, 0, 'Never substitute essential core');
+assert.equal(findVariants(roster, kits, empty, [rule], 0).candidates.length, 3, 'R0 is opt-in');
+roster.characters.find(c => c.baseId === 'CORE').gearLevel = 12;
+assert.equal(findVariants(roster, kits, empty, [rule], 0).candidates.length, 0, 'G12 cannot become R0');
+kits.characters.LEAD.recommendedTeams = [['LEAD', 'C', 'D', 'E', 'F'], ['LEAD', 'C', 'D', 'E', 'F']];
+result = findVariants(roster, kits, empty, []);
+assert.equal(result.candidates.length, 1, 'Deduplicate game examples');
+assert.equal(result.candidates[0].mode, '5v5', 'Never derive 3v3 from 5v5');
+assert.throws(() => findVariants(roster, kits, empty, [{ ...rule, pool: ['UNKNOWN'] }]), /Unknown IDs/);
+console.log('Variant tests passed: core preservation, faction checks, relic thresholds, evidence, deduplication, conflicts, and mode isolation.');

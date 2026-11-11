@@ -1,0 +1,40 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
+import {createFrontendLoader} from './lib/loadFrontend.mjs';
+const load=createFrontendLoader();
+const {default:priority,relicInvestmentMultiplier:multiplier}=load('src/utils/kyberRelicPriority.js');
+const values=(relic,gear=13)=>({relicTier:relic+2,gearLevel:gear,level:85,galacticPower:30000});
+assert.equal(multiplier(values(0)),1);
+assert.equal(multiplier(values(8)),1.16);
+assert.equal(multiplier(values(99)),1.2);
+assert.equal(multiplier(values(8,12)),1);
+assert.equal(multiplier({relicTier:10}),1);
+assert.equal(multiplier(null),1);
+assert.equal(multiplier({gearLevel:13,relicTier:NaN}),1);
+assert.ok(priority(22,values(5))>priority(21,values(7)),'Nearby relics do not overcome a meaningful Kyber difference');
+assert.ok(priority(20,values(8))>priority(22,values(0)),'Large relic difference can change priority');
+assert.ok(priority(18,values(8))<priority(24,values(0)),'Relic investment does not overwhelm a large meta difference');
+
+// Exercise the actual action callback without importing unrelated browser storage.
+const source=fs.readFileSync('src/state/actions/characterEdit.js','utf8');
+const action=source.slice(source.indexOf('export function generateMetaSpeedCharacterList('),source.indexOf('// END KYBER META SPEED LIST')).replace('export function','function');
+const ranking={characters:{A:{averageSecondarySpeed:22},B:{averageSecondarySpeed:20},C:{averageSecondarySpeed:24},D:{averageSecondarySpeed:30}}};
+const context=vm.createContext({updateProfile:callback=>callback,generatedMetaSpeedRanking:ranking,kyberRelicPriority:priority});
+vm.runInContext(action,context);
+const character=(id,relic,level=85)=>({baseID:id,playerValues:{...values(relic),level},targets:()=>[],defaultTarget:()=>({name:'Default '+id})});
+const profile={characters:{A:character('A',0),B:character('B',8),C:character('C',0),D:character('D',9,40),Unknown:character('Unknown',9)},
+  selectedCharacters:[],withSelectedCharacters(selectedCharacters){return {...this,selectedCharacters};}};
+const ids=result=>Array.from(result.selectedCharacters,row=>row.id);
+const generate=context.generateMetaSpeedCharacterList;
+assert.deepEqual(ids(generate(true)(profile)),['C','B','A']);
+assert.deepEqual(ids(generate(true,{top:2})(profile)),['C','B']);
+assert.deepEqual(ids(generate(false)({...profile,selectedCharacters:[{id:'A',target:{name:'Custom'}}]})),['A','C','B']);
+assert.deepEqual(ids(generate(true,{minimumGearLevel:14})(profile)),[]);
+assert.equal(profile.selectedCharacters.length,0);
+assert.deepEqual(ids(generate(true,{includedCharacterIDs:['A','B'],top:1})(profile)),['B'],'Selection is applied before the size limit');
+assert.deepEqual(ids(generate(true,{includedCharacterIDs:[]})(profile)),[],'Empty selection never means all');
+assert.deepEqual(ids(generate(false,{includedCharacterIDs:['B']})({...profile,selectedCharacters:[{id:'A',target:{name:'Custom'}}]})),['A','B']);
+const equalRoster={...profile,characters:{A:character('A',5),B:character('B',5),C:character('C',5)}};
+assert.deepEqual(ids(generate(true)(equalRoster)),['C','A','B'],'Equal relic levels preserve Kyber ordering');
+console.log('Passed relic conversion, small/large gaps, bounded influence, actual list generation, top limit, append, roster filters, and immutability.');

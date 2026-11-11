@@ -499,6 +499,7 @@ class ModFilter extends React.PureComponent {
         <option value={'rolls'}># of Stat Upgrades</option>
         <option value={'offenseScore'}>Offense Score</option>
         <option value={'secondaryStatScore'}>Secondary Stat Score</option>
+        <option value={'ggScore'}>GG-style Score</option>
         <option value={'character'}>Character</option>
         {sortOptions}
       </Dropdown>

@@ -1,0 +1,2 @@
+# Large generated snapshot: keep tracked, but skip expensive text diffs.
+src/constants/metaProfiles.json -diff
