@@ -38,8 +38,10 @@ are included; leveling credits are not charged. The result is approximate only f
 this prerequisite sampling. No unrevealed secondary is guessed.
 
 Free 6E slices with positive opportunity rank first and display Free opportunity.
-Free slices with zero opportunity receive no bonus. Deterministic 5A promotion
-normally leaves the expected 6A score unchanged, so it has zero scouting value.
+Free slices with zero opportunity receive no bonus. Every 5A promotion is evaluated
+through 6D: apply the guaranteed 6E stat increases, then enumerate the free
+6E → 6D roll. This combined scouting step costs 110 Mk 2 and includes the
+opportunity revealed by that roll. The benchmark remains the current expected 6A score.
 Zero-opportunity rows remain visible; no fallback silently changes the objective.
 
 Outcome distributions are cached independently of B. A roster update recomputes

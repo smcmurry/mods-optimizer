@@ -80,6 +80,8 @@ it('separates scouting material groups, preserves the benchmark across filters, 
   expect(ids().sort()).toEqual(['free','promotion']);
   expect(container.textContent).not.toContain('Infinity');
   expect(container.textContent).toContain('Next-slice cost: 110 Mk 2');
+  expect(container.textContent).toContain('5A → 6D');
+  expect(container.textContent).toContain('including the free 6E → 6D roll');
   choose('5-dot scouting / Mk 1');
   const pending=screen.scoutingTask;
   choose('Expected score at 6A');

@@ -800,6 +800,12 @@ export function updateForceCompleteModSets(forceCompleteModSets) {
   );
 }
 
+export function updateForceTurnOrder(forceTurnOrder) {
+  return updateProfile(profile => profile.withGlobalSettings(
+    {...profile.globalSettings, forceTurnOrder}
+  ));
+}
+
 export function updateOmicronBoostsGac(boostGacOmicrons) {
   return updateProfile(profile =>
     profile.withGlobalSettings(

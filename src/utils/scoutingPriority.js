@@ -49,8 +49,9 @@ export function nextExpectationOutcomes(mod) {
     if(mod.pips===5&&mod.tier===5) {
       const promoted={...working,pips:6,tier:1,secondaryStats:stats.map(stat=>({...stat,
         value:stat.type==='Speed'?stat.value+1:stat.value*Stat.secondaryUpgradeFactors[stat.type]}))};
-      const score=expectedSixAScore(promoted).expectedScore;
-      outcomes.push({low:score,high:score,probability:1/trials});
+      // Scout through 6D: promotion includes the free 6E -> 6D roll.
+      nextExpectationOutcomes(promoted).forEach(outcome=>
+        outcomes.push({...outcome,probability:outcome.probability/trials}));
       continue;
     }
     const choices=stats.map((stat,i)=>stat.rolls<5?i:-1).filter(i=>i>=0);
@@ -78,6 +79,7 @@ export function scoutingForecast(row,benchmark) {
   const result=scoutingImprovement(nextExpectationOutcomes(row.mod),benchmark);
   const cost=materialCosts(row.mod).next;
   return {...row,...result,scoutingBenchmark:benchmark,scoutingCost:cost,
+    nextSlice:row.mod.pips===5&&row.mod.tier===5?'5A → 6D':row.nextSlice,
     scoutingEfficiency:cost?result.scoutingGain/cost:0,
     scoutingFree:cost===0&&result.scoutingGain>EPSILON};
 }

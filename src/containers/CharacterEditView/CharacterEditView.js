@@ -29,6 +29,7 @@ import {
   updateLockUnselectedCharacters,
   updateModChangeThreshold,
   updateForceCompleteModSets,
+  updateForceTurnOrder,
   updateOmicronBoostsGac,
   updateOmicronBoostsTw,
   updateOmicronBoostsTb,
@@ -414,6 +415,16 @@ class CharacterEditView extends PureComponent {
             }
           />
         </div>
+        <div className="form-row">
+          <label htmlFor="force-turn-order">Force turn order in optimization order:</label>
+          <input id="force-turn-order" type="checkbox"
+            checked={!!this.props.globalSettings.forceTurnOrder}
+            onChange={event => this.props.updateForceTurnOrder(event.target.checked)} />
+        </div>
+        <p>When enabled, each selected character must have at least 1 less projected Speed than
+          the character above it. Battle bonuses and turn-meter effects are excluded.
+          Overrides highest-GG, full-loadout, and ship-mod preferences. If the order cannot be met,
+          no results are applied.</p>
       </div>
     );
   }
@@ -1486,6 +1497,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(updateModChangeThreshold(threshold)),
   updateForceCompleteModSets: (forceCompleteModSets) =>
     dispatch(updateForceCompleteModSets(forceCompleteModSets)),
+  updateForceTurnOrder: value => dispatch(updateForceTurnOrder(value)),
   updateOmicronBoostsGac: (enabled) =>
     dispatch(updateOmicronBoostsGac(enabled)),
   updateOmicronBoostsTw: (enabled) => dispatch(updateOmicronBoostsTw(enabled)),

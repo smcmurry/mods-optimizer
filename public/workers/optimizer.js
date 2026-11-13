@@ -1293,7 +1293,50 @@ function highestGGAssignment(mods, character, target) {
       ...(assigned.length < 6 ? ['Not enough eligible level 15 mods with supported GG scores to fill all six slots.'] : [])]};
 }
 
+function turnOrderInputs(characters, order) {
+  if (new Set(order.map(row => row.id)).size !== order.length) {
+    throw new Error('Forced turn order requires each character to appear only once in the optimization list.');
+  }
+  return {
+    characters: Object.fromEntries(Object.entries(characters).map(([id, character]) => [id, {
+      ...character, optimizerSettings: {...character.optimizerSettings, highestGGMods: false, fullLoadoutOnly: false}
+    }])),
+    order: order.map(({id, target}, index) => ({id, target: {...target,
+      targetStats: [...(target.targetStats || []), ...(index ? [{stat: 'Speed', type: '+',
+        minimum: -1000000, maximum: -1, relativeCharacterId: order[index - 1].id,
+        relativeTarget: order[index - 1].target, optimizeForTarget: true}] : [])]
+    }}))
+  };
+}
+
+function validateTurnOrder(results, mods, characters, order) {
+  let previousSpeed = null;
+  order.forEach(({id, target}, index) => {
+    const row = results[index];
+    const assigned = characters[id].optimizerSettings.isLocked ? mods.filter(mod => mod.characterID === id) :
+      mods.filter(mod => row && row.assignedMods.includes(mod.id));
+    if (!characters[id].optimizerSettings.isLocked && assigned.length !== 6) {
+      throw new Error(`Could not enforce turn order: no complete build found for ${id}. Adjust the order or stat restrictions and try again. No results were applied.`);
+    }
+    clearCache();
+    assigned.forEach(mod => getFlatStatsFromMod(mod, characters[id], target));
+    const speed = getStatValueForCharacterWithMods(assigned, characters[id], 'Speed', target);
+    if (!Number.isFinite(speed) || (previousSpeed !== null && speed > previousSpeed - 1)) {
+      throw new Error(`Could not enforce turn order for ${id}${index ? `: must be at least 1 Speed slower than ${order[index - 1].id}` : ': Speed is unavailable'}. Adjust the order, locked mods, or stat restrictions and try again. No results were applied.`);
+    }
+    previousSpeed = speed;
+  });
+  clearCache();
+  return results.map((row, index) => row && ({...row, target: order[index].target}));
+}
+
 function optimizeGGMods(mods, characters, order, settings, gg) {
+  if (!settings.forceTurnOrder) return optimizeGGModsBase(mods, characters, order, settings, gg);
+  const inputs = turnOrderInputs(characters, order);
+  return validateTurnOrder(optimizeGGModsBase(mods, inputs.characters, inputs.order, settings, gg), mods, characters, order);
+}
+
+function optimizeGGModsBase(mods, characters, order, settings, gg) {
   const selectedIds = new Set(order.map(row => row.id));
   let available = mods.filter(mod => !mod.characterID ||
     (characters[mod.characterID] && !characters[mod.characterID].optimizerSettings.isLocked &&
@@ -1397,6 +1440,11 @@ function optimizeGGMods(mods, characters, order, settings, gg) {
 }
 
 function optimizeMods(availableMods, characters, order, incrementalOptimizeIndex, globalSettings, previousRun = {}) {
+  if (globalSettings.forceTurnOrder) {
+    const inputs = turnOrderInputs(characters, order);
+    const results = optimizeModsBase(availableMods, inputs.characters, inputs.order, null, globalSettings, {});
+    return validateTurnOrder(results, availableMods, characters, order);
+  }
   const enabled = order.some(({ id }) => characters[id].optimizerSettings.preferSixDotMods &&
     !characters[id].optimizerSettings.highestGGMods &&
     !characters[id].optimizerSettings.fullLoadoutOnly &&
@@ -1417,6 +1465,7 @@ function optimizeModsBase(availableMods, characters, order, incrementalOptimizeI
     globalSettings.modChangeThreshold !== previousRun.globalSettings.modChangeThreshold ||
     globalSettings.lockUnselectedCharacters !== previousRun.globalSettings.lockUnselectedCharacters ||
     globalSettings.forceCompleteSets !== previousRun.globalSettings.forceCompleteSets ||
+    !!globalSettings.forceTurnOrder !== !!previousRun.globalSettings.forceTurnOrder ||
     availableMods.length !== previousRun.mods.length;
 
   if (!recalculateMods) {
@@ -1678,13 +1727,14 @@ function changeRelativeTargetStatsToAbsolute(modSuggestions, characters, lockedC
       }
 
       // Because we so heavily rely on the cache, we need to make sure the mod values are cached here.
+      const relativeTarget = targetStat.relativeTarget || target;
       clearCache();
       characterMods.forEach(mod => {
-        getFlatStatsFromMod(mod, relativeCharacter, target);
+        getFlatStatsFromMod(mod, relativeCharacter, relativeTarget);
       });
 
       const characterStatValue =
-        getStatValueForCharacterWithMods(characterMods, relativeCharacter, targetStat.stat, target);
+        getStatValueForCharacterWithMods(characterMods, relativeCharacter, targetStat.stat, relativeTarget);
 
       let minimum, maximum;
 

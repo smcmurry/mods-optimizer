@@ -327,6 +327,7 @@ PlayerProfile.defaultGlobalSettings = {
   modChangeThreshold: 0,
   lockUnselectedCharacters: false,
   forceCompleteSets: false,
+  forceTurnOrder: false,
   omicronBoostsGac: false,
   omicronBoostsTw: false,
   omicronBoostsTb: false,

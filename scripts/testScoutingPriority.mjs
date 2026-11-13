@@ -33,7 +33,14 @@ const mk1=recommend(mods,'Mk 1'),mk2=recommend(mods,'Mk 2');
 assert.equal(mk1.length,2);assert.equal(mk2.length,2);
 assert.ok(mk1.every(row=>['e','d'].includes(row.mod.id)));
 close(mk1[0].scoutingBenchmark,Math.max(...basic(mods).filter(row=>['e','d'].includes(row.mod.id)).map(row=>row.expectedScore)));
-assert.equal(mk2.find(row=>row.mod.id==='promotion').scoutingGain,0);
+const promoted={...mods[2],pips:6,tier:1,secondaryStats:mods[2].secondaryStats.map(stat=>({...stat,
+  value:stat.type==='Speed'?stat.value+1:stat.value*Stat.secondaryUpgradeFactors[stat.type]}))};
+assert.deepEqual(nextExpectationOutcomes(mods[2]),nextExpectationOutcomes(promoted));
+const promotion=recommend([mods[2]],'Mk 2')[0];
+assert.ok(promotion.scoutingGain>0,'5A scouting includes the free roll through 6D');
+close(promotion.scoutingEfficiency,promotion.scoutingGain/110);
+assert.equal(promotion.scoutingFree,false);
+assert.equal(promotion.nextSlice,'5A → 6D');
 assert.equal(mk2.find(row=>row.mod.id==='promotion').scoutingCost,110);
 const free=recommend([mods[3]],'Mk 2')[0];
 assert.equal(free.scoutingCost,0);assert.ok(free.scoutingFree);

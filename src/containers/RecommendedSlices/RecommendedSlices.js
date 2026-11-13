@@ -117,9 +117,9 @@ export class RecommendedSlices extends React.PureComponent {
           3–6; other roll values are modeled uniformly and integrated across their range. Prerequisite
           leveling uses 64 repeatable sampled paths when needed and costs no materials here.
           These distributions are assumptions, not measured game odds.</p>
-        <p>Free slices with positive opportunity rank first. A 5A promotion is deterministic and normally
-          reveals no new information about its average at 6A, so its scouting value is zero—it may still
-          be a good investment in the other modes. After each real slice, refresh and rerank.
+        <p>Free slices with positive opportunity rank first. Every 5A mod is evaluated through 6D,
+          including the free 6E → 6D roll, for a total cost of 110 Mk 2.
+          After each real slice, refresh and rerank.
           Nothing is automatically sliced or sold.</p>
       </div>}
       {material && <React.Fragment>
