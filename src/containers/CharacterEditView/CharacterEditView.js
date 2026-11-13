@@ -711,11 +711,11 @@ class CharacterEditView extends PureComponent {
           <span className={"blue"}>
             Provided by&nbsp;
             <a
-              href={"https://swgoh.spineless.net/"}
+              href={"https://hotutils.com"}
               target={"_blank"}
               rel={"noopener noreferrer"}
             >
-              https://swgoh.spineless.net/
+              HotUtils
             </a>
           </span>
         </p>
@@ -811,6 +811,17 @@ class CharacterEditView extends PureComponent {
           <GenerateCharacterPicker characters={this.props.generationCharacters} gameSettings={this.props.gameSettings}
             selectedIDs={this.props.selectedCharacters.map(character => character.id)}
             onChange={ids => { includedCharacterIDs = ids; }} />
+          <div className={"form-row"}>
+            <label htmlFor={"include-weights"}>
+              HotUtils Weights:
+            </label>
+            <input
+              id={"include-weights"}
+              name={"include-weights"}
+              type={"checkbox"}
+              defaultChecked={true}
+            />
+          </div>
           <Spoiler title={"Advanced Settings"}>
             <div className={"form-row"}>
               <label htmlFor={"alignment-filter"}>Alignment:</label>
@@ -886,6 +897,7 @@ class CharacterEditView extends PureComponent {
                 omicronTb: form["omicron-tb"].checked,
                 omicronRaids: form["omicron-raids"].checked,
                 omicronConquest: form["omicron-conquest"].checked,
+                includeWeights: form["include-weights"].checked,
               };
 
               if (includedCharacterIDs && !includedCharacterIDs.length) {
@@ -894,6 +906,7 @@ class CharacterEditView extends PureComponent {
               }
               this.props.generateCharacterList(
                 form["use-case"].value,
+                // The toggle is a checkbox whose value attribute is always "true"; checked means Overwrite
                 form.overwrite.checked,
                 this.props.allyCode,
                 parameters

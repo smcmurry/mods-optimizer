@@ -33,6 +33,10 @@ import {
 } from "./storage";
 import { changeOptimizerView } from "./review";
 import { filterObject } from "../../utils/filterObject";
+import withFeedTargets, {
+  feedTargetsOf,
+  withFeedSelections,
+} from "../../utils/withFeedTargets";
 
 /**
  * The optimizer API base. REACT_APP_API_BASE overrides it for local development (e.g. http://localhost:3031, the
@@ -164,8 +168,9 @@ export function refreshPlayerData(
           );
           return null;
         })
-        .then((gameSettings) => {
-          data.gameSettings = gameSettings;
+        .then((characters) => {
+          data.gameSettings = characters ? characters.gameSettings : null;
+          data.feedTargets = characters ? characters.feedTargets : {};
         })
         // Then, fetch the player's data from hotutils
         .then(() =>
@@ -232,8 +237,9 @@ export function refreshPlayerData(
 }
 
 /**
- * Fetch base character data from the swgoh.gg API
- * @returns {Promise<Array | string[]>}
+ * Fetch base character data from the /characters/ feed (HotUtils)
+ * @returns {Promise<{gameSettings: Object<String, GameSettings>, feedTargets: Object<String, Object>}>} The game
+ *          settings by base ID, and the "HotUtils Meta" target each character carries (empty when the feed has none)
  */
 function fetchCharacters() {
   return fetch(`${API_BASE}/characters/`)
@@ -259,7 +265,10 @@ function fetchCharacters() {
         );
       });
 
-      return groupByKey(gameSettings, (gs) => gs.baseID);
+      return {
+        gameSettings: groupByKey(gameSettings, (gs) => gs.baseID),
+        feedTargets: feedTargetsOf(response.units),
+      };
     });
 }
 
@@ -279,7 +288,7 @@ function updatePlayerData(allyCode, fetchData, db, keepOldMods) {
 
         // Collect the new character objects by combining the default characters with the player values
         // and the optimizer settings from the current profile.
-        const newCharacters = mapObjectByKeyAndValue(
+        const playerCharacters = mapObjectByKeyAndValue(
           fetchData.profile.characters,
           (id, playerValues) => {
             if (oldProfile.characters.hasOwnProperty(id)) {
@@ -309,6 +318,13 @@ function updatePlayerData(allyCode, fetchData, db, keepOldMods) {
           }
         );
 
+        // Save each character's "HotUtils Meta" target from the feed into its targets, replacing the one an earlier
+        // fetch saved. A feed without targets changes nothing.
+        const newCharacters = withFeedTargets(
+          playerCharacters,
+          fetchData.feedTargets
+        );
+
         const newMods = groupByKey(fetchData.profile.mods, (mod) => mod.id);
 
         // If "Remember Existing Mods" is selected, then only overwrite the mods we see in this profile
@@ -326,9 +342,16 @@ function updatePlayerData(allyCode, fetchData, db, keepOldMods) {
           finalMods = Object.values(newMods);
         }
 
+        // A selected character using "HotUtils Meta" switches to the feed's new plan too; other selections are kept.
         const newProfile = oldProfile
           .withCharacters(newCharacters)
-          .withMods(finalMods);
+          .withMods(finalMods)
+          .withSelectedCharacters(
+            withFeedSelections(
+              oldProfile.selectedCharacters,
+              fetchData.feedTargets
+            )
+          );
         db.saveProfile(newProfile, nothing, (error) =>
           dispatch(
             showFlash(
@@ -462,7 +485,8 @@ export function fetchCharacterList(mode, overwrite, allyCode, parameters) {
       }
     )
       .then((characterList) => {
-        const matching = selectedOnly ? characterList.filter(id => includedCharacterIDs.includes(id)) : characterList;
+        const matching = selectedOnly ? characterList.filter(entry =>
+          includedCharacterIDs.includes(typeof entry === 'string' ? entry : entry.id)) : characterList;
         const maximum = Number(parameters.top);
         const limited = selectedOnly && maximum > 0 ? matching.slice(0,maximum) : matching;
         dispatch(applyCharacterList(overwrite, limited));
@@ -474,29 +498,59 @@ export function fetchCharacterList(mode, overwrite, allyCode, parameters) {
   };
 }
 
+/**
+ * Apply an auto-generated character list to the profile's selected characters.
+ *
+ * Each entry of the list is either a character ID (the character gets its default target) or an object
+ * `{id, target}`, where `target` is a serialized OptimizationPlan or null. A non-null target is saved into the
+ * character's targets (so it shows in the target dropdown) and used for that character; null means the default target.
+ *
+ * @param overwrite {Boolean} Whether to replace the current selected characters (true) or append to them (false)
+ * @param characterList {Array<String|{id: String, target: Object|null}>}
+ */
 function applyCharacterList(overwrite, characterList) {
   return updateProfile((profile) => {
     const startingList = overwrite === true || overwrite === 'true' ? [] : profile.selectedCharacters;
     const startingCharacterIDs = startingList.map(
       (selectedCharacter) => selectedCharacter.id
     );
-    const charactersToApply = characterList.filter(
-      (characterID) => !startingCharacterIDs.includes(characterID)
-    );
+    const entriesToApply = characterList
+      .map((entry) =>
+        "string" === typeof entry
+          ? { id: entry, target: null }
+          : { id: entry.id, target: entry.target || null }
+      )
+      .filter(({ id }) => !startingCharacterIDs.includes(id));
 
+    const updatedCharacters = {};
     const newSelectedCharacters = startingList.concat(
-      charactersToApply
-        .map((characterID) => {
+      entriesToApply
+        .map(({ id: characterID, target: serializedTarget }) => {
           const character = profile.characters[characterID];
 
-          return character
-            ? { id: characterID, target: character.defaultTarget() }
-            : null;
+          if (!character) {
+            return null;
+          }
+
+          if (!serializedTarget) {
+            return { id: characterID, target: character.defaultTarget() };
+          }
+
+          const target = OptimizationPlan.deserialize(serializedTarget);
+          updatedCharacters[characterID] = character.withOptimizerSettings(
+            character.optimizerSettings.withTarget(target)
+          );
+
+          return { id: characterID, target: target };
         })
         .filter((x) => null !== x)
     );
 
-    return profile.withSelectedCharacters(newSelectedCharacters);
+    return profile
+      .withCharacters(
+        Object.assign({}, profile.characters, updatedCharacters)
+      )
+      .withSelectedCharacters(newSelectedCharacters);
   });
 }
 
@@ -504,9 +558,59 @@ function applyCharacterList(overwrite, characterList) {
 // HotUtils Integration */
 //***********************/
 
-export function setHotUtilsSessionId(allyCode, sessionId) {
+/**
+ * Store a HotUtils session ID on a profile.
+ *
+ * @param allyCode {string}
+ * @param sessionId {string}
+ * @param options {{fetch?: boolean, playerName?: string|null, keepOldMods?: boolean}} With `fetch` (the HotUtils sign-in
+ *   popup), the profile is created when it does not exist yet (named `playerName`, so it shows in the account list at
+ *   once), selected, and then the full HotUtils fetch runs with the new session ID. Without it, the original behaviour.
+ */
+export function setHotUtilsSessionId(allyCode, sessionId, options = {}) {
   return function (dispatch) {
     const db = getDatabase();
+
+    if (options.fetch) {
+      const cleanedAllyCode = cleanAllyCode(allyCode);
+      db.getProfile(
+        cleanedAllyCode,
+        (profile) => {
+          let newProfile = profile
+            ? profile.withHotUtilsSessionId(sessionId)
+            : new PlayerProfile(
+                cleanedAllyCode,
+                options.playerName || ""
+              ).withHotUtilsSessionId(sessionId);
+          if (options.playerName && !newProfile.playerName) {
+            newProfile = newProfile.withPlayerName(options.playerName);
+          }
+          // Database.saveProfile never calls its success callback (it listens for a transaction "success" event, which
+          // IndexedDB does not fire), so the state is updated here rather than in that callback. The fetch below reads
+          // the profile back in a later readwrite transaction on the same store, which IndexedDB orders after this save.
+          db.saveProfile(newProfile, nothing, (error) =>
+            dispatch(
+              showFlash(
+                "Storage Error",
+                "Error applying HotUtils session ID to your profile. Please try again."
+              )
+            )
+          );
+          dispatch(addPlayerProfile(newProfile));
+          dispatch(setProfile(newProfile));
+          dispatch(
+            refreshPlayerData(
+              cleanedAllyCode,
+              !!options.keepOldMods,
+              sessionId,
+              true
+            )
+          );
+        },
+        (error) => dispatch(showError(error.message))
+      );
+      return;
+    }
 
     db.getProfile(
       allyCode,
